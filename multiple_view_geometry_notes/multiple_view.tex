@@ -1,0 +1,358 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+\title{Multiple View Geometry}
+\author{Nie Shicong}
+\date{\today}
+
+\begin{document}
+\begin{titlepage}
+\maketitle
+\tableofcontents
+\end{titlepage}
+
+\section{Introduction - a Tour of Multiple View Geometry}
+\subsection{Introduction - the ubiquitous projective geometry}
+Preamble: \\
+In projective transformation, straightness is preserved. \\
+In Euclidean geometry, an exception: a pair of lines can be parallel. \\
+Points at infinity are called \textit{ideal points}. By adding ideal points, 
+Euclidean space is transfored into the projective space. \\
+
+\noindent Coordinates: \\
+In projective space, use the honogeneous coordinates.
+Honogeneous coordinates: $(kx, ky, k)$ represents the same point, for any
+non-zero value k. \\
+When k is zero, the point becomes ideal point. \\
+In two-dimensional projective space, the set of ideal points forms a line, called \textit{line at infinity}.
+In three-dimensions, they form the \textit{plane at infinity}. \\
+
+\noindent Honogeneity: \\
+Euclidean geometry treats all points as the same. \\
+Euclidean transformation moves the origin of the space. \\
+Affine transformation: a linear transformation followed by a Euclidean transformation.
+It moves, rotates and finally stretches linearly the space. \\
+Projective geometry also treats all points as the same. \\
+Projective transformation: $ X^\prime = H_{(n+1) \times (n+1)}X $. \\
+In projective transformation, infinity is not preserved. In Euclidean and affine transformation, 
+infinity is preserved.
+
+\subsubsection{Affine and Euclidean Geometry}
+Affine Geometry: \\
+The geometry of the projective plane and a distinguished line is known as affine geometry. \\
+Any projective transformation that maps the distinguished line in one space to the
+distinguished line of the other space is known as an affine transformation. \\
+
+\noindent Euclidean Geometry: \\
+Affine geometry is seen as spectialization of projective geometry. \\
+Absolute conic. \\
+Circular points. \\
+
+\noindent 3D Euclidean geometry: \\
+Perpendicularity of lines. \\
+Two directions are conjugate points w.r.t. the absolute conic.
+
+\subsection{Camera projections}
+Preamble: \\
+Central projection: a ray, center of projection and image plane. \\
+A simple model of a camera: a ray of light, lens and digitial device. \\
+The most general projection is represented by an arbitrary $ 3\times4 $ matrix
+of rank 3, acting on the homogeneous coordinates of the point in $ \mathbb{P}^3 $
+mapping it to the imaged point in $ \mathbb{P}^2 $. This matrix is known as the \textit{camera matrix}. \\
+
+\noindent Cameras as points: \\
+The camera center is the essence: for now, all images acquired with the same camera center are equivalent -
+they can be mapped onto each other by a projective transformation. \\
+
+\noindent Calibrated cameras: \\
+IAC: Image of the Absolute Conic, denoted $\omega$. If the location of the IAC is known in an image, then we say that the 
+camera is \textbf{calibrated}. \\
+Knowing the IAC, one can measure the angle between rays by direct measurements in the image. \\
+\textit{Euclidean structure}. \\
+
+\noindent \textbf{Example 1.1.} 3D reconstruction from paintings: \\
+Single view reconstruction: using techniques of projective geometry, it's possible in many instances to reconstruct 
+scenes from a single image. \\
+\textit{Affine structure}. \\
+
+\subsection{Reconstruction from more than one view}
+Point correspondence: $ x_i \leftrightarrow x_i^\prime $. \\
+Reconstruction from two views has unavoidable projective ambiguity. \\
+Reconstruction is possible when there is at least seven point correspondence, and they must not 
+lie in one of various well-defined \textit{critical configuration}. \\
+Basic tool for reconstruction of point sets from two views: \textit{fundamental matrix} $F$.
+It encapsulates the complete projective geometry of the pair of cameras. \\
+Given $F$, a pair of matching points must satisfy the \textit{coplanarity equation}:
+$$ x_i^\prime F x_i = 0 $$ 
+\textit{Triangulation}. \\
+
+\subsection{Three-view geometry}
+Basic algebraic entity in three views reconstruction: \textit{trifocal tensor} $ \mathcal{T}_i^{jk} $. \\
+Correspondence in three views: $ x \leftrightarrow l^\prime \leftrightarrow l^{\prime\prime} $.
+It's not only correspondence between points but between points and lines. \\
+A total of seven point correspondences are sufficient to compute the trifocal tensor linearly. And a minimum
+of six point correspondences using a non-linear method are sufficient. \\
+Advantages to using three-view reconstruction: mixture of line and point correspondences; greater stability. \\
+
+\subsection{Four view geometry and n-view reconstruction}
+Quadrifocal tensor is seldom used. \\
+Affine camera. \\
+\textit{factorization algorithm}: using the \textit{Singular Value Decomposition}.
+This algorithm requires that all the points be visible in all views. \\
+The dominant methodology for the general reconstruction problem is \textit{bundle adjustment}, or \textit{BA}. \\
+BA is an iterative method, which can not be guaranteed to converge to the optimal solution from a arbitray starting point.
+BA is quite efficient when implemented carefully. \\
+
+\subsection{Transfer}
+Transfer: given the position of a point in one (or more) image(s), determine where it will
+appear in all other images of the set. \\
+
+\subsection{Euclidean reconstruction}
+So far, we have talked about the reconstruction with a set of uncalibrated cameras. If a complete calibration of each
+of the camera is known then it is possible to remove some of the ambiguity of the reconstructed scene. \\
+Distortions. \\
+The knowledge of the camera calibration is equivalent to being able to determine the Euclidean structure of the scene. \\
+
+\subsection{Auto-calibration}
+Preamble: \\
+Generally given three cameras known to have the same calibration, it is possible to determine the
+absolute conic, and hence the calibration of the cameras. However, it remains quite a difficult problem. \\
+
+\noindent Knowing the plane at infinity: \\
+Auto-calibration is relatively simple, once the plane at infinity has been identified. 
+The identification of the plane at infinity itself is substantially more difficult. \\
+
+\noindent Auto-calibration give square pixels in the image: \\
+\textit{square-pixel constraint}: a Euclidean coordinate system is known in each image. \\
+From four images one may determine the calibration. \\
+
+\subsection{The reward \textrm{I}: 3D graphical models}
+Epipolar geometry: a point in one image defines a line in the other image on which the 
+corresponding point must lie. \\
+Dense 3D model, dense point match. \\
+
+\subsection{The reward \textrm{II}: video augmentation}
+An application of reconstruction: adding artificial graphics objects in real video sequences. \\
+The only requirement is to compute the correct motion of the camera and hence we are able to 
+generate correct perspective views of the graphics model. \\
+It's essential to compute the motion of the camera in a Euclidean frame, because the graphics object and 
+the cameras need to be known in the same coordinate frame. \\
+
+\section{Projective Geometry and Transformations of 2D}
+\subsection{Planar geometry}
+Geometric approach: coordinate-free. \\
+Algebraic approach: using coordinates and algebraic entities. \\
+The approach in this book is a hybrid approach. \\
+In the algebraic approach, a point or a line is identified as a vector, whilst a conic is 
+represented by a symmetic matrix. \\
+A significant advantage of the algebraic approach is that the results derived
+in this way may more easily be used to derive algorithms and practical computational methods. \\
+
+\subsection{The 2D projective plane}
+\textbf{Row and column vectors.} Geometric entities will by default be represented by column vectors. 
+
+\subsubsection{Points and lines}
+\textbf{Homogeneous representation of lines.} \\
+A line is represented by the vector $ {(a, b, c)}^\top $. \\
+The vectors ${(a,b,c)}^\top$ and $k{(a,b,c)}^\top$ represent the same line for any non-zero $k$. \\
+In fact, two such vectors related by an overall scaling are considered as being equivalent. 
+An equivalent class of vectors under this equivalence relationship is known as a \textit{homogeneous} vector. \\
+The set of equivalence classes of vectors in $\mathbb{R}^3 - {(0,0,0)}^\top$ forms the \textit{projective space} 
+$\mathbb{P}^2$. The notation $-$ indicates the operand followed is excluded. \\
+
+\noindent \textbf{Homogeneous representation of points.} \\
+$\textbf{x} = {(x_1, x_2, x_3)}^\top$ represents the point ${(x_1 / x_3, x_2 / x_3)}^\top$ in $\mathbb{R}^2$. \\
+\textbf{Result 2.1.} \textit{the point $x$ lies on the line $l$ iff $x^\top l = 0$}. \\
+
+\noindent \textbf{Degrees of freedom, dof.} \\
+A line is specified by two parameters and so has two degrees of freedom. \\
+These two params could be chosen as the gradient and $y$ intercept of the line. \\
+
+\noindent \textbf{Intersection of lines.} \\
+\textbf{Result 2.2.} \textit{The intersection of two lines $l$ and $l^\prime$ is the point $x = l \times l^\prime$}.
+\textbf{Example 2.3.} Determine the intersection of the lines $x = 1$ and $y = 1$. \\
+
+\noindent \textbf{Line joining points.} \\
+\textbf{Result 2.4.} \textit{The line through two points $x$ and $x^\prime$ is $l = x \times x^\prime$}.
+
+\subsubsection{Ideal points and the line at infinity}
+\textbf{Intersection of parallel lines.} \\
+\textbf{Example 2.5.} Determine the intersection point of two lines $x = 1$ and $x = 2$. \\
+
+\noindent \textbf{Ideal points and the line at infinity.} \\
+One may augment $\mathbb{R}^2$ by adding points with last coord $x_3 = 0$. 
+The resulting space is the set of all homogeneous 3-vectors, namely the \textit{projective space} $\mathbb{P}^2$. \\
+\textit{Ideal points}. \\
+\textit{Line at infinity}. \\
+First two coords of the ideal point represent the \textit{direction}. Line at infinity can be thought of as the set of directions of lines in the plane. \\
+\textit{Projective geometry}. \\
+There is no distinction between points at infinity (ideal points) and ordinary points. 
+At times, however, we need to distinguish between them. \\
+
+\noindent \textbf{A model for the projective plane.} \\
+Points and lines of $\mathbb{P}^2$ are represented by rays and planes, respectively, through the origin in $\mathbb{R}^3$. \\
+
+\noindent \textbf{Duality.} \\
+\textbf{Result 2.6.} \textbf{Duality principle.} \textit{To any theorem of 2-dim projective geometry there corresponds a dual theorem, 
+which may be derived by interchaning the roles of points and lines in the original theorem.}
+
+\subsubsection{Conics and dual conics.} 
+Hyperbola, ellipse, and parabola. \\
+Conic coefficient matrix $C$. It's a homogeneous representation of a conic. \\
+A conic has five dofs. \\
+
+\noindent \textbf{Five points define a conic.} \\
+Each point $x_i$ places one constraint on the conic coefficients. 
+Therefore a conic is determined uniquely (up to scale) by five points in general positions. \\
+
+\noindent \textbf{Tangent lines to conics.} \\
+\textbf{Result 2.7.} \textit{The line $l$ tangent to $C$ at a point $x$ on $C$ is given by $l = Cx$.} \\
+
+\noindent \textbf{Dual conics.} \\
+\textit{Point conic} and \textit{dual} or \textit{line conic}. \\
+It's denoted as $C^*$. The notation $*$ indicates that $C^*$ is the \textit{adjoint matrix} of $C$. \\
+In a similar manner, five lines in general position define a dual conic. \\
+Point conic equ: $x^\top Cx=0$, dual (line) conic equ: $l^\top C^*l=0$. \\
+
+\noindent \textbf{Degenerate conics.} \\
+If the matrix $C$ is not of full rank, then the conic is termed degenerate. \\
+\textit{Degenerate point conic} and \textit{degenerate line conic}. \\
+\textbf{Example 2.8.} The degenerate point conic: $C = lm^\top + ml^\top$. 
+
+\subsection{Projective transformations}
+Geometry is the study of properties invariant under groups of transformations. \\
+2D projective geometry is under a group of transformations known as \textit{projectivities}.
+A projectivity is also called a \textit{collineation}, a \textit{projective transformation} 
+or a \textit{homography}. \\
+
+\noindent \textbf{Theorem 2.10.} A projectivity is an invertible mapping $h : \mathbb{P}^2 \rightarrow \mathbb{P}^2$
+represented by a invertible $3 \times 3$ matrix $H$, which is $h(x) = Hx$. \\
+Any invertible linear transformation of homogeneous coords is a projectivity. \\
+
+\noindent \textbf{Definition 2.11. Projective transformation.} \\
+$H$ is a homogeneous matrix. It has eight dofs. \\
+
+\noindent \textbf{Mappings between planes.} \\
+\textit{Central projection}. It preserves lines. \\
+\textit{Perspectivity}. \\
+
+\noindent \textbf{Example 2.12.} Removing the projective distortion from a perspective image of a plane. \\
+Shape is distored under perspective imaging. In order to remove the distortion, we need to 
+compute the inverse of the projective transformation. \\
+The method is using four point correspondences wherein each point is represented in inhomogeneous form. When the 
+projective transformation is determined, its inverse can be easily computed. Note that the four points should be 
+in "general position", which means that no three points are colinear. \\
+This way does not require knowledge of \textbf{any} of the camera's params or the pose of the plane. \\
+It's not the preferred way. 
+
+\subsubsection{Transformations of lines and conics.} 
+\textbf{Transformation of lines.} \\
+Under a point transform $x^\prime = Hx$, a line transforms as $l^\prime = H^{-\top} l$, or alternatively write $l^{\prime \top} = l^\prime H^{-1}$. \\
+One says that points tranform \textit{contravariantly} and lines transform \textit{covariantly}. \\
+
+\noindent \textbf{Transformation of conics.} \\
+\noindent \textbf{Result 2.13.} \textit{Under a point transformation $x^\prime = Hx$, a conic transforms to 
+$C^\prime = H^{-\top} C H^{-1}$.} \\
+
+\noindent \textbf{Result 2.14.} \textit{Under a point transformation $x^\prime = Hx$, a dual conic $C^*$ transforms
+to $C^{*\prime} = HC^*H^\top$.}
+
+\subsection{A hierarchy of transformations}
+\textbf{Preamble.} \\
+\textit{Projective linear group}, denoted as $PL(n)$. \\
+\textit{General linear group}, denoted as $GL(n)$. \\
+\textit{Affine group} is an important \textit{subgroup} of $PL(3)$, 
+and the \textit{Euclidean group} is a subgroup of the affine group. \\
+\textit{Isometries}. \\
+Not all classes of transformation form a group, e.g. the perspectivities. \\
+
+\noindent \textbf{Invariants.} \\
+An alternative to describing the transformation \textit{algebraically}, i.e. as a matrix 
+acting on coords of a point or curve, is to describe the transformation in terms of those 
+elements or quantities that are preserved or \textit{invariant}. 
+
+\subsubsection{Class \textrm{I}: Isometries}
+Isometries are transformations of the plane $\mathbb{R}^2$ that preserve Euclidean distance. \\
+There is \textit{orientation-preserving} isometries and \textit{orientation-reversing} isometries. \\
+\textit{Euclidean transformation}, composed of a \textit{rotation matrix}, a \textit{translation matrix}, 
+a null vector and a pure number one. A planar Euclidean transformation has three dofs, one for rotation and two for translation. \\
+
+\noindent \textbf{Invariants.} \\
+Length, angle, and area. \\
+
+\noindent \textbf{Groups and orientation.} \\
+Orientation-preserving isometries form a group, whilst orientation-reversing ones do not. 
+
+\subsubsection{Class \textrm{II}: Similarity transformations}
+A similarity tranformation (or more simply a similarity) is an isometry composed with an isotropic scaling $s$. \\
+It's also known as an \textit{equi-form} transformation, because it preserves shape. \\
+A planer similarity has four dof as the addition of scaling $s$. \\
+
+\noindent \textbf{Invariants.} \\
+Angles, ratio of two lengths and ratio of areas. \\
+
+\noindent \textbf{Metric structure.} \\
+The description \textit{metric structure} implies that the structure is defined up to a similarity. 
+
+\subsubsection{Class \textrm{III}: Affine transformations}
+An affine transformation (or more simply an \textit{affinity}) is a non-singular linear transformation 
+followed by a translation. \\
+It can be seen as the composition of two fundamental transformations, namely rotations and non-isotropic scalings. 
+It can always be decomposed as $$A = R(\theta)R(-\phi)DR(\phi)$$ This decomposition follows directly from the \textit{SVD}. \\
+The new non-isotropic scaling accounts for the two extra dofs: the angle $\phi$ specifying the scaling direction, 
+and the ratio of the scaling params $\lambda_1 : \lambda_2$. \\
+The essence of an affinity is this scaling in \textbf{orthogonal} directions, oriented at a particular angle. \\
+
+\noindent \textbf{Invariants.} \\
+Parallel lines, ratio of lengths of parallel line segments, and ratio of areas. 
+
+\subsubsection{Class \textrm{IV}: Projective transformations} 
+A projective transformation is a general non-singular linear transformation of \textbf{homogeneous} coords. 
+It's a generalization of affine transformation. \\
+A projective transformation in $\mathbb{P}^2$ has eight dofs. \\
+
+\noindent \textbf{Invariants.} \\
+The \textit{cross ratio} (ratio of ratios) of four collinear points.
+
+\subsubsection{Summary and comparison}
+Angles are not preserved, so that shapes are skewed. \\
+Area scaling varies with position, and the orientation of a transformed line depends on both the 
+orientation and position of the source line. \\
+The key difference between a projective and affine transformation is that the vector 
+$v$ is not null for a projectivity. This is responsible for the non-linear effects of the projectivity. \\
+Affinity maps the ideal points to finite points whilst the ideal points over projectivity remain ideal points. 
+
+\subsubsection{Decomposition of a projective transformation}
+A projective transformation can be decomposed into a chain of transformations, where each matrix in the chain 
+represents a transformation higher in the hierarchy than the previous one: 
+$$ H = H_S H_A H_P $$ 
+or in the reverse order:
+$$ H = H_P H_A H_S $$
+Note that the actual values of $K, R, t$ and $v$ will be different. \\
+$H_P$ is an \textit{elation}. \\
+
+\noindent \textbf{Example 2.15.} 
+H = 
+$\begin{bmatrix}
+    1.707 & 0.586 & 1.0 \\
+    2.707 & 8.242 & 2.0 \\
+    1.0   & 2.0   & 1.0
+\end{bmatrix}$
+Decompose this projectivity. 
+
+\subsubsection{The number of invariants}
+Number of invariants. It's functionally independent. \\
+
+\noindent \textbf{Result 2.16.} \textit{the number of functionally independent invariants is equal to, 
+or greater than, the number of degrees of freedom of the configuration 
+less the number of degrees of freedom of the transformation}
+
+\subsection{The projective geometry of 1D}
+
+
+
+
+\end{document}

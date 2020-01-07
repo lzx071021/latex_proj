@@ -1,0 +1,221 @@
+\documentclass{report}
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage{amssymb}
+\usepackage{hyperref}
+
+
+\title{Introduction to Linear Algebra}
+\author{Nie Shicong \thanks{thanks to Gilbert Strang}}
+\date{\today}
+
+\begin{document}
+
+\begin{titlepage}
+    \maketitle
+\end{titlepage}
+
+\tableofcontents
+
+\chapter{Introduction to Vectors}
+\section{Vectors and Linear Combinations}
+linear combination = vector addition + scalar multiplication \\
+col / row vector  \\
+three vector representations  \\
+
+\section{Lengths and Dot products}
+dot / inner prod.  \\
+length / norm of a vector  \\
+unit vector  \\
+angle between two vectors, cosine formula, perp.  \\
+Schwarz Inequlity, Triangle Inequlity; Geometric mean, Arithmatic mean \\
+
+\section[Matrices]{Matrices\footnote{This sec is looking ahead the key ideas, not fully explained yet.}}
+Matrix times vector Ax = comb. of cols of A or multiplication a row at a time  \\
+$Ax = b, x = A^{-1}b$, if A is inv.  \\
+indep. / dep.  \\
+
+\chapter{Solving Linear Equations}
+\section{Vectors and linear equations}
+\begin{tabular}{ l | l | l }
+    a system of equs    & vector equ    & mat equ \\
+    row pic             & col pic       & matrix pic \\
+    dot prod. with rows & comb. of cols & matrix-vector multiplication
+\end{tabular}
+
+\section{The idea of elimination}
+Gauss elimination $\rightarrow$ Upper triangular $U$ \\
+pivot, multiplier \\
+forward elimination, back substitution, exchange rows \\
+\#pivots, singular 
+
+\section{Elimination using matrices}
+elementary (elimination) matrix, permutation matrix \\
+augmented matrix \\
+matrix multiplication by rows / cols \\
+
+\section{Rules for matrix operations}
+inner (dot) / outer prod. \\
+$mnp$ multiplications \\
+four ways to matrix multi., the fourth way! \\
+The laws of matrix operations \\
+powers of A \\
+block matrices and block multi., block elimination $\rightarrow$ Schur complement \\
+
+\section{Inverse Matrices}
+inv. def \\
+\#pivots and invty; if $Ax = 0$ has a nonzero sol'n, then A is not inv. \\
+inverse of a prod. of mats  \\
+Gauss-Jordan elim. $\rightarrow$ rref. \\
+diagonally dominant mats are inv. \\
+
+\section{Elimination $=$ Factorization: $A = LU$}
+Gauss elim. without row exchanges $\rightarrow$ $A = LU$ \\
+triangular factorization: $A = LU$ or $A = LDU$, for better symmetry. Here D is the pivot matrix \\
+predict zeros in $L$ and $U$ according to the first entry of rows and cols of A \\
+$L$ stores the multiplier $l_{ij}$ \\
+factor and solve 
+
+\section{Transposes and Permutations}
+tranpose of sum, prod. and inverses \\
+inner prod. and outer prod. with the introduction of tranpose T \\
+symmetric mats $S$, $A^\top A$ and $AA^\top$ \\
+$A = LDU$ $\rightarrow$ symmetric factorization $S = LDL^\top$ (with no row exchanges, $U$ is exactly $L^\top$)\\
+$P^{-1}$ is also permutation mat if $P$ is a permutation mat; $P^\top = P^{-1}$ because both come from the prod. of row 
+exchanges \textit{in reverse order}\\
+
+\chapter{Vector Spaces and Subspaces}
+\section{Spaces of Vectors}
+vector spaces $\mathbb{R}^2$, $\mathbb{C}^2$, $\mathbb{Z}$, all real 2 by 2 matrices, all real functions, \dots \\
+eight rules for vector addition and scalar multiplication a vector space must obey \\
+subspace, linear comb. requirement, every subspace contains the zero ``vector'' \\
+cols of $A$ span the col space $C(A)$, attainable right side $\mathbf{b}$ \\
+
+\section{The Nullspace of $A$: Solving $Ax = 0$ and $Rx = 0$}
+nullspace $N(A)$ \\
+pivot / free cols $\rightarrow$ pivot / free vars $\rightarrow$ special sol'ns $s$ \\
+adding extra equs (giving extra rows), imposing more conditions, $N(A)$ certainly cannot go larger; 
+adding extra unknowns (giving extra cols), more dofs., $N(A)$ goes larger (more \#components of vector \textbf{v} in $N(A)$ \\
+rref. $R$ reveals pivot cols and free cols, pivot rows and cols contain $I$ \\
+with $n > m$ there's at least one free var, then $Ax = 0$ has nonzero sol'ns \\
+every ``free col'' is a comb. of earlier pivot cols. It's the special sol'ns $s$ that tell us those combinations (with signs reversed) \\
+dimension of a vector space, \#components of a vector \\
+rank $r$, rank one matrix $A = uv^\top$, geometry of rank 1 matrices \\
+
+\section{The Complete Solution to $Ax = b$}
+particular sol'n $x_p$ (free vars $= 0$) $\rightarrow$ $Ax_p = b$ \\
+special sol'ns $x_n$ (free vars $= 1, 0, 0, \dots$) $\rightarrow$ $Ax_n = 0$ \\
+complete sol'n $\rightarrow$ $x = x_p + x_n = $ one particular sol'n + all special sol'ns \\
+$x_p$ comes directly from $d$ on the right side, $x_n$ comes from the free cols of $R$ \\
+full col rank $r = n \leq m$, $R = 
+\begin{bmatrix}
+    I \\
+    \mathbf{0}
+\end{bmatrix}
+= 
+\begin{bmatrix}
+    m x n identity matrix \\
+    m - n rows of zeros 
+\end{bmatrix}
+$, $A$ is overdetermined, $Ax = b$ has at most one sol'n \\
+full row rank $r = m \leq n$, $R = 
+\begin{bmatrix}
+    I & F
+\end{bmatrix}
+$, $F$ is the free part of $R$, $A$ is underdetermined, $Ax = b$ has one or $\infty$ sol'ns \\
+inv mat $r = m = n$, it always has one sol'n \\
+
+\section{Indepence, Basics and Dimension}
+linear indep / dep: put a sequence of vecs into a mat and consider its shape and rank \\ 
+row space $C(A^\top)$ in $\mathbb{R}^n$, col space $C(A)$ in $\mathbb{R}^m$ \\
+span = fill, no need to be indep; basis = span + indep \\
+basis of a space is not unique; every vector of the space is a unique comb. of the basis \\
+find basis from a set of vecs: put them into the rows (cols) of a mat, and eliminate to find the pivot 
+rows of $A$ or $R$ (pivot cols of $A$, not $R$) \\
+standard basis for $\mathbb{R}^n$: $n \times n \ I$ \\
+$C(A) \neq C(R)$, their bases are different, their dims are the same \\
+dimension $=$ \#vectors in any and every basis of the space = ``dofs'' of the space \\
+basis and dim for matrix spaces \\
+
+\section{Dimensions of the Four Subspaces}
+The Big Picture, four fundamental subspaces: 
+\begin{center}
+    \quad \begin{tabular}{lc | lc | lc}
+        & dim & basis \\
+        row space $C(A^\top)$ in $\mathbb{R}^n$ & $r$ & pivot rows \\
+        col space $C(A)$ in $\mathbb{R}^m$ & $r$ & pivot cols \\
+        nullspace $N(A)$ in $\mathbb{R}^n$ & $n - r$ & special sol'ns \\
+        left nullspace $N(A^\top)$ in $\mathbb{R}^m$ & $m - r$ & special sol'ns for $A^\top y = \mathbf{0}$ 
+        or $y^\top A = \mathbf{0}^\top$
+    \end{tabular}
+\end{center}
+Fundamental Theorem of Linear Algebra, Part \textrm{I}: 
+\begin{itemize}
+    \item Rank Theorem: $dim(C(A)) = dim(C(A^\top)) = rank \quad r$ \\
+    \item Counting Theorem: $dim(C(A)) + dim(N(A)) = dim(\mathbb{R}^n) \rightarrow r + (n - r) = n$, \\
+          or replace $A$ for $A^\top$, $dim(C(A^\top)) + dim(N(A^\top)) = dim(\mathbb{R}^m) \rightarrow m + (m - r) = m$ \\
+\end{itemize}
+$A \xrightarrow{elim.} R$: 
+\begin{itemize}
+    \item $C(A) \neq C(R)$, the cols of $A$ don't often end in zero rows while $R$ does \\
+    \item $C(A^\top) = C(R^\top)$, every row of $A$ is a comb. of the rows of $R$, and vice versa \\
+    \item $N(A) = N(R)$, elim. doesn't change sol'ns
+\end{itemize}
+incidence matrix, nodes and edges (ideas in Graph Theory), loops $\rightarrow$ dependence, 
+trees $\rightarrow$ independence, Kirchhoff's Voltage Law, Kirchhoff's Current Law \\
+rank one mats $A = \mathbf{uv}^\top =$ a basis for $C(A) \ \times$ a basis for $C(A^\top)$. (they are both single vector) \\
+rank two mats = rank one mat + rank one mat \\
+every rank $r$ mat is a sum of $r$ rank one mats. 
+(The original mat $A$ is separated into $E^{-1}$ and $R$, and the cols of $E^{-1} \ \times$ rows of $R$ get 
+rank one mats, and then sum these mats to recover $A$)
+
+\chapter{Orthogonality}
+\section{Orthogonality of the Four Subspaces}
+orthogonal subspaces $\mathbf{V}$ and $\mathbf{W}$, $\mathbf{v}^\top \mathbf{w} = \mathbf{0}$ for all $\mathbf{v}$ 
+in $\mathbf{V}$ and all $\mathbf{w}$ in $\mathbf{W}$ \\
+when a vector is in two subspaces, it must be the zero vector \\
+$C(A^\top) \perp \ N(A)$, proved using $Ax = 0$, rows of $A \times \ x \rightarrow 0$ \\
+$C(A) \perp \ N(A^\top)$, proved using $A^\top y = 0$, rows of $A^\top \times \ y \rightarrow 0$ \\
+orthogonal complements $V^\top$ contains every vector that is perp. to $V$ \\
+Fundamental Theorem of Linear Algebra, Part \textrm{II}: 
+\begin{itemize}
+    \item $C(A^\top)^\perp = N(A)$ 
+    \item $C(A)^\perp = N(A^\top)$
+\end{itemize}
+every $\mathbf{x}$ can be split into a row space component $\mathbf{x_r}$ (which goes to the col space, $Ax_r = Ax)$, 
+and a nullspace component $\mathbf{x_n}$ (which goes to zero, $Ax_n = 0$) \\
+a basis has two properties, when the \#vectors is right, one property implies the other \\
+when a matrix has the right \#vectors, it's inv.
+
+\section{Projections}
+To find projection $p = \hat{x}_1 a_1 + \dots + \hat{x}_n a_n$: 
+\begin{enumerate}
+    \item certain multiple $\hat{x}$: $A^\top (b - A\hat{x}) = 0$ or $A^\top A\hat{x} = A^\top b \Rightarrow 
+    \hat{x} = A(A^\top A)^{-1} A^\top$, $A$ is comb. of $a$'s. We're projecting onto the $C(A)$. When $n = 1$,  
+    $A = a$, we're projecting onto a line. \\
+    This normal equation can be derived by geometry (perp.) or by linear algebra (nullspace).
+    \item projection $p$: $p = A \hat{x}$ 
+    \item projection matrix $P = A(A^\top A)^{-1} A^\top$
+\end{enumerate}
+Projecting $b$ onto a subspace leaves the error vector $e = b - p$ perp. to the subspace. 
+$b$ can be split into two components: $p$ in $C(A)$ and $e$ in $N(A^\top)$. \\
+$(I - P)b = b - p = e \Rightarrow I-P$ projects $b$ onto the $C(A)^\perp$. \\
+Note that $A^\top A$ generally cannot be split into $A^{-1} \times (A^\top)^{-1}$, because there's no $A^{-1}$ 
+if $A$ is rectangular. \\
+$A^\top A$ is inv. iff $A$ has indep. cols (no need for $A$ to be inv.) \\
+$A^\top A$ has the same nullspace as $A$ \\
+$P^\top = P$; $P^2 = P$, projecting a second time doesn't change anything. \\
+
+\section{Least Squares Approximations}
+
+\section{Orthogonal Bases and Gram-Schmidt}
+
+\chapter{Determinants}
+\section{The Properties of Determinants}
+
+\section{Permutations and Cofactors}
+
+\section{Cramer's Rule, Inverses, and Volumes}
+
+
+\end{document}
