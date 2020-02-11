@@ -1,0 +1,2 @@
+1. This appear to be a number of misconceived questions that all implicitly assume that Deep Learning competes with Graphical Models or has taken them over. Nothing could be further from the truth.
+2. 
