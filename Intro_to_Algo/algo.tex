@@ -51,11 +51,37 @@
         \item \textsc{In Place}: it rearranges the nunbers within the array \emph{A}, with at most a constant nunber of them stored outside the array at any time. 
         \item \textbf{Loop invariants:}
         \begin{itemize}
-            \item \textbf{Initialization:} It is true prior to the first iteration of the loop.
-            \item \textbf{Maintenance:} If is true before an iteration of the loop, it remains true before the next iteration.
-            \item \textbf{Termination:} When the loop terminates, the invariant gives us a useful property that helps show that the algorithms is correct.
+            \item Three things about a loop invariant:
+            \begin{enumerate}
+                \item \textbf{Initialization:} It is true prior to the first iteration of the loop.
+                \item \textbf{Maintenance:} If is true before an iteration of the loop, it remains true before the next iteration.
+                \item \textbf{Termination:} When the loop terminates, the invariant gives us a useful property that helps show that the algorithms is correct.
+            \end{enumerate}
+            \item When the loop is a \kw{for} loop, the moment at which we check the loop invariant just prior to the first iteration is immediately after the initial assignment to the loop-counter variable and just before the first test in the loop header.
         \end{itemize}
     \end{itemize}
 \end{enumerate}
+
+\section{Analyzing algorithms}
+\begin{enumerate}[leftmargin=*]
+    \item \textbf{Random-access machine (RAM) model:} 
+    \begin{itemize}
+        \item In the \emph{RAM} model, instructions are executed one after another, with no concurrent operations.
+        \item The \emph{RAM} model constains instructions commonly found in real computers: arithmetic, data movement, and control.
+        \item Such computers can compute $2^k$ in one constant-time instruction by shifting the integer 1 by $k$ positions to the left, as long as $k$ is no more than the number of bits in a computer word.
+    \end{itemize}
+    \item \textbf{Analysis of insertion sort:} \proc{Insertion-Sort} can take different amounts of time to sort two input sequences of the same size depending on how nearly sorted they already are. To analyze it, we need to define the terms "running time" and "size of input" more carefully:
+    \begin{itemize}
+        \item The best notion for \emph{input size} depends on the problem being studies. 
+        \item The \emph{running time} of an algorithm on a particular input is the number of primitive operations or "steps" executed.
+    \end{itemize}
+    \item \textbf{Worst-case, average-case, and best-case analysis}
+    \begin{itemize}
+        \item \textbf{Order of growth:} Consider only the leading term of a formula and at the same time ignore the leading term's constant coefficient.
+    \end{itemize}
+\end{enumerate}
+
+\section{Designing algorithms}
+\subsection{The divide-and-conquer approach}
 
 \end{document}
