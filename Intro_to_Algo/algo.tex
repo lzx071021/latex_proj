@@ -2,9 +2,12 @@
 \usepackage{enumitem}
 \usepackage{hyperref}
 \usepackage{clrscode3e}
+\usepackage{amsmath}
 
 \title{Introduction to Algorithms}
 \author{Note}
+
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
 
 \begin{document}
 
@@ -36,17 +39,17 @@
         \begin{codebox}
         \Procname{$\proc{Insertion-Sort}(A)$}
         \li \For $j \gets 2$ \To \attrib{A}{length}
-                \Do 
+            \Do 
         \li     $\id{key} \gets A[j]$ 
         \li     \Comment Insert $A[j]$ into the sorted sequence $A[1 \twodots j-1]$.
         \li     $i \gets j-1$
         \li     \While $i > 0$ and $A[i] > \id{key}$
-                    \Do
+                \Do
         \li         $A[i+1] \gets A[i]$ 
         \li         $i \gets i-1$
-                    \End
-        \li     $A[i+1] = \id{key}$
                 \End
+        \li     $A[i+1] = \id{key}$
+            \End
         \end{codebox}
         \item \textsc{In Place}: it rearranges the nunbers within the array \emph{A}, with at most a constant nunber of them stored outside the array at any time. 
         \item \textbf{Loop invariants:}
@@ -78,10 +81,100 @@
     \item \textbf{Worst-case, average-case, and best-case analysis}
     \begin{itemize}
         \item \textbf{Order of growth:} Consider only the leading term of a formula and at the same time ignore the leading term's constant coefficient.
+        \item and more \dots
     \end{itemize}
 \end{enumerate}
 
 \section{Designing algorithms}
 \subsection{The divide-and-conquer approach}
+\begin{enumerate}
+    \item \textbf{Recursive:} Many useful algorithms are \emph{recursive} in structure: to solve a given problem, they call \emph{themselves} recursively one or more times to deal with closely related subproblems.
+    \item \textbf{Divide-and-conquer approach:}
+    \begin{enumerate}
+        \item \textbf{Divide} the problem into a number of subproblems that are smaller instances of the same problem.
+        \item \textbf{Conquer} the subproblems by solving them recursively. If the subproblem sizes are small enough, however, just solve the subproblems in a straightforward manner.
+        \item \textbf{Combine} the solutions to the subproblems into the solution for the original problem.
+    \end{enumerate}
+    \item \textsc{Merge Sort:}
+    \begin{itemize}
+        \item \textbf{Pseudocode:} 
+        \begin{codebox}
+        \Procname{$\proc{Merge-Sort}(A,p,r)$}
+        \li \If $p < r$
+            \Then 
+        \li     $q = \floor{(p+r)/2}$
+        \li     $\proc{Merge-Sort}(A,p,q)$
+        \li     $\proc{Merge-Sort}(A,q+1,r)$
+        \li     $\proc{Merge}(A,p,q,r)$
+            \End
+        \end{codebox}
+        \begin{codebox}
+        \Procname{$\proc{Merge}(A,p,q,r)$}
+        \li $n_1 = q-p+1$
+        \li $n_2 = r-q$
+        \li let $L[1 \twodots n_1 + 1]$ and $R[1 \twodots n_2 + 1]$ be new arrays 
+        \li \For $i = 1 \To n_1$
+            \Do 
+        \li     $L[i] = A[p+i-1]$
+            \End 
+        \li \For $j = 1 \To n_2$ 
+            \Do 
+        \li     $R[j] = A[q+j]$
+            \End 
+        \li $L[n_1 + 1] = \infty$ 
+        \li $R[n_2 + 1] = \infty$
+        \li $i = 1$
+        \li $j = 1$
+        \li \For $k = p \To r$
+            \Do
+        \li     \If $L[i] \leq R[j]$
+                \Then 
+        \li         $A[k] = L[i]$
+        \li         $i = i+1$
+        \li     \Else $A[k] = R[j]$
+        \li         $j = j+1$
+                \End
+            \End
+        \end{codebox}
+        \item We place at the end of each array a \emph{sentinel} element, which contains a special value $\infty$ that we use to simplify our code.
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Analyzing divide-and-conquer algorithms}
+\begin{enumerate}
+    \item \textbf{Recurrence:} When an algorithm contains a recursive call to itself, we can often describe its running time by a \emph{recurrence}, which describes the overall running time on a problem of size $n$ in terms of the running time on smaller inputs.
+    \item \textbf{Analyzing the total cost represented by a recurrence:}
+    \begin{enumerate}
+        \item Construct a \emph{recursion tree}.
+        \item Compute the total cost of each level of the tree.
+        \item Sum every level's total cost to get the overall total cost.
+    \end{enumerate}
+    \item \textbf{Recurrence of Merge Sort:} 
+    $$
+    T(n) = 
+    \begin{cases}
+        c            & \text{if } n = 1, \\
+        2T(n/2) + cn & \text{if } n > 1.
+    \end{cases}
+    $$
+    \item \textbf{Time complexity:} $T(n) = \Theta(n\lg{n})$
+\end{enumerate}
+
+\section{Algorithms}
+\begin{enumerate}
+    \item $\proc{Insertion-Sort}$
+    \item $\proc{Selection-Sort}$
+    \item $\proc{Merge-Sort}$
+    \item $\proc{Bubble-Sort}$
+    \item $\proc{Binary-Search}$
+    \item $\proc{Inversions}$
+\end{enumerate}
+
+\chapter{Growth of Functions}
+\section{Asymptotic notation}
+
+\section{Standard notations and common functions}
+
+\section{Algorithms}
 
 \end{document}
