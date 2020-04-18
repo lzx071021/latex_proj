@@ -1,8 +1,14 @@
 \documentclass{report}
 \usepackage{enumitem}
-\usepackage{hyperref}
 \usepackage{clrscode3e}
 \usepackage{amsmath}
+\usepackage[colorlinks,
+            linkcolor=blue,
+            anchorcolor=blue,
+            citecolor=green,
+            pdfauthor=nie_bayes,
+            pdfstartpage=1
+            ]{hyperref}
 
 \title{Introduction to Algorithms}
 \author{Note}
@@ -37,7 +43,7 @@
     \begin{itemize}
         \item \textbf{Pseudocode:} 
         \begin{codebox}
-        \Procname{$\proc{Insertion-Sort}(A)$}
+        \Procname{$\proc{Insertion-Sort}(A)$} \label{alg:insertion-sort}
         \li \For $j \gets 2$ \To \attrib{A}{length}
             \Do 
         \li     $\id{key} \gets A[j]$ 
@@ -99,7 +105,7 @@
     \begin{itemize}
         \item \textbf{Pseudocode:} 
         \begin{codebox}
-        \Procname{$\proc{Merge-Sort}(A,p,r)$}
+        \Procname{$\proc{Merge-Sort}(A,p,r)$} \label{alg:merge-sort}
         \li \If $p < r$
             \Then 
         \li     $q = \floor{(p+r)/2}$
@@ -153,7 +159,7 @@
     $$
     T(n) = 
     \begin{cases}
-        c            & \text{if } n = 1, \\
+        c            & \text{if } n = 1, \\ % You don't necessarily need to line up these two ampersand signs.
         2T(n/2) + cn & \text{if } n > 1.
     \end{cases}
     $$
@@ -162,15 +168,124 @@
 
 \section{Algorithms}
 \begin{enumerate}
-    \item $\proc{Insertion-Sort}$
+    \item \hyperref[alg:insertion-sort]{$\proc{Insertion-Sort}$}
     \item $\proc{Selection-Sort}$
-    \item $\proc{Merge-Sort}$
-    \item $\proc{Bubble-Sort}$
+    \begin{codebox}
+    \Procname{$\proc{Selection-Sort}(A)$} \label{alg:selection-sort}
+    \li $n = \attrib{A}{length}$
+    \li \For $j \gets 1 \To n - 1$
+        \Do 
+    \li     $\id{smallest} \gets j$
+    \li     \For $i \gets j + 1 \To n$
+            \Do 
+    \li         \If $A[i] < A[\id{smallest}]$
+                \Then 
+    \li             $\id{smallest} = i$
+                \End
+            \End
+    \li     exchange $A[j] \text{ with } A[\id{smallest}]$
+        \End
+    \end{codebox}
+    \item \hyperref[alg:merge-sort]{$\proc{Merge-Sort}$}
+    \item $\proc{Bubble-Sort}$ 
+    \begin{codebox}
+    \Procname{$\proc{Bubble-Sort}(A)$} \label{alg:bubble-sort}
+    \li $n = \attrib{A}{length}$
+    \li \For $i \gets 1 \To n-1$
+        \Do 
+    \li     \For $j \gets n \Downto i+1$
+            \Do 
+    \li         \If $A[j] < A[j-1]$
+                \Then 
+    \li             exchange $A[j] \text{ with } A[j-1]$
+                \End
+            \End
+        \End
+    \end{codebox}
+    \item $\proc{Linear-Search}$
+    \begin{codebox}
+    \Procname{$\proc{Linear-Search}(A, \nu)$} \label{alg:linear-search}
+    \li $n = \attrib{A}{length}$
+    \li \For $i \gets 1 \To n$
+        \Do 
+    \li     \If $\nu \isequal A[i]$
+            \Then 
+    \li         \Return $i$
+            \End
+        \End
+    \li \Return \const{nil}
+    \end{codebox}
     \item $\proc{Binary-Search}$
+    \begin{codebox}
+    \Procname{$\proc{Binary-Search}(A, \nu, low, high)$}
+    \li \If $low > high$
+        \Then 
+    \li     \Return \const{nil}
+        \End
+    \li $mid = \floor{(low+high)/2}$
+    \li \If $\nu \isequal A[mid]$
+        \Then 
+    \li     \Return \id{mid}
+    \li \ElseIf $\nu > A[mid]$
+        \Then 
+    \li     \Return $\proc{Binary-Search}(A, \nu, mid+1, high)$
+    \li \Else \Return $\proc{Binary-Search}(A, \nu, low, mid-1)$
+        \End
+    \end{codebox}
     \item $\proc{Inversions}$
+    \begin{codebox}
+    \Procname{$\proc{Count-Inversions}(A,p,r)$} \label{alg:count-inversions}
+    \li $\id{inversions} \gets 0$
+    \li \If $p < r$
+        \Then 
+    \li     $q = \floor{(p+r)/2}$
+    \li     $\id{inversions} = \id{inverions} + \proc{Count-Inversions}(A,p,q)$
+    \li     $\id{inversions} = \id{inverions} + \proc{Count-Inversions}(A,q+1,r)$
+    \li     $\id{inversions} = \id{inverions} + \proc{Merge-Inversions}(A,p,q,r)$
+        \End
+    \li \Return \id{inversions}
+    \end{codebox}
+    \begin{codebox}
+    \Procname{$\proc{Merge-Inversions}(A,p,q,r)$}
+    \li $n_1 = q-p+1$
+    \li $n_2 = r-q$
+    \li let $L[1 \twodots n_1 + 1]$ and $R[1 \twodots n_2 + 1]$ be new arrays 
+    \li \For $i = 1 \To n_1$
+        \Do 
+    \li     $L[i] = A[p+i-1]$
+        \End 
+    \li \For $j = 1 \To n_2$ 
+        \Do 
+    \li     $R[j] = A[q+j]$
+        \End 
+    \li $L[n_1 + 1] = \infty$ 
+    \li $R[n_2 + 1] = \infty$
+    \li $i = 1$
+    \li $j = 1$
+    \li $\id{inversions} \gets 0$
+    \li $\id{counted} \gets \const{false}$
+    \li \For $k = p \To r$
+        \Do
+    \li     \If $\id{counted} \isequal \const{false} \text{ and } R[j] < L[i]$
+            \Then
+    \li         $\id{inversions} = \id{inverions} + n_1 - i + 1$
+    \li         $\id{counted} \isequal \const{true}$
+            \End
+    \li     \If $L[i] \leq R[j]$
+            \Then 
+    \li         $A[k] = L[i]$
+    \li         $i = i+1$
+    \li     \Else $A[k] = R[j]$
+    \li         $j = j+1$
+    \li         $\id{counted} \isequal \const{false}$
+            \End
+        \End
+    \li \Return \id{inversions}
+    \end{codebox}
 \end{enumerate}
 
 \chapter{Growth of Functions}
+
 \section{Asymptotic notation}
 
 \section{Standard notations and common functions}
