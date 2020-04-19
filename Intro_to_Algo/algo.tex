@@ -270,7 +270,7 @@
     \li     \If $\id{counted} \isequal \const{false} \text{ and } R[j] < L[i]$
             \Then
     \li         $\id{inversions} = \id{inverions} + n_1 - i + 1$
-    \li         $\id{counted} \isequal \const{true}$
+    \li         $\id{counted} \gets \const{true}$
             \End
     \li     \If $L[i] \leq R[j]$
             \Then 
@@ -278,18 +278,20 @@
     \li         $i = i+1$
     \li     \Else $A[k] = R[j]$
     \li         $j = j+1$
-    \li         $\id{counted} \isequal \const{false}$
+    \li         $\id{counted} = \const{false}$
             \End
         \End
+    \li \Return \id{inversions}
     \end{codebox}
-    \item \textbf{Summary of sorting algorithms:}
-    \begin{figure}[h]
-        \centering
-        \includegraphics[scale=0.3]{figures/sort_algo_summary.png}
-        \caption{Summary of sorting algorithms}
-        \label{fig:sort_algo_summary}
-    \end{figure}
 \end{enumerate}
+
+\subsection{Summary of sorting algorithms}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[scale=0.3]{figures/sort_algo_summary.png}
+    \caption{Summary of sorting algorithms}
+    \label{fig:sort_algo_summary}
+\end{figure}
 
 \chapter{Growth of Functions}
 
