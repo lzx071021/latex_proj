@@ -1,0 +1,70 @@
+==========
+What's it?
+==========
+WHUTThesis is a LaTeX thesis template package for WuHan University in order to
+make it easy to write thesises for either master or doctor.  
+
+WHUTThesis 是武汉理工大学学位论文 LaTeX 模板，支持硕士、博士论文格式。
+
+详细使用说明请参看《WHUTthesis：武汉理工大学学位论文模板用户手册》（WHUTthesis.pdf）
+
+========
+使用方法
+========
+1. 编译示例文档
+   msmake man
+
+2. 编写自己的论文
+   参考示例文档：
+     mythesis.tex   主控文档
+     body/          论文具体内容
+     reference/     参考文献数据库目录
+     figure/        图片目录
+     a3cover/       a3封面目录
+   
+
+========
+如何升级
+========
+1. 下载新模板并解压缩
+2. 将WHUTthesis.cls, WHUTthesis.cfg, GBT7714-2005NLang.bst作相应替换即可。
+
+
+===========================
+msmake.cmd Howto 
+===========================
+1.配置WHUTthesis宏包
+
+    msmake setup
+   　　在当前目录下生成WHUTthesis宏包及说明文档WHUTthesis.pdf
+
+2.生成示例文档
+  
+    msmake [my|a3]
+　　
+    在当前目录下生成示例文档，或其中的一部分，或其他用户指定文档
+    如果当前目录下无WHUTthesis.cls，将自动根据WHUTthesis.ins生成。
+　　- my  仅生成mythesis.pdf
+　　- a3  生成a3封面
+
+3.清理目录
+
+    msmake clean [other]
+
+　　清理当前目录下由WHUTthesis宏包生成的文件，具体包括
+    - 宏包及其说明文档WHUTthesis.{cls,cfg,dvi,ps,pdf}
+    - 示例文档 mythesis.{dvi,ps,pdf,aux,etc.}
+    - 其它临时文件 *.log *.aux *.glo *.idx *.ilg *.ind *.out *.thm *.toc *.lot *.loe *.out.bak
+    - 如果用户指定其他文件名，不删除mythesis.*，而删除 other.{dvi,ps,pdf,lo?,aux,bbl,blg,out* toc thm}
+
+4.辅助图形图像文件格式转换命令：
+
+   msmake epspdf [param]
+
+     将当前目录下所有eps文件用epstopdf转为pdf格式
+
+   msmake bmpeps [param]
+
+     将当前目录下所有bmp,jpg,png文件用bmeps转为eps格式
+
+   以上两个命令中，param可以由用户指定转换程序所用的参数。

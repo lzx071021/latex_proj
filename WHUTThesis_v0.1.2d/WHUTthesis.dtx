@@ -1,0 +1,2205 @@
+% \iffalse
+%  Local Variables:
+%  mode: doctex
+%  TeX-master: t
+%  End:
+% \fi
+%
+% \iffalse meta-comment
+%
+% Copyright (C) 2010 by Hu,Weiyi <huweiyi@whut.edu.cn>
+%
+% This file may be distributed and/or modified under the
+% conditions of the LaTeX Project Public License, either version 1.3a
+% of this license or (at your option) any later version.
+% The latest version of this license is in:
+%
+% http://www.latex-project.org/lppl.txt
+%
+% and version 1.3a or later is part of all distributions of LaTeX
+% version 2004/10/01 or later.
+%
+% Created at 2010-03-02 15:21
+% This template is based on the work of thuthesis by Ruini Xue,
+% \fi
+%
+% \CheckSum{0}
+% \CharacterTable
+%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+%   Digits        \0\1\2\3\4\5\6\7\8\9
+%   Exclamation   \!     Double quote  \"     Hash (number) \#
+%   Dollar        \$     Percent       \%     Ampersand     \&
+%   Acute accent  \'     Left paren    \(     Right paren   \)
+%   Asterisk      \*     Plus          \+     Comma         \,
+%   Minus         \-     Point         \.     Solidus       \/
+%   Colon         \:     Semicolon     \;     Less than     \<
+%   Equals        \=     Greater than  \>     Question mark \?
+%   Commercial at \@     Left bracket  \[     Backslash     \\
+%   Right bracket \]     Circumflex    \^     Underscore    \_
+%   Grave accent  \`     Left brace    \{     Vertical bar  \|
+%   Right brace   \}     Tilde         \~}
+%
+% \changes{v0.1.0}{2010/03/02}{初始版本}
+% \iffalse
+%<*driver>
+\ProvidesFile{WHUTthesis.dtx}[2010/06/19 0.1.2d Thesis Template for Wuhan University of Technology]
+\documentclass[10pt]{ltxdoc}
+\usepackage{dtx-style}
+\EnableCrossrefs
+\CodelineIndex
+\RecordChanges
+%\OnlyDescription
+\begin{document}
+    \DocInput{\jobname.dtx}
+\end{document}
+%</driver>
+% \fi
+%
+% \GetFileInfo{\jobname.dtx}
+% \MakeShortVerb{\|}
+%
+% \def\whutthesis{\textsc{Whut}\-\textsc{Thesis}}
+% \def\pkg#1{\texttt{#1}}
+%
+
+%
+% \DoNotIndex{\begin,\end,\begingroup,\endgroup}
+% \DoNotIndex{\ifx,\ifdim,\ifnum,\ifcase,\else,\or,\fi}
+% \DoNotIndex{\let,\def,\xdef,\newcommand,\renewcommand}
+% \DoNotIndex{\expandafter,\csname,\endcsname,\relax,\protect}
+% \DoNotIndex{\Huge,\huge,\LARGE,\Large,\large,\normalsize}
+% \DoNotIndex{\small,\footnotesize,\scriptsize,\tiny}
+% \DoNotIndex{\normalfont,\bfseries,\slshape,\interlinepenalty}
+% \DoNotIndex{\hfil,\par,\hskip,\vskip,\vspace,\quad}
+% \DoNotIndex{\centering,\raggedright}
+% \DoNotIndex{\c@secnumdepth,\@startsection,\@setfontsize}
+% \DoNotIndex{\ ,\@plus,\@minus,\p@,\z@,\@m,\@M,\@ne,\m@ne}
+% \DoNotIndex{\@@par,\DeclareOperation,\RequirePackage,\LoadClass}
+% \DoNotIndex{\AtBeginDocument,\AtEndDocument}
+%
+% \IndexPrologue{\section*{索引}%
+%    \addcontentsline{toc}{section}{索~~~~引}}
+% \GlossaryPrologue{\section*{修改记录}%
+%    \addcontentsline{toc}{section}{修改记录}}
+%
+% \renewcommand{\abstractname}{摘~~要}
+% \renewcommand{\contentsname}{目~~录}
+%
+%
+% \title{\whutthesis：武汉理工大学学位论文模板用户手册\thanks{Wuhan University of Technology \LaTeX{} Thesis Template.}}
+% \author{{\fs 胡卫谊}\\[5pt]{\fs 武汉理工大学计算机科学与技术学院}\\[5pt] \texttt{huweiyi@whut.edu.cn}}
+% \date{v\fileversion\ (\filedate)}
+% \maketitle\thispagestyle{empty}
+%
+%
+% \begin{abstract}\noindent
+%   此宏包旨在建立一个简单易用的武汉理工大学学位论文模板，计划包括本科、硕士、
+%   博士论文。现在已经支持理工类硕士和博士论文格式，对其它
+%   格式的支持在后续维护中会陆续加入。
+% \end{abstract}
+%
+% \vskip2cm
+% \def\abstractname{免责声明}
+% \begin{abstract}
+% \noindent
+% \begin{enumerate}
+% \item 本模板的发布遵守 \LaTeX{} Project Public License，使用前请认真阅读协议内容。
+% \item 本模板为作者根据武汉理工大学研究生院（筹）颁发的《博士、硕士学位论文书写格式的统一要求》
+%   编写而成，旨在供武汉理工大学毕业生撰写学位
+%   论文使用。
+% \item 武汉理工大学研究生院（筹）只提供毕业论文写作指南，不提供官方模板，也不会授
+%   权第三方模板为官方模板，所以此模板仅为写作指南的参考实现，不保证格式审查老师
+%   不提意见。任何由于使用本模板而引起的论文格式审查问题均与本模板作者无关。
+% \item 任何个人或组织以本模板为基础进行修改、扩展而生成的新的专用模板，请严格遵
+%   守 \LaTeX{} Project Public License 协议。由于违犯协议而引起的任何纠纷争端均与
+%   本模板作者无关。
+% \end{enumerate}
+% \end{abstract}
+%
+%
+% \clearpage
+% \begin{multicols}{2}[
+%   \section*{\contentsname}
+%   \setlength{\columnseprule}{.4pt}
+%   \setlength{\columnsep}{18pt}]
+%   \tableofcontents
+% \end{multicols}
+%
+% \clearpage
+% \pagenumbering{arabic}
+% \pagestyle{headings}
+% \section{模板介绍}
+% \whutthesis 是为了帮助武汉理工大学毕业
+% 生撰写毕业论文而编写的 \LaTeX{} 论文模板。
+%
+% 本文档将尽量完整地介绍模板的使用方法，如有不清楚之处可以参考示例文档或者给维护
+% 人员（见后）写信，欢迎感兴趣的同学出力完善此使用手册。由于个人水平有限，虽然现
+% 在的这个版本基本上满足了学校的要求，但难免还存在不足之处，欢迎大家积极反馈。
+%
+% {\color{blue}\fangsong 模板的作用在于减轻论文写作过程中格式调整的时间，其前提就是遵
+%   守模板的用法，否则即使使用了 \whutthesis{} 也难以保证输出的论文符合学校规范。}
+%
+% {\color{red}\fangsong\heiti 注意：本模板在编写过程中在某些细节上偏向\LaTeX{}的排版美化约定，
+% 因而与学校官方模板存在一些细微差异，请同学们参看给出的示例文档酌情使用！}
+%
+%
+% \section{安装}
+% \label{sec:installation}
+%
+% \subsection{下载}
+% \whutthesis{} 主页：\url{http://whutthesis.googlecode.com/}。除此之外，不
+% 再维护任何镜像。
+%
+% \whutthesis{} 的开发版本同样可以在 googlecode 上获得：
+% \begin{shell}
+% $ svn checkout http://whutthesis.googlecode.com/svn/trunk/ whutthesis-read-only 
+% \end{shell}
+%
+% \subsection{模板的组成部分}
+% 下图列出了模板的目录结构
+%\begin{lstlisting}[title={模板目录结构},label=layout,numbers=none]
+%  |-- WHUTthesis.ins
+%  |-- WHUTthesis.dtx
+%  |-- GBT7714-2005NLang.bst
+%  |-- WHUTtils.sty
+%  |-- msmake.cmd
+%  |-- WHUTthesis.cls
+%  |-- dtx-style.sty
+%  |-- WHUTthesis.cfg
+%  |-- mythesis.tex
+%  |-- a3cover
+%  |   |-- a3cover.tex
+%  |   \-- spine.tex
+%  |-- body
+%  |   |-- abstract.tex
+%  |   |-- ack.tex
+%  |   |-- appendix01.tex
+%  |   |-- chap01.tex
+%  |   |-- chap02.tex
+%  |   |-- cover.tex
+%  |   |-- denotation.tex
+%  |   \-- resume.tex
+%  |-- figure
+%  |   |-- whut.png
+%  |   |-- whut.pdf
+%  |   \-- ...
+%  \-- reference
+%      \-- refs.bib
+%\end{lstlisting}
+% 下表列出了 \whutthesis{} 的主要文件及其功能介绍：
+%
+% \begin{center}
+%   \begin{longtable}{l|p{10cm}}
+% \hline
+% {\heiti 文件（夹）} & {\heiti 功能描述}\\\hline\hline
+% \endfirsthead
+% \hline
+% {\heiti 文件（夹）} & {\heiti 功能描述}\\\hline\hline
+% \endhead
+% \endfoot
+% \endlastfoot
+% WHUTthesis.ins & 模板驱动文件 \\
+% WHUTthesis.dtx & 模板文档代码的混合文件\\
+% WHUTthesis.cls & 模板类文件\\
+% WHUTthesis.cfg & 模板配置文件\\
+% dtx-sty.sty & 用户手册样式文件\\
+% GBT7714-2005NLang.bst & 参考文献样式文件\\\hline
+% mythesis.tex & 示例文档主文件\\
+% whuttils.sty & 为示例文档加载其它宏包\\
+% a3cover/ & a3封面目录\\
+% body/ & 示例文档章节具体内容目录\\
+% figure/ & 示例文档图片路径目录\\
+% reference/ & 示例文档参考文献目录\\\hline
+% msmake.cmd & Windows 批处理工具\\\hline
+% Readme & self-explanation\\
+% \textbf{whutthesis.pdf} & 用户手册（本文档）\\\hline
+%   \end{longtable}
+% \end{center}
+%
+% 需要说明几点：1) WHUTthesis.cls、WHUTthesis.cfg、dtx-sty.sty和mythesis.tex可以
+% 由 WHUTthesis.ins 和WHUTthesis.dtx 生成，但为了降低新手用户的使用难度，故将 cls
+% 和 cfg 也一起发布。2) 学习一个新东西最好的办法就是读它的文
+% 档：\emph{WHUTthesis.pdf}.
+%
+%
+% \subsection{推荐的\TeX{}系统}
+% \label{sec:recommend}
+% 本模板当前版本v\fileversion\ (\filedate)在TexLive 2009下编写，未在其他\TeX{}系统上测试，
+% 因此推荐用户使用TeXLive 2009。其安装包可以在\url{http://tug.org/texlive/}处下载。
+% {\heiti 注意：}下载下来的iso压缩包可能需要支持xz解压缩的{\heiti7-Zip 4.65 稳定版 (2009-02-03)}
+% 或更高版本。该版本可以从\url{http://7z.sparanoid.com/}处下载
+%
+% {\color{red}\zihao{4} 注意：由于本模板采用\XeLaTeX{}引擎处理，所以源文件编码应该
+% 使用{\bf UTF-8}编码！}
+%
+% \subsection{开始安装}
+% \label{sec:install}
+%
+% \subsubsection{生成模板}
+% \label{sec:generate-cls}
+% {\heiti 说明：默认的发行包中已经包含了所有文件，可以直接使用。如果对如何由 dtx 生
+%   成模板文件以及模板文档不感兴趣，请跳过本小节。}
+%
+% 模板解压缩后生成文件夹 WHUTthesis-VERSION\footnote{VERSION 为版本号。}，其中包括：
+% 模板源文件（WHUTthesis.ins 和 WHUTthesis.dtx），参考文献样式 GBT7714-2005NLang.bst，示例文档
+% （mythesis.tex，WHUTtils.sty\footnote{我把可能用到但不一定用到的包以及一
+%   些命令定义都放在这里面，以免 WHUTthesis.cls 过分臃
+%   肿，减小增减依赖包时破坏模板的风险。}，body/ 和 figure/ 和 reference/）。在使用之前需要先生成模板文件和配置文件
+% （具体命令细节请参考 |Readme| ）：
+%
+% \begin{shell}
+% ~> cd WHUTthesis-VERSION
+% # 仅生成模板（WHUTthesis.cls 和 WHUTthesis.cfg）
+% ~/WHUTthesis-VERSION> msmake pkg
+%
+% # 如果模板和手册都需要生成，则
+% ~/WHUTthesis-VERSION> msmake setup
+%
+% # 如果仅重新生成手册，则
+% ~/WHUTthesis-VERSION> msmake man
+% \end{shell}
+%
+% \subsubsection{生成自己的论文}
+% \label{sec:my}
+% 在编写自己的论文的时候，虽然可以通过GUI编辑器调用\XeLaTeX{}引擎来生成论文，但是频繁的点击按钮或者
+% 输入命令仍然显得十分繁琐，所以\whutthesis 还提供了自动生成自己的论文的批处理工具\footnote{Linux平台下的
+% makefile将在本模板的后续版本中提供}。
+%
+% \begin{shell}
+% your_path $ msmake setup   # 生成宏包文件和说明文档
+% your_path $ msmake my      # 生成示例文档
+% your_path $ msmake a3      # 生成a3封面（在编译的时候可能出现错误，输入s跳过去就可以了）
+% your_path $ msmake clean   # 清除临时文件
+% \end{shell}
+%
+% \texttt{Makefile} 和 \texttt{msmake.cmd} 默认采用 \LaTeX\ 编译，可以根据自己的
+% 需要修改命令。
+%
+%
+% \subsection{升级}
+% \label{sec:updgrade}
+% \whutthesis{} 升级非常简单，下载最新的版本，
+% 将 WHUTthesis.ins，WHUTthesis.dtx 和GBT7714-2005NLang.bst 拷贝至工作目录覆盖相应的文件，然后
+% 运行：
+% \begin{shell}
+% $ latex WHUTthesis.ins
+% \end{shell}
+% 或者：
+% \begin{shell}
+% ~> msmake pkg
+% \end{shell}
+%
+% 生成新的类文件和配置文件即可。当然也可以直接拷贝 WHUTthesis.cls, WHUTthesis.cfg
+% 和 GBT7714-2005NLang.bst，免去上面命令的执行。只要明白它的工作原理，这个不难操作。
+%
+%
+% \section{使用说明}
+% \label{sec:usage}
+% 本手册假定用户已经能处理一般的 \LaTeX{} 文档，并对 \BibTeX{} 有一定了解。如果你
+% 从来没有接触过 \TeX 和 \LaTeX，建议先学习相关的基础知识。磨刀不误砍柴工！
+%
+% \subsection{关于提问}
+% \label{sec:howtoask}
+% 提问之前先问自己几个问题：
+% \begin{enumerate}\addtolength{\itemsep}{-5pt}
+% \item 我是不是认真地学习了 \LaTeX{} 基础知识？
+% \item 我是不是认真地阅读了相关的文档？
+% \item 我是不是 Google 了？
+% \end{enumerate}
+%
+% 如果你确保自己已经完成了上面的操作，那么就可以到以下两个地方提问：
+% \begin{itemize}\addtolength{\itemsep}{-5pt}
+% \item 访问我们的wiki\url{http://whutthesis.googlecode.com} 
+% \item 或直接给\href{mailto:whutthesis@gmail.com}{模板维护者}whutthesis@gmail.com写信。 
+% \end{itemize}
+%
+%
+% \subsection{\whutthesis{} 示例文件}
+% \label{sec:userguide1}
+% 模板核心文件只有三个：WHUTthesis.cls，WHUTthesis.cfg 和 GBT7714-2005NLang.bst，但是如果没有
+% 示例文档用户会发现很难下手。所以推荐新用户从模板自带的示例文档入手，里面包括了
+% 论文写作用到的所有命令及其使用方法，只需要用自己的内容进行相应替换就可以。对于
+% 不清楚的命令可以查阅本手册。下面的例子描述了模板中章节的组织形式，来自于示例文
+% 档，具体内容可以参考模板附带的 mythesis.tex 和 body/ 。
+%
+% \begin{example}
+%    \begin{macrocode}
+%<*myth>
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                  %%
+%%      武汉理工大学硕、博学位论文LaTeX模板主控文件(v0.1.0)         %%
+%%      本模板建议在TeXLive2009下使用XeLaTex编译                    %%
+%%                                                                  %%
+%%                                                                  %%
+%%                      胡卫谊 huweiyi@whut.edu.cn                  %%
+%%                              2010/03/06                          %%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%
+%% 1. 规范硕士导言
+%%  \documentclass[master,oneside]{WHUTthesis}
+%% 2. 规范博士导言（博士论文一般要双面打印）
+%%  \documentclass[doctor,twoside,openright]{WHUTthesis}
+%% 3. Adobe提供了免费的OTF字体，其页面显示效果较winfonts要好，但其只有宋体、
+%%   仿宋、黑体、楷体等字体，缺少隶书和幼圆。如果启用OTF字体，则导言为：
+%%  \documentclass[master,oneside,adobefonts]{WHUTthesis}
+%%  \documentclass[doctor,twoside,openright,adobefonts]{WHUTthesis}
+%%
+\documentclass[master,oneside]{WHUTthesis}
+%%
+%% 所有其它可能用到的包都统一放到这里了，可以根据自己的实际需要添加或者删除。
+\usepackage{WHUTtils}
+%%
+%% 你可以在这里修改配置文件中的定义，导言区可以使用中文。
+%% \def\myname{胡卫谊}
+%%
+\begin{document}
+%%
+%% 定义图片文件目录
+\graphicspath{{figure/}}
+%%
+%%
+%% 封面（包括封面、独创性声明、授权书）
+\frontmatter
+%% 封面
+\input{body/cover}
+\makecover
+%% 中英文摘要
+\input{body/abstract}
+%% 目录
+%%\cleardoublepage    %%这样页码显示是对的，但是pdf的书签指示的页码还是不对
+%%\addcontentsline{toc}{chapter}{目录} % 将目录自身加入目录列表
+\tableofcontents
+%% 符号表
+\input{body/denotation}
+%%
+%%
+%% 正文
+\mainmatter
+\include{body/chap01}
+\include{body/chap02}
+\include{body/chap03}
+%%
+%%
+%% 其它部分
+%%\backmatter           %%会导致附录的编号A、B、C消失
+%% 致谢
+%% 搞了好久的致谢等的页眉，没搞定。重定义plain风格，让后续页面出现页眉。dirty code！
+\fancypagestyle{plain}{}
+\include{body/ack}
+%%
+%%
+%% 参考文献
+\bibliographystyle{GBT7714-2005NLang}
+\bibliography{reference/refs}
+\addcontentsline{toc}{chapter}{参考文献}
+%%
+%%
+%% 个人简历
+\include{body/resume}
+%%
+%%
+%% 几个索引
+\makeatletter
+%%   插图索引
+%%  \listoffigures
+%%   表格索引
+%%  \listoftables
+%%   公式索引
+%%  \listofequations
+\makeatother
+%%
+%%
+%% 附录
+\begin{appendix}
+    \include{body/appendix01}
+\end{appendix}
+%%
+%%
+\end{document}
+%%
+%% END of mythsis.tex
+%</myth>
+%    \end{macrocode}
+% \end{example}
+%
+% \subsection{选项}
+% \label{sec:option}
+% 本模板提供了一些选项以方便使用：
+% \begin{description}
+%
+% \item[master]
+%   如果写硕士论文将此选项打开。
+%   \begin{example}
+% \documentclass[master]{WHUTthesis}
+%   \end{example}
+%
+% \item[doctor]
+%   如果写博士论文将此选项打开。
+%   \begin{example}
+% \documentclass[doctor]{WHUTthesis}
+%   \end{example}
+%
+% \item[openany, openright]
+%   正规出版物的章节出现在奇数页，也就是右手边的页面，这就是 \texttt{openright}。
+%   在这种情况下，如果前一章的最后一页也是奇数，那么
+%   模板会自动生成一个纯粹的空白页，很多人不是很习惯这种方式，而且学校的格式似乎
+%   更倾向于页面连续，那就是通常所说的 \texttt{openany}。{\fangsong 目前所有论文都是
+%      openany。}这两个选项不用专门设置，\whutthesis{} 会根据当前论文类型自动选择。
+%   \begin{example}
+% \documentclass[doctor,twoside,openright]{WHUTthesis}
+%   \end{example}
+%
+% \item[winfonts, adobefonts]
+%   winfonts选项使得在Windows平台下使用系统提供的字体。另外Adobe公司提供了四款免费
+%   的OTF字体（宋体、仿宋、黑体、楷体），一般来说OTF字体的显示效果要优于ttf字体，使用
+%   adobefonts可以打开OTF字体。
+%   \begin{example}
+% \documentclass[master,oneside,adobefonts]{WHUTthesis}
+%   \end{example}
+%
+% \item[composing]
+%   论文在写作时和最终提交的版本可能存在一些差别，如写作时给自己看的一些批注。
+%   提供此选项以便打开写作模式。之所以不用draft选项是因为该选项下不会加载图片和代码列表
+%   等内容，不便于观察排版结果。\textbf{注意：由composing选项切换到无该选项编译文档时可能
+%   会出现pgf宏包的错误，这可能是因为上次带composing选项编译时中间文件中存在使用mynotes
+%   命令而由\textsf{todonotes}宏包引入的pgf指令，简单跳过编译或者清除上次编译的中间文件然后执行
+%   全新的编译即能顺利进行。}
+%   \begin{example}
+% \documentclass[master,oneside,composing]{WHUTthesis}
+%   \end{example}
+% \end{description}
+%
+% \subsection{命令}
+% \label{sec:command}
+% 模板中的命令分为两类：一是格式控制，二是内容替换。格式控制如字体、字号、字距和
+% 行距。内容替换如姓名、院系、专业、致谢等等。其中内容替换命令居多，而且主要集中
+% 在封面上。首先来看格式控制命令。
+%
+% \subsubsection{基本控制命令}
+% \label{sec:basiccom}
+%
+% \myentry{字体}字体采用ctex的默认字体选择命令
+% \DescribeMacro{\songti}
+% \DescribeMacro{\fangsong}
+% \DescribeMacro{\heiti}
+% \DescribeMacro{\kaishu}
+% \DescribeMacro{\lishu}
+% \DescribeMacro{\youyuan}
+% 等分别用来切换宋体、仿宋、黑体、楷体、隶书和幼圆字体。
+%
+% \begin{example}
+% {\songti 乾：元，亨，利贞}
+% {\fangsong 初九，潜龙勿用}
+% {\heiti 九二，见龙在田，利见大人}
+% {\kaishu 九三，君子终日乾乾，夕惕若，厉，无咎}
+% {\lishu 九四，或跃在渊，无咎}
+% \end{example}
+%
+% \myentry{字号}
+% \DescribeMacro{\zihao}
+% 命令为ctex中用来选择字号的命令。其中参数n为要使用的字号，
+% 在n前加负号-表示小号字体，
+% 使用方法为：\cs{command}\oarg{num}。学校论文要求的小四号在模板中已经设定好了。
+%
+% \begin{example}
+% {\zihao{2} 二号 \zihao{3} 三号 \zihao{4} 四号 \zihao{-4} 小四 \zihao{7} 七号}
+% \end{example}
+%
+% \myentry{字距}
+% \DescribeMacro{\ziju}
+% 更改汉字之间默认的距离，使用格式为 |\ziju{4bp}|，其中的距离只要是合格的 \TeX{} 距离即可。
+%
+% \myentry{密级}
+% \DescribeMacro{\secretlevel}
+% 定义秘密级别：
+%   \begin{example}
+% \secretlevel{内部}
+%   \end{example}
+%
+% \myentry{引用方式}
+% \DescribeMacro{\onlinecite}
+%
+% 学校要求的参考文献引用有两种模式：（1）上标模式。比如``同样的工作有很
+% 多$^{[1,2]}$\ldots''。（2）正文模式。比如``文[3] 中详细说明了\ldots''。其中上标
+% 模式使用远比正文模式频繁，所以为了符合使用习惯，上标模式仍然用常规
+% 的 |\cite{key}|，而 |\onlinecite{key}| 则用来生成正文模式。
+%
+% 关于参考文献模板推荐使用 BIB\TeX，关于中文参考文献需要额外增加一个 Entry: lang，将其设置为 \texttt{zh} 
+% 用来指示此参考文献为中文，以便 thubib.bst 处理。如：
+% \begin{example}
+% @INPROCEEDINGS{cnproceed,
+%   author    = {王重阳 and 黄药师 and 欧阳峰 and 洪七公 and 段皇帝},
+%   title     = {武林高手从入门到精通},
+%   booktitle = {第~$N$~次华山论剑},
+%   year      = 2006,
+%   address   = {西安, 中国},
+%   month     = sep,
+%   lang      = "zh",
+% }
+%
+% @ARTICLE{cnarticle,
+%   AUTHOR  = "贾宝玉 and 林黛玉 and 薛宝钗 and 贾探春",
+%   TITLE   = "论刘姥姥食量大如牛之现实意义",
+%   JOURNAL = "红楼梦杂谈",
+%   PAGES   = "260--266",
+%   VOLUME  = "224",
+%   YEAR    = "1800",
+%   LANG    = "zh",
+% }
+% \end{example}
+%
+%
+% \myentry{破折号} 
+% \DescribeMacro{\pozhehao}
+% 中文破折号在 CJK-\LaTeX\ 里没有很好的处理，我们平时输入的都是两个小短线，比如这
+% 样，{\heiti 中国——中华人民共和国}。这不符合中文习惯。所以这里定义了一个命令生成更
+% 好看的破折号，不过这似乎不是一个好的解决办法。有同学说不能用在 |\section| 等命
+% 令中使用，简单的办法是可以提供一个不带破折号的段标题：\cs{section}\oarg{没有破
+%   折号精简标题}\marg{带破折号的标题}。
+%
+%
+% \subsubsection{封面命令}
+% \label{sec:titlepage}
+% 下面是内容替换命令，其中以 |c| 开头的命令跟中文相关，|e| 开头则为对应的英文。
+% 这部分的命令数目比较多，但实际上都相当简单，套用即可。
+%
+% 大多数命令的使用方法都是： \cs{command}\marg{arg}，例外者将具体指出。这些命令都
+% 在示例文档的 data/cover.tex 中。
+%
+% \myentry{论文标题}
+% \DescribeMacro{\ctitle}
+% \DescribeMacro{\etitle}
+% \DescribeMacro{\ctitleformated}
+% \DescribeMacro{\etitleformated}
+% \begin{example}
+% \ctitle{论文中文题目}
+% \etitle{Thesis English Title}
+% \ctitleformated{论文题目太长了\\ 需要换行}
+% \etitleformated{The title is so long that\\ it must be devidec into two lines}
+% \end{example}
+%
+% \myentry{作者姓名}
+% \DescribeMacro{\cauthor}
+% \DescribeMacro{\eauthor}
+% \begin{example}
+% \cauthor{中文姓名}
+% \eauthor{Your name in PinYin}
+% \end{example}
+%
+% \myentry{申请学位名称}
+% \DescribeMacro{\cdegree}
+% \DescribeMacro{\edegree}
+% \begin{example}
+% \cdegree{您要申请什么学位}
+% \edegree{degree in English}
+% \end{example}
+%
+% \myentry{院系名称}
+% \DescribeMacro{\cauthordepartment}
+% \DescribeMacro{\eauthordepartment}
+%
+% \cs{cauthordepartment} 可以加一个可选参数，如：\cs{cauthordepartmentl}\oarg{精简}\marg{详
+%   细}，在填写空间有限时可以采用精简名称。如\textbf{计算机科学与技术}和\textbf{计算机}。
+% \begin{example}
+% \cauthordepartment[系名简称]{系名全称}
+% \eauthordepartment{Department}
+% \end{example}
+%
+% \myentry{专业名称}
+% \DescribeMacro{\cmajor}
+% \DescribeMacro{\emajor}
+% \begin{example}
+% \cmajor{专业名称}
+% \emajor{Major in English}
+% \end{example}
+%
+% \myentry{导师姓名}
+% \DescribeMacro{\cadvisorname}
+% \DescribeMacro{\eadvisorname}
+% \begin{example}
+% \cadvisorname{大老板}
+% \eadvisorname{BIG BOSS}
+% \end{example}
+%
+% \myentry{导师职称}
+% \DescribeMacro{\cadvisortitle}
+% \begin{example}
+% \cadvisortitle{教授}
+% \end{example}
+%
+% \myentry{导师学位}
+% \DescribeMacro{\cadvisordegree}
+% \begin{example}
+% \cadvisordegree{博士}
+% \end{example}
+%
+% \myentry{导师单位}
+% \DescribeMacro{\cadvisordepartment}
+% \begin{example}
+% \cadvisordepartment{计算机科学与技术学院}
+% \end{example}
+%
+% \myentry{导师邮编}
+% \DescribeMacro{\advisorzipcode}
+% \begin{example}
+% \advisorzipcode{430063}
+% \end{example}
+%
+% \myentry{论文提交日期}
+% \DescribeMacro{\csubmitdate}
+% \begin{example}
+% \csubmitdate{\the\year 年\the\month 月}
+% \end{example}
+%
+% \myentry{论文答辩日期}
+% \DescribeMacro{\coraldefensedate}
+% \begin{example}
+% \coraldefensedate{\the\year 年\the\month 月}
+% \end{example}
+%
+% \myentry{学位授予单位}
+% \DescribeMacro{\cauthorizedepartment}
+% \begin{example}
+% \cauthorizedepartment{武汉理工大学}
+% \end{example}
+%
+% \myentry{学位授予日期}
+% \DescribeMacro{\cauthorizedate}
+% \begin{example}
+% \cauthorizedate{\the\year 年\the\month 月}
+% \end{example}
+%
+% \myentry{答辩委员会主席}
+% \DescribeMacro{\cchairman}
+% \begin{example}
+% \cchairman{胡卫谊}
+% \end{example}
+%
+% \myentry{评阅人}
+% \DescribeMacro{\cannotatora}
+% \DescribeMacro{\cannotatorb}
+% \begin{example}
+% \cannotatora{胡卫谊a}
+% \cannotatorb{胡卫谊b}
+% \end{example}
+%
+% \myentry{副导师姓名}
+% \DescribeMacro{\ccoadvisorname}
+% \DescribeMacro{\ecoadvisorname}
+% 副指导教师。
+% \begin{example}
+% \ccoadvisorname{小老板}
+% \ecoadvisorname{small boss}
+% \end{example}
+%
+% \myentry{论文成文日期}
+% \DescribeMacro{\cdate}
+% \DescribeMacro{\edate}
+% 默认为当前时间，也可以自己指定。
+% \begin{example}
+% \cdate{中文日期}
+% \edate{English Date}
+% \end{example}
+%
+% \myentry{摘要}
+% \DescribeEnv{cabstract}
+% \DescribeEnv{eabstract}
+% \begin{example}
+% \begin{cabstract}
+%  摘要请写在这里...
+% \end{cabstract}
+% \begin{eabstract}
+%  here comes English abstract...
+% \end{eabstract}
+% \end{example}
+%
+% \myentry{关键词}
+% \DescribeMacro{\ckeywords}
+% \DescribeMacro{\ekeywords}
+% 关键词用英文逗号分割写入相应的命令中，模板会解析各关键词并生成符合不同论文格式
+% 要求的关键词格式。
+% \begin{example}
+% \ckeywords{关键词 1, 关键词 2}
+% \ekeywords{keyword 1, key word 2}
+% \end{example}
+%
+% \subsubsection{其它部分}
+% \label{sec:otherparts}
+% 论文其它主要部分命令：
+%
+% \myentry{符号对照表}
+% \DescribeEnv{denotation}
+% 主要符号表环境。简单定义的一个 list，跟 description 非常类似，使用方法参见示例
+% 文件。带一个可选参数，用来指定符号列的宽度（默认为 2.5cm）。
+% \begin{example}
+% \begin{denotation}
+%   \item[E] 能量
+%   \item[m] 质量
+%   \item[c] 光速
+% \end{denotation}
+% \end{example}
+%
+% 如果你觉得符号列的宽度不满意，那可以这样来调整：
+% \begin{example}
+% \begin{denotation}[1.5cm] % 设置为 1.5cm
+%   \item[E] 能量
+%   \item[m] 质量
+%   \item[c] 光速
+% \end{denotation}
+% \end{example}
+%
+% \myentry{索引}
+% 插图、表格和公式三个索引命令分别如下，将其插入到期望的位置即可（带星号的命令表
+% 示对应的索引表不会出现在目录中）：
+%
+% \begin{center}
+% \begin{tabular}{ll}
+% \hline
+%   {\heiti 命令} & {\heiti 说明} \\\hline
+% \cs{listoffigures} & 插图索引\\
+% \cs{listoffigures*} & \\\hline
+% \cs{listoftables} & 表格索引\\
+% \cs{listoftables*} & \\\hline
+% \cs{listofequations} & 公式索引\\
+% \cs{listofequations*} & \\\hline
+% \end{tabular}
+% \end{center}
+%
+% \LaTeX{} 默认支持插图和表格索引，是通过 \cs{caption} 命令完成的，因此它们必须出
+% 现在浮动环境中，否则不被计数。
+%
+% 有的同学不想让某个表格或者图片出现在索引里面，那么请使用命令 \cs{caption*}，这
+% 个命令不会给表格编号，也就是出来的只有标题文字而没有``表~xx''，``图~xx''，否则
+% 索引里面序号不连续就显得不伦不类，这也是 \LaTeX{} 里星号命令默认的规则。
+%
+% 公式索引为本模板扩展，模板扩展了 \pkg{amsmath} 几个内部命令，使得公式编号样式和
+% 自动索引功能非常方便。一般来说，你用到的所有数学环境编号都没问题了，这个可以参
+% 看示例文档。如果你有个非常特殊的数学环境需要加入公式索引，那么请使
+% 用 \cs{equcaption}\marg{编号}。此命令表示 equation caption，带一个参数，即显示
+% 在索引中的编号。因为公式与图表不同，我们很少给一个公式附加一个标题，之所以起这
+% 么个名字是因为图表就是通过 \cs{caption} 加入索引的，\cs{equcaption} 完全就是为
+% 了生成公式列表，不产生什么标题。
+%
+% 使用方法如下。假如有一个非 equation 数学环境 mymath，只要在其中写一
+% 句 \cs{equcaption} 就可以将它加入公式列表。
+% \begin{example}
+% \begin{mymath}
+%   \label{eq:emc2}\equcaption{\ref{eq:emc2}}
+%   E=mc^2
+% \end{mymath}
+% \end{example}
+%
+% 当然 mymath 正文中公式的编号需要你自己来做。
+%
+% 同图表一样，附录中的公式有时候也不希望它跟全文统一编号，而且不希望它出现在公式
+% 索引中，目前的解决办法就是利用 \cs{tag*}\marg{公式编号} 来解决。用法很简单，此
+% 处不再罗嗦，实例请参看示例文档附录 A 的前两个公式。
+%
+% \myentry{简历}
+% \DescribeEnv{resume}\DescribeMacro{\resumeitem}
+% 开启个人简历章节，包括发表文章列表等。其实就是一个 chapter。里面的每个子项目请用命令 |\resumeitem{sub title}|。
+%
+% 这里就不再列举例子了，请参看示例文档的 body/resume.tex。
+%
+% \myentry{附录}
+% \DescribeEnv{appendix}
+% 所有的附录都插到这里来。
+% \begin{example}
+% \begin{appendix}
+%  \input{body/appendix01}
+%  \input{body/appendix02}
+% \end{appendix}
+% \end{example}
+%
+% \myentry{致谢声明}
+% \DescribeEnv{ack}
+% 把致谢做成一个环境更好一些，直接往里面写感谢的话就可以了。多希望每个人都能写上例子里的这一句啊！{\LARGE\Smiley}
+% \begin{example}
+% \begin{ack}
+%   ……
+%   还要特别感谢计算机学院胡卫谊同学在论文格式和 \LaTeX{} 编译等方面给我的很多帮助！\whutthesis让我的生活更美好！
+% \end{ack}
+% \end{example}
+%
+% \myentry{列表环境}
+% \DescribeEnv{itemize}
+% \DescribeEnv{enumerate}
+% \DescribeEnv{description}
+% 为了适合中文习惯，模板将这三个常用的列表环境用 \pkg{paralist} 对应的压缩环境替
+% 换。一方面满足了多余空间的清楚，另一方面可以自己指定标签的样式和符号。细节请参
+% 看 \pkg{paralist} 文档，此处不再赘述。
+%
+%
+% \subsubsection{一些特别的命令}
+% \label{ssec:special}
+% \myentry{写作时标注}
+% \DescribeMacro{\mynote}用来植入写作时的批注，该批注在\textsf{composing}选项下才可见，
+% 提交最终版本时去掉\textsf{composing}选项，所有批注都不显示。
+% \begin{example}
+% 倒是作者分析到湘西的苗人的“仇外”避汉，这种思想其实并非是针对民族的，
+% \mynote{为什么时阶层性的呢？这里有待查资料}{而是阶层性的}，
+% 因为当时官吏的主体无疑是统治阶级的民族――这种历史背景，导致了民族性质的被强调。
+% \end{example}
+%
+% \subsection{数学环境}
+% \label{sec:math}
+% \whutthesis{} 定义了常用的数学环境：
+%
+% \begin{center}
+% \begin{tabular}{*{7}{l}}\hline
+%   axiom & theorem & definition & proposition & lemma & conjecture &\\
+%   公理 & 定理 & 定义 & 命题 & 引理 & 猜想 &\\\hline
+%   proof & corollary & example & exercise & assumption & remark & problem \\
+%   证明 & 推论 & 例子& 练习 & 假设 & 注释 & 问题\\\hline
+% \end{tabular}
+% \end{center}
+%
+% 比如：
+% \begin{example}
+% \begin{definition}
+% 道千乘之国，敬事而信，节用而爱人，使民以时。
+% \end{definition}
+% \end{example}
+% 产生（自动编号）：\\[5pt]
+% \fbox{{\heiti 定义~1.1~~~} {道千乘之国，敬事而信，节用而爱人，使民以时。}}
+%
+% 列举出来的数学环境毕竟是有限的，如果想用{\heiti 胡说}这样的数学环境，那么很容易定义：
+% \begin{example}
+% \newtheorem{nonsense}{胡说}[chapter]
+% \end{example}
+%
+% 然后这样使用：
+% \begin{example}
+% \begin{nonsense}
+% 契丹武士要来中原夺武林秘笈。\pozhehao 慕容博
+% \end{nonsense}
+% \end{example}
+% 产生（自动编号）：\\[5pt]
+% \fbox{{\heiti 胡说~1.1~~~} {契丹武士要来中原夺武林秘笈。\kern0.3ex\rule[0.8ex]{2em}{0.1ex}\kern0.3ex 慕容博}}
+%
+% \subsection{自定义以及其它}
+% \label{sec:othercmd}
+% 模板的配置文件 WHUTthesis.cfg 中定义了很多固定词汇，一般无须修改。如果有特殊需求，
+% 推荐在导言区使用 \cs{renewcommand}。当然，导言区里可以直接使用中文。
+%
+%
+%\section{致谢}
+%\label{sec:thanks}
+%
+% 在模板的开发过程中，我的女朋友给了我最大的支持，正是由于她的鼓励让我在遭遇似乎看不到尽头的困难时
+% 能够坚持下来。冉冉，谢谢你！\Heart
+%
+% \whutthesis 的开发参考了前人的大量工作，这里特别对ThuThesis的薛瑞尼、nudtpaper
+% 的刘本源、SEUThesis的许元、SJTU Master Thesis的Wei Jianwen致以最诚挚的谢意！是
+% 你们无私的工作帮助我完成了这份模板，谢谢！
+%
+% 感谢所有在论文致谢中提及 \whutthesis{} 或者本人的同学，你们的肯定是我最大的收获！
+% 在我离开后，这份模板计划由计算机
+% 研学生会学术部继续维护，这里我呼唤感兴趣的同学能出手相助，给模板的开发和维护注入新的
+% 活力，让我们一起把 \whutthesis{} 做得更好！
+%
+%
+%\section{历史}
+%\label{sec:history}
+%
+% \subsection{官方认证及推广}
+% \label{ssec:auth}
+% 由于论文需要经过反剽窃系统检查和最终在图书馆提交电子版两道程序，且这些系统基本只支持doc格式，
+% 由此给该模板的推广带来巨大阻力。2010年03月本模板初步完成时本人去马区找过研究生院
+% 主管学位论文事宜的老师以期让该模板获得官方认证，由于主管老师工作繁忙，
+% 本人在余区和马区间辗转两次后此事便再无下文。提交反剽窃检查时先提交的pdf版，期待该检查
+% 系统如其所声称的那样支持pdf，不幸的是奇迹没有出现，论文被打回，用Acrobat Pro 9导出一个无排版的doc
+% 版应付过去。图书馆的电子版提交与上述遭遇相同，同样用Acrobat Pro 9导出的无排版的doc应付过去。真是
+% 阴魂不散的doc啊……
+%
+% 由于未能获得官方认证，本模板并未做大力推广，目前只在googlecode建立了托管项目并在经纬论坛
+% 发表了一篇发布帖(\url{http://forum.wutnews.net/bbs/topic.aspx?tid=370363})，该贴的置顶申请
+% 被版主忽略。从现状来看，官方渠道仅收到学院研工办老师对该项目表示的支持。希望后续维护该项目的
+% 同学能够在官方认证上取得突破并在推广上有所作为，让更多的理工学子在撰写毕业论文时受益于
+% \whutthesis{}，{\heiti 拜托了！}
+%
+% \subsection{版本历史及维护团队}
+% \label{ssec:verhis}
+% \subsubsection{2010年03月-\ 2010年06月}
+%       \noindent {\bf 维\qquad 护：}胡卫谊\\
+%       {\bf 特别感谢：}所有测试和使用\whutthesis 的同学\\
+%       {\bf 发布序列：}
+%       \begin{itemize}
+%           \item v0.1.2d 2010/06/19 文档更新
+%               \begin{enumerate}
+%                   \item 补充todolist，增加“\ref{ssec:auth}官方认证及推广”小节
+%               \end{enumerate}
+%           \item v0.1.2c 2010/04/19 新特性和功能修复
+%               \begin{enumerate}
+%                   \item 引入footmisc宏包以修改脚注样式 
+%                   \item 引入todonotes宏包以支持编写时的批注。非常漂亮的批注，需要新增的composing文档选项的支持，具体使用方法请看用户手册 
+%                   \item 编写论文时输出文稿背景色设置为橙色新闻纸色，保护视力 
+%                   \item 子图引用加上小括号，如图 1-2(a)所示 
+%                   \item 将参考文献样式文件转换为utf-8编码，正确地生成文献列表 
+%                   \item 编译脚本的 msmake my 选项引入第二个选项once，只处理文档一次以加快编译速度，方便即时查看 
+%               \end{enumerate}
+%           \item v0.1.2b 2010/03/31 微小调整。私房版，未发布。
+%               \begin{enumerate}
+%                   \item 引入footmisc宏包以修改脚注样式
+%                   \item 引入todonotes宏包以支持编写时的批注
+%                   \item 用户手册增加版本历史和TODOlist章节
+%               \end{enumerate}
+%           \item v0.1.2a 2010/03/29 微小调整
+%               \begin{enumerate}
+%                   \item 发布版本号后加字母后缀，避免微小调整造成版本号上升过快 
+%                   \item 调整了部分宏包的加载顺序，脚注的超链接得以修复 
+%                   \item 取消了扉页英文题目的悬挂缩进，英文题目的第二行下划线与第一行对齐 
+%               \end{enumerate}
+%           \item v0.1.1 2010/03/22 微小调整
+%               \begin{enumerate}
+%                   \item 完善了数学字体，使用了与同济大学第五版高数教材所用字体相同的字体，使得数学公式更加漂亮 
+%                   \item 压缩了列表项间距，中文版式下更加漂亮 
+%               \end{enumerate}
+%           \item v0.1.0 2010/03/15 初始发布
+%               \begin{enumerate}
+%                   \item 该版本目前只完整支持硕士论文，博士论文的双面未调试
+%               \end{enumerate}
+%       \end{itemize}
+% \subsubsection{2010年07月-\ ……}
+%       \noindent {\bf 维\qquad 护：}\\
+%       {\bf 特别感谢：}\\
+%       {\bf 发布序列：}
+%
+% \subsection{TODOlist}
+% \label{ssec:todo}
+% 下表记录了计划实现的功能和特性
+%   \begin{enumerate}
+%       \item 调试博士论文的双面支持
+%       \item 加入本科论文的支持
+%       \item 修正“致谢”部分页眉风格的dirty code
+%       \item 增加编写时的批注功能\qquad  (DONE! v0.1.2b)
+%       \item 去掉图表标题后的冒号（这个问题尝试了许多办法均未能解决）
+%       \item 修改listings宏包的标题序号中的分隔符为'-'
+%       \item 调整章开始页上部空白大小
+%       \item 调整a3封面的排版
+%       \item 修正PDF文件中从目录点击超链接到“参考文献”时目的页不匹配问题
+%       \item 将“目录”插入pdf的书签中，方便导航
+%       \item 去掉|\mynote{}|与前文间的一段小间距
+%       \item Linux平台迁移及测试
+%   \end{enumerate}
+%
+% \StopEventually{\PrintChanges\PrintIndex}
+% \clearpage
+%
+% \section{实现细节}
+%
+% \subsection{基本信息}
+%    \begin{macrocode}
+%<cls>\NeedsTeXFormat{LaTeX2e}[1999/12/01]
+%<cls>\ProvidesClass{WHUTthesis}
+%<cfg>\ProvidesFile{WHUTthesis.cfg}
+%<cls|cfg>[2010/03/02 v0.1.0 Thesis Template for Wuhan University of Technology]
+%    \end{macrocode}
+%
+% \subsection{定义选项}
+% \label{sec:defoption}
+%<*cls>%
+%    \begin{macrocode}
+\def\whutthesis{\textsc{WHUT}\textsc{thesis}}
+%%\def\version{0.1.2b}
+\newif\ifwhut@master\whut@masterfalse
+\newif\ifwhut@doctor\whut@doctorfalse
+\newif\ifwhut@istwoside\whut@istwosidefalse
+\newif\ifwhut@composing\whut@composingfalse
+\DeclareOption{twoside}{\whut@istwosidetrue}
+\DeclareOption{master}{\whut@mastertrue}
+\DeclareOption{doctor}{\whut@doctortrue}
+\DeclareOption{composing}{\whut@composingtrue}
+\DeclareOption*{\PackageWarning{whutthesis}{Unknown Option '\CurrentOption'}}
+%    \end{macrocode}
+%
+%% 将选项传递给 ctexbook 类
+%% 用户至少要提供一个选项：指定论文类型。
+%    \begin{macrocode}
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{ctexbook}}
+\ProcessOptions\relax
+\ifwhut@istwoside
+    \LoadClass[cs4size,a4paper,twoside,openright,fancyhdr,fntef]{ctexbook}
+\else
+    \LoadClass[cs4size,a4paper,oneside,openany,fancyhdr,fntef]{ctexbook}
+\fi
+\ifwhut@master\relax\else
+    \ifwhut@doctor\relax\else
+    \ClassError{whutthesis}%
+        {You have to specify one of thesis options: master or doctor.}{}
+    \fi
+\fi
+%    \end{macrocode}
+%
+% \subsection{装载宏包}
+% \label{sec:loadpackage}
+%% 首先调用在文档类书写中需要的过程控制语句
+%    \begin{macrocode}
+\RequirePackage{ifthen,calc}
+%    \end{macrocode}
+%
+%% 我们直接用\textsf{geometry}宏包进行页面边距的设定，调用titlesec设定标题以及页眉页脚，
+%% 用\textsf{titletoc}设定目录格式。
+%    \begin{macrocode}
+\RequirePackage{geometry}
+%%\RequirePackage[center]{titlesec} %此包会覆盖ctexbook的设置，取消掉
+\RequirePackage{titletoc}
+%    \end{macrocode}
+%
+%% 图形支持宏包。
+% 文档中另外重要的两个部分是表格和图片，首先来看图片：\textsf{graphicx}宏包是必不可少的，
+% 并排图形。\textsf{subfigure} 已经不再推荐，用新的 \textsf{subfig}。加入 \verb|config| 选项
+% 以便兼容 \textsf{subfigure} 的命令。浮动图形和表格标题样式。\textsf{caption2} 已经不
+% 推荐使用，采用新的 \textsf{caption}。它会自动被 \textsf{subfig} 装载进来。所以可以在
+% 后面看到 \textbf{captionsetup} 的命令，后一个包\textsf{float}的作用是可以用H命令，
+% 将浮动对象强制放在这里(副作用是版面可能不好)：
+%    \begin{macrocode}
+\RequirePackage{graphicx}
+\RequirePackage[config]{subfig}
+\RequirePackage{float}
+%    \end{macrocode}
+%
+% 表格中，我们采用\textsf{longtable}来处理长的表格，还需要\textsf{array}包，
+% 标准的论文需要表格为三线表，这里引用\textsf{booktabs}宏包来处理，
+% 这样，我们就可以使用\verb|\toprule|，\verb|\midrule|，\verb|bottomrulle|这样的命令，
+% 在表格中支持跨行，需要引入\textsf{multirow}包，\textsf{tabularx}的作用是为了引入
+% 固定宽度的表格，\textsf{slashbox}可以让我们在表格中使用反斜线：
+%    \begin{macrocode}
+\RequirePackage{array}
+\RequirePackage{longtable}
+\RequirePackage{booktabs}
+\RequirePackage{multirow}
+%%\RequirePackage{tabularx} %\textsf{tabularx}需要在\textsf{hyperref}之后引入才不会使正文的footnote的超链接失效
+\RequirePackage{slashbox}
+%    \end{macrocode}
+%
+%% 引入\textsf{paralist}来达到比较好看的列表环境
+% \changes{v0.1.1}{2010/03/22}{加入列表行距的设置，来自thuthesis}
+%    \begin{macrocode}
+\RequirePackage[neverdecrease]{paralist}
+\setdefaultenum{1)}{a)}{i.}{A.}% 设置列表模式
+\setdefaultleftmargin{4ex}{}{}{}{}{}
+\let\itemize\compactitem
+\let\enditemize\endcompactitem
+\let\enumerate\compactenum
+\let\endenumerate\endcompactenum
+\let\description\compactdesc
+\let\enddescription\endcompactdesc
+%    \end{macrocode}
+% 
+%% 文档中还需要一定的色彩控制和字体控制
+% \changes{v0.1.2c}{2010/04/15}{论文编写模式下的文档背景色，新闻纸的淡黄色，保护视力}
+%    \begin{macrocode}
+\RequirePackage{xcolor}
+\ifwhut@composing
+    \pagecolor[rgb]{1,0.95,0.88}
+\fi
+%    \end{macrocode}
+
+% 为了排出漂亮的数学公式，\textsf{amsmath}包是必不可少的，\textsf{txfonts}的作用是用
+% 自己的typewriter字体替换系统Courier字体，它必须在\AmSTeX{}之后，数学应用中还需要
+% 定理环境，我们一并包括进来：
+% \changes{v0.1.1}{2010/03/22}{去掉txfonts包的varg选项，使得字体更接近同济大学第五版高数和thuthesis中的字体设置}
+% \changes{v0.1.1}{2010/03/22}{加载txfonts后会覆盖掉ctexbook加载的fontspec包的英文字体设置，加入重设这些字体的修正}
+%    \begin{macrocode}
+%%\RequirePackage{amsmath,amsfonts,amssymb,bm,mathrsfs}
+\RequirePackage{amsmath,amssymb}
+\RequirePackage{txfonts}
+\setmainfont{Times New Roman}
+\setsansfont{Arial}
+\setmonofont{Courier New}
+\RequirePackage[amsmath,thmmarks,hyperref]{ntheorem}
+%    \end{macrocode}
+%
+%% 图表双标题支持。和其他包（可能是subfig）冲突！取消掉{\LARGE\Frowny}
+%    \begin{macrocode}
+%%\RequirePackage{ccaption}
+%%\captiondelim{\ }
+%%\captionnamefont{\kaishu\zihao{5}}
+%%\captiontitlefont{\kaishu\zihao{5}}
+%    \end{macrocode}
+%
+%% 将参考文献、索引、表格目录和图形
+%% 目录等标题及其所在页码自动地添加到标
+%% 题目录，可以断行（用\protect\\）@@TODO:来自seu，有待测试
+%    \begin{macrocode}
+%%\RequirePackage{makeidx} % 索引  
+%%\RequirePackage[nottoc]{tocbibind}
+%    \end{macrocode}
+%
+%% 定公式、图、表编号为"3-1"的形式，即分隔符由.变为短杠。
+%% 子图和子表的应用序号外加小括号，如图 1-2(a)。
+% \changes{v0.1.2c}{2010/04/15}{子表引用的时候子序号没有外面的小括号1-2(a)，加上}
+%    \begin{macrocode}
+\renewcommand\theequation{\arabic{chapter}--\arabic{equation}}
+\renewcommand\thefigure{\arabic{chapter}--\arabic{figure}}
+\renewcommand\thetable{\arabic{chapter}--\arabic{table}}
+\captionsetup[table]{position=top,belowskip={12bp-\intextsep},aboveskip=6bp}
+\captionsetup[figure]{position=bottom,belowskip={12bp-\intextsep},aboveskip=6bp}
+\captionsetup[subfloat]{labelformat=simple,captionskip=6bp,nearskip=6bp,farskip=0bp,topadjust=0bp}
+\renewcommand{\thesubfigure}{(\alph{subfigure})}
+\renewcommand{\thesubtable}{(\alph{subtable})}
+%    \end{macrocode}
+%
+%% 首行缩进宏包
+%    \begin{macrocode}
+\RequirePackage{indentfirst}
+%    \end{macrocode}
+%
+%% 如果插入的图片没有指定扩展名，那么依次搜索下面的扩展名所对应的文件
+%    \begin{macrocode}
+\DeclareGraphicsExtensions{.pdf,.eps,.jpg,.png}
+%    \end{macrocode}
+%
+%
+% \changes{v0.1.2a}{2010/03/29}{\textsf{setspace}宏包提到hyperref前加载，避免脚注超链接失效}
+%% 行距,学校要求固定值20pt，每页可打印正文约32行
+%% |\linestrech| 的值为 1 时为单倍行距， 1.2 时是一倍半行距， 而为 1.6 时是双倍行距。
+%%其实不同尺寸的字体行间距都不相同，而是成比例关系。这个20pt是对正文主要字体来说的。
+%%在TeX中基本的行间距是|\baselineskip|, 对于12pt的字体，这个值等于14.5pt, 而真正的行间距是
+%%|\baselineskip * \baselinestretch| ，|\baselinestretch|默认为1, 但我们可以重新设置它的值，如 
+%%|\renewcommand{\baselinestretch}{1.38}| 就得到真正的行间距为14.5pt*1.38≈20pt。
+%%而这样定义之后，对不同尺寸的字体都会按同样的比例因子1.38放大行间距，使得全文排版能协调一致。
+%    \begin{macrocode}
+\RequirePackage{setspace}
+\setstretch{1.38}
+%    \end{macrocode}
+%
+% \changes{v0.1.2b}{2010/03/30}{引入\textsf{footmisc}宏包以修改脚注样式}
+%% \textsf{footmisc}宏包可以方便地更改脚注样式。这里修改了宏包默认的bringhurs样式，
+%% \textbf{注意：此脚注样式只支持每页18个脚注，多于18个将无法编号}
+%    \begin{macrocode}
+\RequirePackage[perpage,symbol*,stable]{footmisc}
+\DefineFNsymbolsTM*{hurst}{%
+	\textdagger       \dagger
+      \textdaggerdbl  \ddagger
+      \textsection      \mathsection
+      \textparagraph  \mathparagraph
+      \textbardbl       \|%
+      {\textasteriskcentered\textasteriskcentered}{**}%
+      {\textdagger\textdagger}{\dagger\dagger}%
+      {\textdaggerdbl\textdaggerdbl}{\dagger\dagger}%
+      {\textsection\textsection}{\mathsection\mathsection}%
+      {\textparagraph\textparagraph}{\mathparagraph\mathparagraph}%
+      {\textasteriskcentered\textasteriskcentered\textasteriskcentered}{***}%
+      {\textdagger\textdagger\textdagger}{\dagger\dagger\dagger}%
+      {\textdaggerdbl\textdaggerdbl\textdaggerdbl}{\ddagger\ddagger\ddagger}%
+      {\textsection\textsection\textsection}%%
+      {\mathsection\mathsection\mathsection}%
+      {\textparagraph\textparagraph\textparagraph}%%
+      {\mathparagraph\mathparagraph\mathparagraph}%
+      \textasteriskcentered  *
+}%
+\setfnsymbol{hurst}
+%    \end{macrocode}
+%
+% \begin{macro}{\mynote}
+% \changes{v0.1.2b}{2010/03/30}{引入\textsf{todonotes}宏包以支持编写论文时自己写批注，批注的可见性由composing文档选项控制}
+%% 引入\textsf{todonotes}宏包以支持编写论文时自己写批注，批注的可见性由composing文档选项控制。
+%% 也就是定义了composing文档选项时批注可见，不定义时不可见。
+%% 自定义\textsf{mynote}命令，以方便对选定文字做批注。
+%% 引入\textsf{etex}宏包以避免\textsf{todonotes}和\textsf{listings}宏包冲突
+%% 而导致 \textsf{No room for a new count}错误
+%    \begin{macrocode}
+\newcommand\mynote[2]{
+    {#2}}
+\ifwhut@composing
+    \RequirePackage{etex}
+    \RequirePackage[textwidth=2.9cm,shadow, backgroundcolor=lime]{todonotes}
+    \renewcommand\mynote[2]{
+        \todo{#1}
+        {\color{gray}#2}}
+\fi
+%    \end{macrocode}
+% \end{macro}
+
+
+% 另外一个关键部分是文献索引，包括书签以及参考文献的索引，记得\textsf{hyperref}配合
+% \XeTeX{}使用时不能开启Unicode选项，而\textsf{hypernat}可以让\textsf{hyperref}和
+% \textsf{natbib}混合使用，需要放在这两个之后：
+%    \begin{macrocode}
+\RequirePackage[numbers,super,sort&compress]{natbib}
+\RequirePackage{hyperref}
+\hypersetup{%
+    CJKbookmarks=true,
+    bookmarksnumbered=true,
+    bookmarksopen=true,
+    bookmarksopenlevel=0,
+    breaklinks=true,
+    colorlinks=false,
+    plainpages=false,
+    pdfpagelabels,
+    pdfborder=0 0 0}
+\RequirePackage{hypernat}
+%    \end{macrocode}
+
+% \changes{v0.1.2a}{2010/03/29}{延后到hyperref加载后再加载tabularx，避免脚注的超链接失效}
+%% \textsf{tabularx}需要在\textsf{hyperref}之后引入才不会使正文的footnote的超链接失效
+%    \begin{macrocode}
+\RequirePackage{tabularx}
+%    \end{macrocode}
+
+%% 设置 url 样式，与上下文一致
+%    \begin{macrocode}
+\urlstyle{same}
+%    \end{macrocode}
+%
+%% 下划线自动换行
+%    \begin{macrocode}
+\RequirePackage{ulem}
+%    \end{macrocode}
+%
+%% 设置章节格式
+%    \begin{macrocode}
+\CTEXsetup[number={\arabic{chapter}},name={第,章},
+            nameformat={\bfseries\centering\zihao{-2}},
+            titleformat={\bfseries\zihao{-2}},
+            afterskip={30pt}]{chapter}
+\CTEXsetup[nameformat={\bfseries\zihao{3}},
+            titleformat={\bfseries\zihao{3}}]{section}
+\CTEXsetup[nameformat={\bfseries\zihao{4}},
+            titleformat={\bfseries\zihao{4}}]{subsection}
+\CTEXsetup[nameformat={\bfseries\zihao{-4}},
+            titleformat={\bfseries\zihao{-4}}]{subsubsection}            
+\CTEXsetup[format={\Large\bfseries}]{section}
+\CTEXsetup[beforeskip={10pt}]{chapter}
+%    \end{macrocode}
+%</cls>
+%
+%
+% \subsection{字符串常量定义}
+% \label{sec:strdef}
+%    \begin{macrocode}
+%<*cfg>
+% \theoremsymbol{\ensuremath{\blacksquare}}
+\theoremsymbol{\ensuremath{\square}}
+%\theoremstyle{nonumberplain}
+\newtheorem*{proof}{证明}
+\theoremstyle{plain}
+\theoremsymbol{}
+\theoremseparator{：}
+\newtheorem{assumption}{假设}[chapter]
+\newtheorem{definition}{定义}[chapter]
+\newtheorem{proposition}{命题}[chapter]
+\newtheorem{lemma}{引理}[chapter]
+\newtheorem{theorem}{定理}[chapter]
+\newtheorem{axiom}{公理}[chapter]
+\newtheorem{corollary}{推论}[chapter]
+\newtheorem{exercise}{练习}[chapter]
+\newtheorem{example}{例}[chapter]
+\newtheorem{remark}{注释}[chapter]
+\newtheorem{problem}{问题}[chapter]
+\newtheorem{conjecture}{猜想}[chapter]
+\renewcommand\contentsname{目\hspace{1em}录}
+\renewcommand\listfigurename{插图索引}
+\renewcommand\listtablename{表格索引}
+\newcommand\listequationname{公式索引}
+\newcommand\equationname{公式}
+\renewcommand\bibname{参考文献}
+\renewcommand\indexname{索引}
+\renewcommand\figurename{图}
+\renewcommand\tablename{表}
+\newcommand{\cabstractname}{摘\hspace{1em}要}
+\newcommand{\eabstractname}{Abstract}
+\let\CJK@todaysave=\today
+\def\CJK@todaysmall@short{\the\year 年 \the\month 月}
+\def\CJK@todaysmall{\CJK@todaysmall@short \the\day 日}
+\CTEXdigits{\whut@yeartmp}{\the\year}
+\CTEXnumber{\whut@monthtmp}{\the\month}
+\def\CJK@todaybig@short{\whut@yeartmp \ 年 \whut@monthtmp \ 月}
+\def\CJK@todaybig{\CJK@todaybig@short \CJKnumber{\the\day} 日}
+\def\CJK@today{\CJK@todaysmall}
+\renewcommand\today{\CJK@today}
+\newcommand\CJKtoday[1][1]{%
+  \ifcase#1\def\CJK@today{\CJK@todaysave}
+    \or\def\CJK@today{\CJK@todaysmall}
+    \or\def\CJK@today{\CJK@todaybig}
+  \fi}
+\cdate{\CJK@todaybig@short}
+\edate{\ifcase \month \or January\or February\or March\or April\or May%
+		\or June\or July \or August\or September\or October\or November
+		\or December\fi\unskip,\ \ \the\year}
+%% 封面等一些标题串
+\def\whut@title@sep{：}
+\def\whut@ckeywords@separator{，}
+\def\whut@ekeywords@separator{,}
+\def\whut@categorynumbercap{分类号}
+\def\whut@secretlevelcap{密级} %% 注明论文密级为公开、内部、秘密或机密
+\def\whut@UDCcap{UDC}
+\def\whut@schoolcodecap{学校代码}
+\def\whut@schoolcode{10497}
+\def\whut@thesisname{学位论文}
+\def\whut@ctitlecap{题目}
+\def\whut@etitlecap{英文题目}
+\def\whut@authornamecap{研究生姓名}
+\def\whut@advisorcap{指导教师}
+\def\whut@advisornamecap{姓名}
+\def\whut@advisortitlecap{职称}
+\def\whut@advisordegreecap{学位}
+\def\whut@advisordepartmentcap{单位名称}
+\def\whut@advisorzipcodecap{邮编}
+\def\whut@coadvisorcap{副指导教师}
+\def\whut@applycap{申请学位级别}
+\def\whut@majorcap{学科专业名称}
+\def\whut@submitdatecap{论文提交日期}
+\def\whut@oraldefensedatecap{论文答辩日期}
+\def\whut@authorizeorganizationcap{学位授予单位}
+\def\whut@authorizedatecap{学位授予日期}
+\def\whut@chairmancap{答辩委员会主席}
+\def\whut@annotatorcap{评阅人}
+\def\whut@title@sep{：}
+\def\whut@secretlevel{秘密}
+\def\whut@secretyear{\the\year}
+\def\whut@schoolname{武汉理工大学}
+\def\whut@apply{（申请\whut@cdegree 学位论文）}
+\def\whut@cdepartmentcap{培养单位}
+\def\whut@cmajortitle{学科专业}
+\def\whut@cauthortitle{研究生}
+\def\whut@cadvisortitle{指导教师}
+\def\whut@masterheader{武汉理工大学硕士学位论文}
+\def\whut@doctorheader{武汉理工大学博士学位论文}
+\newcommand{\whut@declaretitle}{独创性声明}
+\newcommand{\whut@declare}{%
+本人声明，所呈交的论文是本人在导师指导下进行的研究工作及取得的研究成果。
+尽我所知，除了文中特别加以标注和致谢的地方外，论文中不包含其他人已经发表
+或撰写过的研究成果，也不包含为获得武汉理工大学或其他教育机构的学位或证书而使用过的材料。
+与我一同工作的同志对本研究所做的任何贡献均已在论文中作了明确的说明并表示了谢意。
+}
+\def\whut@declaresigncap{签名：}
+\def\whut@declaredatecap{日期：}
+\newcommand{\whut@authorizationtitle}{学位论文使用授权书}
+\newcommand{\whut@authorization}{%
+本人完全了解武汉理工大学有关保留、使用学位论文的规定，
+即学校有权保留并向国家有关部门或机构送交论文的复印件和电子版，
+允许论文被查阅和借阅。
+本人授权武汉理工大学可以将本学位论文的全部内容编入有关数据库进行检索，
+可以采用影印、缩印或其他复制手段保存或汇编本学位论文。
+同时授权经武汉理工大学认可的国家有关机构或论文数据库使用或收录本学位论文，
+并向社会公众提供信息服务。
+}
+\newcommand{\whut@authorizationaddon}{（保密的论文在解密后应遵守此规定）}
+\newcommand{\whut@authorsig}{研究生（签名）：}
+\newcommand{\whut@teachersig}{导师（签名）：}
+\newcommand{\whut@frontdate}{日期：}
+\newcommand{\whut@ckeywords@title}{关键词：}
+\newcommand{\whut@ekeywords@title}{Key words:}
+\newcommand{\whut@denotation@name}{主要符号对照表}
+\newcommand{\whut@ackshortname}{致谢}
+\newcommand{\whut@ackname}{致\hspace{1em}谢}
+\newcommand{\whut@resume@title}{个人简历、在学期间发表的学术论文与研究成果}
+%</cfg>
+%    \end{macrocode}
+%
+%
+% \subsection{主文档格式}
+% \label{sec:mainbody}
+%
+% \subsubsection{页幅设置}
+% \label{sec:layout}
+%<*cls>
+%% 正文统一用小四号字，行间距：固定值20磅，页眉：2.6cm，页脚：2.4cm，
+%% 论文用A4纸标准大小的白纸打印，页边距上下：3.5cm，左右：3.2cm，四周适当修边即可。
+%    \begin{macrocode}
+\geometry{top=3.5cm,bottom=3.5cm,left=3.2cm,right=3.2cm}
+\geometry{headheight=2.6cm,headsep=3mm,footskip=13mm}
+%    \end{macrocode}
+%</cls>
+%
+% \subsubsection{页眉页脚}
+% \label{sec:headerfooter}
+%    \begin{macrocode}
+%<*cls>
+%% 页眉页脚
+\pagestyle{fancy}
+\fancyhf{}
+\ifwhut@master
+    \fancyhead[CE,CO]{\small \whut@masterheader}
+\else
+    \fancyhead[CE,CO]{\small \whut@doctorheader}
+\fi
+% \fancyfoot[OL]{\bfseries \small ~---~\thepage~---~}
+\fancyfoot[C]{\small ~---~{\bf\thepage}~---~}      % 页脚
+% \fancyfoot[LE,RO]{\bfseries \small ~--~\thepage~--~}
+\fancypagestyle{plain}{% 设置开章页页眉页脚风格
+    \fancyhf{}%
+    % \fancyfoot[C]{\bfseries \small ~第~\thepage~页~}
+    \fancyfoot[C]{\small ~---~{\bf\thepage}~---~} %%首页页脚格式
+    \renewcommand{\headrulewidth}{0pt}%
+    \renewcommand{\footrulewidth}{0pt}%
+}
+%</cls>
+%    \end{macrocode}
+%
+%<*cls>
+%\subsubsection{前置目录}
+%% 前置部分的封面在后面详细介绍，首先看目录，要求为：目次页由论文的章、节、条、项、附录等的序号、名称和页码组成，
+%% 另页排在序之后。目次页标注学位论文的前三级目录。标题统一用“目录”，黑体3字号字居中，段前、段后间距为1行;
+%% 各章（一级目录）名称用黑体小4号字，段前间距为0.5行，段后间距为0行; 其它（二、三级目录）用宋体小4号字，
+%% 段前、段后间距为0行。：
+%% 在\LaTeX{}中，Chapter在目录中默认是没有点的,我们加上,另外我们一并将目录中的section和subsection设定好,
+%
+%    \begin{macrocode}
+\titlecontents{chapter}[0pt]{\vspace{0.25\baselineskip} \heiti \zihao{-4}}
+    {\thecontentslabel\quad}{}
+    {\hspace{.5em}\titlerule*{.}\contentspage}
+\titlecontents{section}[2em]{\songti \zihao{-4}}
+    {\thecontentslabel\quad}{}
+    {\hspace{.5em}\titlerule*{.}\contentspage}
+\titlecontents{subsection}[4em]{\songti \zihao{-4}}
+    {\thecontentslabel\quad}{}
+    {\hspace{.5em}\titlerule*{.}\contentspage}
+%    \end{macrocode}
+%</cls>
+%
+%
+% \subsubsection{封面和封底}
+% \label{sec:cover}
+% \begin{macro}{\whut@define@term}
+%    \begin{macrocode}
+%<*cls>
+%% 方便的定义封面的一些替换命令。
+\def\whut@define@term#1{
+    \expandafter\gdef\csname #1\endcsname##1{%
+    \expandafter\gdef\csname whut@#1\endcsname{##1}}
+    \csname #1\endcsname{}}
+%</cls>
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\cauthordepartment}
+% \begin{macro}{\categorynumber}
+% \begin{macro}{\secretlevel}
+% \begin{macro}{\UDC}
+% \begin{macro}{\ctitle}
+% \begin{macro}{\ctitleformated}
+% \begin{macro}{\etitle}
+% \begin{macro}{\etitleformated}
+% \begin{macro}{\cauthor}
+% \begin{macro}{\cadvisorname}
+% \begin{macro}{\cadvisortitle}
+% \begin{macro}{\cadvisordegree}
+% \begin{macro}{\cadvisordepartment}
+% \begin{macro}{\advisorzipcode}
+% \begin{macro}{\ccoadvisorname}
+% \begin{macro}{\ccoadvisortitle}
+% \begin{macro}{\ccoadvisordegree}
+% \begin{macro}{\ccoadvisordepartment}
+% \begin{macro}{\coadvisorzipcode}
+% \begin{macro}{\cmajor}
+% \begin{macro}{\csubmitdate}
+% \begin{macro}{\coraldefensedate}
+% \begin{macro}{\cauthorizedepartment}
+% \begin{macro}{\cauthorizedate}
+% \begin{macro}{\cchairman}
+% \begin{macro}{\cannotatora}
+% \begin{macro}{\cannotatorb}
+% \begin{macro}{\cdate}
+% \begin{macro}{\cdegree}
+% \begin{macro}{\csubject}
+% \begin{macro}{\edegree}
+% \begin{macro}{\edepartment}
+% \begin{macro}{\emajor}
+% \begin{macro}{\esubject}
+% \begin{macro}{\eauthor}
+% \begin{macro}{\eadvisorname}
+% \begin{macro}{\eassosupervisor}
+% \begin{macro}{\ecoadvisorname}
+% \begin{macro}{\edate}
+%% 封面、摘要、版权、致谢变量定义
+%    \begin{macrocode}
+%<*cls>
+\newcommand\cauthordepartment[2][]{\def\whut@cauthordepartment@short{#1}\def\whut@cauthordepartment{#2}}
+\whut@define@term{categorynumber}
+\whut@define@term{secretlevel}
+\whut@define@term{UDC}
+\whut@define@term{ctitle}
+\whut@define@term{ctitleformated}
+\whut@define@term{etitle}
+\whut@define@term{etitleformated}
+\whut@define@term{cauthor}
+\whut@define@term{cadvisorname}
+\whut@define@term{cadvisortitle}
+\whut@define@term{cadvisordegree}
+\whut@define@term{cadvisordepartment}
+\whut@define@term{advisorzipcode}
+\whut@define@term{ccoadvisorname}
+\whut@define@term{ccoadvisortitle}
+\whut@define@term{ccoadvisordegree}
+\whut@define@term{ccoadvisordepartment}
+\whut@define@term{coadvisorzipcode}
+\whut@define@term{cmajor}
+\whut@define@term{csubmitdate}
+\whut@define@term{coraldefensedate}
+\whut@define@term{cauthorizedepartment}
+\whut@define@term{cauthorizedate}
+\whut@define@term{cchairman}
+\whut@define@term{cannotatora}
+\whut@define@term{cannotatorb}
+\whut@define@term{cdate}
+\whut@define@term{cdegree}
+\def\whut@cauthordepartment@short{}
+\def\whut@cauthordepartment{}
+\whut@define@term{edegree}
+\whut@define@term{edepartment}
+\whut@define@term{emajor}
+\whut@define@term{eauthor}
+\whut@define@term{eadvisorname}
+\whut@define@term{ecoadvisorname}
+\whut@define@term{edate}
+%</cls>
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+%
+%
+%
+% \begin{macro}{\whut@first@titlepage}
+% 封面和封二！
+% \changes{v0.1.2a}{2010/03/29}{取消了英文题目第二行的缩进，保持与第一行下划线对齐}
+%    \begin{macrocode}
+%<*cls>
+%%
+%%
+%% 封面
+\newlength{\whut@title@width}
+\def\whut@put@covertitle#1{\makebox{\hb@xt@ \whut@title@width{#1}}}
+%%封面
+\newcommand{\whut@first@coverpage}{
+    \begin{center}
+        \vspace*{-1.5cm}
+%%      绘制学校名
+        \begin{picture}(0,0)(115,110)
+            {\includegraphics[width=0.56\textwidth]{figure/whut.pdf}}
+        \end{picture}\\
+%%      绘制论文题目
+        \vspace*{4.3cm}
+        \zihao{4}{\whut@apply} \\
+        \vspace*{3.2cm}
+        \heiti\zihao{1}\whut@ctitle \\
+%%      绘制作者等信息
+        \vspace*{3cm}
+        \setlength{\whut@title@width}{3em}
+        {\bf\zihao{3}\fangsong
+        \begin{tabular}{p{\whut@title@width}@{\extracolsep{4pt}}l@{\extracolsep{2pt}}l}
+            \whut@put@covertitle{\whut@cdepartmentcap} & \whut@title@sep & \whut@cauthordepartment \\
+            \whut@put@covertitle{\whut@cmajortitle} & \whut@title@sep &\whut@cmajor \\
+            \whut@put@covertitle{\whut@cauthortitle} & \whut@title@sep & \whut@cauthor \\
+            \whut@put@covertitle{\whut@advisorcap} & \whut@title@sep & \whut@cadvisorname
+        \end{tabular}}\\
+%%      绘制日期
+        \vspace*{2.5cm}{\zihao{3} \songti \whut@cdate}
+    \end{center}
+}
+%%封二
+\newcommand{\CoverTopOption}[3][s]{
+    \makebox[2cm][#1]{\bf\songti\zihao{4} #2}{
+    \underline{\makebox[3cm][c]{\bf\songti\zihao{4} #3}}}
+}
+\newcommand{\CoverBottomOption}[3][4.2cm]{
+    \makebox[6.6cm]{
+        {\songti\zihao{4}#2} %宋体四号
+        \underline{\makebox[#1][c]{\kaishu\zihao{4}#3}}}
+}
+\def\whut@put@titlepagetitle#1{{\zihao{4}\songti \makebox{\hb@xt@ \whut@title@width{#1}}}}
+\def\whut@put@titlepagecontent#1{{\zihao{4}\kaishu {#1}}}
+\newcommand{\whut@first@titlepage}{
+    \begin{center}
+        \vspace*{-1.3cm}
+        \renewcommand{\arraystretch}{1.6}
+%%      绘制顶部分类号、学校名等信息
+        \begin{tabular*}{\textwidth}{l@{\extracolsep\fill}l}
+            \CoverTopOption{\whut@categorynumbercap}{\whut@categorynumber} &
+            \CoverTopOption{\whut@secretlevelcap}{\whut@secretlevel}\\
+            \CoverTopOption{\whut@UDCcap}{\whut@UDC} &
+            \CoverTopOption{\whut@schoolcodecap}{\whut@schoolcode}
+        \end{tabular*}\\
+%%      绘制学校名
+        \begin{picture}(0,0)(115,100)
+            {\includegraphics[width=0.56\textwidth]{figure/whut.pdf}}
+        \end{picture}\\
+        \vspace*{3.5cm}
+        \bf\zihao{1}{\ziju{1.5}\whut@thesisname}
+    \end{center}
+    
+    \vspace*{0.9cm}
+    \begin{center}
+        \songti\zihao{4}
+        \setlength{\whut@title@width}{5em}
+        \setlength{\extrarowheight}{4pt}
+%%      绘制题目、作者、指导教师、审阅等信息
+        \hangafter 1
+        \hangindent 5.23em
+        \noindent\whut@put@titlepagetitle{\whut@ctitlecap}  \whut@put@titlepagecontent{\uline{\hfill \whut@ctitleformated \hfill}}\\
+        \noindent\whut@put@titlepagetitle{\whut@etitlecap}  \uline{\hfill \whut@etitleformated \hfill}\\
+        \noindent\whut@put@titlepagetitle{\whut@authornamecap} \whut@put@titlepagecontent{\uline{\hfill \whut@cauthor \hfill}} \\ \par
+        \begin{tabular*}{\textwidth}{@{}p{\whut@title@width}l@{}c@{}c}
+                                                                            & \whut@advisornamecap \underline{\makebox[3.7cm]{\kaishu\whut@cadvisorname}} \whut@advisortitlecap \underline{\makebox[2.4cm]{\kaishu\whut@cadvisortitle}}  & \whut@advisordegreecap \underline{\makebox[2.4cm]{\kaishu\whut@cadvisordegree}}\\
+            \raisebox{1.8ex}[0pt]{\whut@put@titlepagetitle{\whut@advisorcap}} & \whut@advisordepartmentcap \underline{\makebox[6.2cm]{\kaishu\whut@cadvisordepartment}} 													& \whut@advisorzipcodecap \underline{\makebox[2.4cm]{\kaishu\whut@advisorzipcode}}
+        \end{tabular*}\\
+        \begin{tabular*}{\textwidth}{@{}p{\whut@title@width}l@{}c@{}c}
+                                                                            & \whut@advisornamecap \underline{\makebox[3.7cm]{\kaishu\whut@ccoadvisorname}} \whut@advisortitlecap \underline{\makebox[2.4cm]{\kaishu\whut@ccoadvisortitle}}  & \whut@advisordegreecap \underline{\makebox[2.4cm]{\kaishu\whut@ccoadvisordegree}}\\
+            \raisebox{1.8ex}[0pt]{\whut@put@titlepagetitle{\whut@coadvisorcap}} & \whut@advisordepartmentcap \underline{\makebox[6.2cm]{\kaishu\whut@ccoadvisordepartment}} 													& \whut@advisorzipcodecap \underline{\makebox[2.4cm]{\kaishu\whut@coadvisorzipcode}}
+        \end{tabular*}\\
+        \begin{tabular*}{\textwidth}{@{}ll@{}}
+            \CoverBottomOption{\whut@applycap}{\whut@cdegree} & \CoverBottomOption{\whut@majorcap}{\whut@cmajor}\\
+            \CoverBottomOption{\whut@submitdatecap}{\whut@csubmitdate} & \CoverBottomOption{\whut@oraldefensedatecap}{\whut@coraldefensedate}\\
+            \CoverBottomOption{\whut@authorizeorganizationcap}{\whut@cauthorizedepartment} & \CoverBottomOption{\whut@authorizedatecap}{\whut@cauthorizedate}\\
+%%            \CoverBottomOption[4cm]{\whut@chairmancap}{\whut@cchairman} & \CoverBottomOption{\whut@annotatorcap}{\whut@cannotatora}\\ %%这种方式始终不能对齐，不是表格左边有半个字间距就是主席行凸出去。只能把command释放出来写，dirty code!
+            \CoverBottomOption[3.8cm]{\whut@chairmancap}{\whut@cchairman} & \makebox[7.2cm][s]{\songti\zihao{4}{\whut@annotatorcap}\underline{\makebox[4.3cm][c]{\kaishu\zihao{4}\whut@cannotatora}}}\\
+                    & \CoverBottomOption{\makebox[2.65cm]{}}{\whut@cannotatorb}
+        \end{tabular*}\\
+%%      绘制论文打印日期
+%%        \vspace*{3.2cm}{\zihao{3} \songti \whut@cdate}
+        \vskip2.2cm{\zihao{3} \songti \whut@cdate}
+    \end{center}
+} % end of titlepage
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\whut@declare@mk}
+% \begin{macro}{\whut@authorization@mk}
+%    \begin{macrocode}
+%%
+%%
+%% 独创性声明
+\newcommand{\whut@declare@mk}{%
+    \vspace*{-0.9cm}
+    \renewcommand{\baselinestretch}{1.6}
+    \begin{center}\zihao{-2}\heiti\ziju{0.4}{\whut@declaretitle}\end{center}\par
+    \zihao{4}\ziju{0.1}{\whut@declare}\par
+    \vskip0.8cm
+    \begin{center}
+        \whut@declaresigncap \underline{\makebox[3.5cm][s]{}}
+        \whut@declaredatecap \underline{\makebox[3.5cm][s]{}}
+    \end{center}
+}
+%% 论文授权
+\newcommand{\whut@authorization@mk}{%
+    \vskip1cm
+    \renewcommand{\baselinestretch}{1.6}
+    \begin{center}\zihao{-2}\heiti\whut@authorizationtitle\end{center}
+    \zihao{4}\par\whut@authorization \par
+    \begin{center} \whut@authorizationaddon \end{center}\par
+    %%\vskip1cm
+    \noindent\whut@authorsig\hspace*{2cm}\whut@teachersig\hspace*{2cm}\whut@frontdate
+}
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+%
+%
+% \begin{macro}{\makecover}
+%    \begin{macrocode}
+%% 生成封面
+\newcommand{\makecover}{
+    \phantomsection
+    \pdfbookmark[-1]{\whut@ctitle}{ctitle}
+    \normalsize
+    \begin{titlepage}
+% 论文封面和封二
+        \whut@first@coverpage
+        \clearpage
+        \thispagestyle{empty}
+        \whut@first@titlepage
+% 独创性声明、授权说明
+        \clearpage
+        \thispagestyle{empty}
+        \whut@declare@mk
+        \whut@authorization@mk
+    \end{titlepage}
+}
+%</cls>
+%    \end{macrocode}
+% \end{macro}
+%
+% \subsubsection{摘要}
+% \label{sec:abstract}
+% \begin{environment}{cabstract}
+% \begin{environment}{eabstract}
+%<*cls>
+%% 为摘要的标题格式问题折腾了好久，几欲放弃，原来是没有正确设置好CTEXsetup的参数，
+%% 在这里终于感觉到ctexbook的方便了。
+%    \begin{macrocode}
+\newenvironment{cabstract}{%
+    \CTEXsetup[titleformat={\zihao{-3}\bfseries},beforeskip={0pt},afterskip={20pt}]{chapter}
+    \chapter{\cabstractname}
+    \zihao{-4}
+    \@afterheading}
+    {\par\vspace{2em}\par}
+\newenvironment{eabstract}{%
+    \CTEXsetup[titleformat={\zihao{-3}\bfseries},beforeskip={0pt},afterskip={20pt}]{chapter}
+    \chapter{\eabstractname}
+    \zihao{-4}
+    \@afterheading}
+    {\par\vspace{2em}\par}
+%    \end{macrocode}
+%</cls>
+% \end{environment}
+% \end{environment}
+%
+% \begin{macro}{\ckeywords}
+% \begin{macro}{\ekeywords}
+%<*cls>
+%% 关键字
+%    \begin{macrocode}
+\newcommand\ckeywords[1]{{\heiti\zihao{-4} \whut@ckeywords@title} #1}
+\newcommand\ekeywords[1]{\textbf{\zihao{-4} \whut@ekeywords@title} #1}
+%    \end{macrocode}
+%</cls>
+% \end{macro}
+% \end{macro}
+%
+% \subsubsection{主要符号表}
+% \label{sec:denotationfmt}
+% \begin{environment}{denotation}
+%    \begin{macrocode}
+%<*cls>
+%% 主要符号对照表
+\newenvironment{denotation}[1][2.5cm]{
+    \chapter{\whut@denotation@name} % no tocline
+    \noindent\begin{list}{}%
+    {\vskip-30bp\zihao{-4}
+     \renewcommand\makelabel[1]{##1\hfil}
+     \setlength{\labelwidth}{#1} % 标签盒子宽度
+     \setlength{\labelsep}{0.5cm} % 标签与列表文本距离
+     \setlength{\itemindent}{0cm} % 标签缩进量
+     \setlength{\leftmargin}{\labelwidth+\labelsep} % 左边界
+     \setlength{\rightmargin}{0cm}
+     \setlength{\parsep}{0cm} % 段落间距
+     \setlength{\itemsep}{0cm} % 标签间距
+    \setlength{\listparindent}{0cm} % 段落缩进量
+    \setlength{\topsep}{0pt} % 标签与上文的间距
+   }}{\end{list}}
+%</cls>
+%    \end{macrocode}
+% \end{environment}
+%
+%
+% \subsubsection{致谢以及声明}
+% \label{sec:ackanddeclare}
+%
+% \begin{environment}{ack}
+%    \begin{macrocode}
+%<*cls>
+%% 致谢
+\newenvironment{ack}{%
+%%    \clearpage
+    \CTEXsetup[titleformat={\zihao{-2}\bfseries},beforeskip={0pt},afterskip={20pt}]{chapter}
+    \chapter*{\whut@ackname}
+    \addcontentsline{toc}{chapter}{\whut@ackname}
+    \@afterheading
+    \kaishu\zihao{-4}
+}{\par\vspace{2em}\par}
+%</cls>
+%    \end{macrocode}
+% \end{environment}
+%
+% \subsubsection{索引部分}
+% \label{sec:threeindex}
+% \begin{macro}{\listoffigures}
+% \begin{macro}{\listoffigures*}
+% \begin{macro}{\listoftables}
+% \begin{macro}{\listoftables*}
+%    \begin{macrocode}
+%<*cls>
+%% 索引
+\def\whut@starttoc#1{% #1: float type, prepend type name in \listof*** entry.
+    \let\oldnumberline\numberline
+    \def\numberline##1{\oldnumberline{\csname #1name\endcsname\hskip.4em ##1}}
+    \@starttoc{\csname ext@#1\endcsname}
+    \let\numberline\oldnumberline}
+\def\whut@listof#1{% #1: float type
+    \@ifstar
+    {\chapter[]{\csname list#1name\endcsname}\whut@starttoc{#1}}
+    {\chapter{\csname list#1name\endcsname}\whut@starttoc{#1}}}
+\renewcommand\listoffigures{\whut@listof{figure}}
+\renewcommand*\l@figure{\@dottedtocline{1}{0em}{4em}}
+\renewcommand\listoftables{\whut@listof{table}}
+\let\l@table\l@figure
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+% \end{macro}
+%
+% \begin{macro}{\equcaption}
+%   本命令只是为了生成公式列表，所以这个 caption 是假的。如果要编号最好用
+%    equation 环境，如果是其它编号环境，请手动添加添加 \cs{equcaption}。
+% 用法如下：
+%
+% \cs{equcaption}\marg{counter}
+%
+% \marg{counter} 指定出现在索引中的编号，一般取 \cs{theequation}，如果你是用
+%  \pkg{amsmath} 的 \cs{tag}，那么默认是 \cs{tag} 的参数；除此之外可能需要你
+% 手工指定。
+%
+%    \begin{macrocode}
+\def\ext@equation{loe}
+\def\equcaption#1{%
+\addcontentsline{\ext@equation}{equation}%
+    {\protect\numberline{#1}}}
+%    \end{macrocode}
+% \end{macro}
+%
+% \begin{macro}{\listofequations}
+% \begin{macro}{\listofequations*}
+% \LaTeX{}默认没有公式索引，此处定义自己的 \cs{listofequations}。
+%    \begin{macrocode}
+\newcommand\listofequations{\whut@listof{equation}}
+\let\l@equation\l@figure
+%</cls>
+%    \end{macrocode}
+% \end{macro}
+% \end{macro}
+%
+%
+% \subsubsection{参考文献}
+% \label{sec:ref}
+%
+%    \begin{macrocode}
+%<*cls>
+%% 重定义参考文献样式，来自thu
+\renewenvironment{thebibliography}[1]{%
+   \chapter*{\bibname}%
+   \zihao{5}
+   \list{\@biblabel{\@arabic\c@enumiv}}%
+        {\renewcommand{\makelabel}[1]{##1\hfill}
+         \settowidth\labelwidth{1.1cm}
+         \setlength{\labelsep}{0.4em}
+         \setlength{\itemindent}{0pt}
+         \setlength{\leftmargin}{\labelwidth+\labelsep}
+         \addtolength{\itemsep}{-0.7em}
+         \usecounter{enumiv}%
+         \let\p@enumiv\@empty
+         \renewcommand\theenumiv{\@arabic\c@enumiv}}%
+    \sloppy\frenchspacing
+    \clubpenalty4000%
+    \@clubpenalty \clubpenalty
+    \widowpenalty4000%
+    \interlinepenalty4000%
+    \sfcode`\.\@m}
+   {\def\@noitemerr
+     {\@latex@warning{Empty `thebibliography' environment}}%
+    \endlist\frenchspacing}
+%</cls>
+%    \end{macrocode}
+%
+%
+% \begin{macro}{\onlinecite}
+% 正文引用模式。依赖于 \pkg{natbib} 宏包，修改其中的命令。
+%    \begin{macrocode}
+%<*cls>
+%% 引用格式
+\bibpunct{[}{]}{,}{s}{}{,}
+\renewcommand\NAT@citesuper[3]{\ifNAT@swa%
+    \unskip\kern\p@\textsuperscript{\NAT@@open #1\NAT@@close}%
+    \if*#3*\else\ (#3)\fi\else #1\fi\endgroup}
+\DeclareRobustCommand\onlinecite{\@onlinecite}
+\def\@onlinecite#1{\begingroup\let\@cite\NAT@citenum\citep{#1}\endgroup}
+%</cls>
+%    \end{macrocode}
+% \end{macro}
+%
+%
+% \subsubsection{附录}
+% \label{sec:appendix}
+%
+% \subsubsection{个人简历}
+%
+% 定义个人简历章节标题
+% \begin{environment}{resume}
+%<*cls>
+%% 个人简历发表文章等。
+%    \begin{macrocode}
+%% 简历
+\newenvironment{resume}{%
+  % \cleardoublepage
+    \chapter*{\whut@resume@title}
+    \addcontentsline{toc}{chapter}{\whut@resume@title}
+    }{}
+%    \end{macrocode}
+%</cls>
+% \end{environment}
+%
+% \begin{macro}{\resumeitem}
+% 个人简历里面会出现的以发表文章，在投文章等。
+%    \begin{macrocode}
+%<*cls>
+\newcommand{\resumeitem}[1]{\vspace{2.5em}{\zihao{4}\heiti\centerline{#1}}\par}
+%</cls>
+%    \end{macrocode}
+% \end{macro}
+%
+% \subsubsection{索引}
+%
+%    \begin{macrocode}
+%<*cls>
+%% 生成索引的一些命令，虽然我们暂时还用不到。
+\iffalse
+\newcommand{\bs}{\symbol{'134}}%Print backslash
+% \newcommand{\bs}{\ensuremath{\mathtt{\backslash}}}%Print backslash
+% Index entry for a command (\cih for hidden command index
+\newcommand{\cih}[1]{%
+  \index{commands!#1@\texttt{\bs#1}}%
+  \index{#1@\texttt{\hspace*{-1.2ex}\bs #1}}}
+\newcommand{\ci}[1]{\cih{#1}\texttt{\bs#1}}
+% Package
+\newcommand{\pai}[1]{%
+  \index{packages!#1@\textsf{#1}}%
+  \index{#1@\textsf{#1}}%
+  \textsf{#1}}
+% Index entry for an environment
+\newcommand{\ei}[1]{%
+  \index{environments!\texttt{#1}}%
+  \index{#1@\texttt{#1}}%
+  \texttt{#1}}
+% Indexentry for a word (Word inserted into the text)
+\newcommand{\wi}[1]{\index{#1}#1}
+\fi
+%</cls>
+%    \end{macrocode}
+%
+% \subsubsection{自定义命令和环境}
+% \label{sec:userdefine}
+%
+% \begin{macro}{\pozhehao}
+% 定义破折号。两个字宽，ex 差不多是当前字体的一半高度，所以通过 \cs{rule} 可以简单
+% 的完成破折号绘制。
+%    \begin{macrocode}
+%<*cls>
+\newcommand{\pozhehao}{\kern0.3ex\rule[0.8ex]{2em}{0.1ex}\kern0.3ex}
+%</cls>
+%    \end{macrocode}
+% \end{macro}
+%
+%    \begin{macrocode}
+%<*cls>
+%% 在模板文档结束时即装入配置文件，这样用户就能在导言区进行相应的修改，否则必须在 document 开始后才能，感觉不好。
+\AtEndOfClass{\input{WHUTthesis.cfg}}
+%</cls>
+%    \end{macrocode}
+%
+% \begin{macro}{\whut@setup@pdfinfo}
+%    \begin{macrocode}
+%<*cls>
+%% 设置一些 pdf 文档信息，依赖于 \pkg{hyperref} 宏包。
+\def\whut@setup@pdfinfo{%
+    \hypersetup{%
+        pdftitle={\whut@ctitle},
+        pdfauthor={\whut@cauthor},
+        pdfsubject={\whut@cdegree},
+        pdfkeywords={\whut@ckeywords},
+        pdfcreator={\whut@cauthor},
+        pdfproducer={\whutthesis}}
+}
+%</cls>
+%    \end{macrocode}
+% \end{macro}
+% \Finale
+%
+%
+%
+%
+%
+%
+% \iffalse
+%    \begin{macrocode}
+%<*dtx-style>
+\ProvidesPackage{dtx-style}
+
+\RequirePackage{calc}
+\RequirePackage{array,longtable}
+\RequirePackage{fancybox,fancyvrb}
+\RequirePackage{xcolor}
+
+\RequirePackage{txfonts}
+%\RequirePackage{CJKutf8}
+\RequirePackage{ctex}
+\RequirePackage{xltxtra}
+\newif\ifdtx@UTF\dtx@UTFtrue % todo: review this piece of code, why it needs an
+                             % \iffalse in the comment? where is the real mis-match?
+\ifdtx@UTF\else
+  \IfFileExists{CJKpunct.sty}%
+               {\RequirePackage{CJKpunct}}%
+               {\ClassWarning{whutthesis}{no CJKpunct.sty availiable!}}
+\fi
+%\RequirePackage{CJKspace}
+
+%% 一些有趣的符号图案
+\RequirePackage{marvosym}
+
+\RequirePackage{hyperref}
+\hypersetup{%
+  unicode=false,
+  CJKbookmarks=false,
+  bookmarksnumbered=true,
+  bookmarksopen=true,
+  bookmarksopenlevel=1,
+  breaklinks=true,
+  linkcolor=blue,
+  plainpages=false,
+  pdfpagelabels,
+  pdfborder=0 0 0}
+\RequirePackage{url}
+\RequirePackage{indentfirst}
+
+% listings 源代码显示宏包
+\RequirePackage{listings}
+\lstset{tabsize=4, %
+  frame=shadowbox, %把代码用带有阴影的框圈起来
+  commentstyle=\color{red!50!green!50!blue!50},%浅灰色的注释
+  rulesepcolor=\color{red!20!green!20!blue!20},%代码块边框为淡青色
+  keywordstyle=\color{blue!90}\bfseries, %代码关键字的颜色为蓝色，粗体
+  showstringspaces=false,%不显示代码字符串中间的空格标记
+  stringstyle=\ttfamily, % 代码字符串的特殊格式
+  keepspaces=true, %
+  breakindent=22pt, %
+  numbers=left,%左侧显示行号
+  stepnumber=1,%
+  numberstyle=\tiny, %行号字体用小号
+  basicstyle=\footnotesize, %
+  showspaces=false, %
+  flexiblecolumns=true, %
+  breaklines=true, %对过长的代码自动换行
+  breakautoindent=true,%
+  breakindent=4em, %
+  escapebegin=\begin{CJK*}{GBK}{kai},escapeend=\end{CJK*},
+  aboveskip=1em, %代码块边框
+  %% added by http://bbs.ctex.org/viewthread.php?tid=53451
+  fontadjust,
+  captionpos=t,
+  framextopmargin=2pt,framexbottommargin=2pt,abovecaptionskip=-3pt,belowcaptionskip=3pt,
+  xleftmargin=4em,xrightmargin=4em, % 设定listing左右的空白
+  texcl=true,
+  % 设定中文冲突，断行，列模式，数学环境输入，listing数字的样式
+  extendedchars=false,columns=flexible,mathescape=true
+  % numbersep=-1em
+}
+\renewcommand{\lstlistingname}{代码} %% 重命名Listings标题头
+
+\setlength{\parskip}{4pt plus1pt minus0pt}
+\setlength{\topsep}{0pt}
+\setlength{\partopsep}{0pt}
+\setlength{\parindent}{20pt}
+\addtolength{\oddsidemargin}{-1cm}
+\advance\textwidth 1.5cm
+\addtolength{\topmargin}{-1cm}
+\addtolength{\headsep}{0.3cm}
+\addtolength{\textheight}{2.3cm}
+
+\newcommand\hei{\CJKfamily{hei}}
+\newcommand\fs{\CJKfamily{fs}}
+
+\renewcommand{\baselinestretch}{1.3}
+\setlength{\shadowsize}{3pt}
+\def\DescribeOption#1{\SpecialOptionIndex{#1}}
+\def\SpecialOptionIndex#1{\index{#1\actualchar\textbf{#1}}}
+\renewenvironment{description}
+  {\list{}{\setlength\labelwidth{2cm}%
+           \setlength\labelsep{3pt}%
+           \setlength\leftmargin{\labelwidth+\labelsep}%
+           \addtolength{\itemsep}{3pt}%
+           \renewcommand\makelabel[1]{%
+             \shadowbox{\color{blue!90}\texttt##1}\DescribeOption{##1}}}
+  }{\endlist}
+\DefineVerbatimEnvironment{example}{Verbatim}%
+  {frame=single,framerule=0.3mm,rulecolor=\color{red!75!green!50!blue},%
+   fillcolor=\color{red!75!green!50!blue!15},framesep=2mm,baselinestretch=1.2,%
+   fontsize=\small,gobble=1}
+\DefineVerbatimEnvironment{shell}{Verbatim}%
+  {frame=single,framerule=0.3mm,rulecolor=\color{red!85!green!60},%
+   fillcolor=\color{red!85!green!10},framesep=2mm,fontsize=\small,gobble=1}
+\long\def\myentry#1{\vskip5pt\par\noindent\llap{{\color{blue}\fs #1}}\marginpar{\strut}\hskip\parindent}
+\def\tableofcontents{\renewcommand{\baselinestretch}{1.0}\@starttoc{toc}}
+\def\DescribeMacro{\Describe@Macro}
+\def\Describe@Macro#1{\PrintDescribeMacro{#1}\SpecialUsageIndex{#1}}
+\def\PrintDescribeMacro#1{{\color{-red!75!green!50!blue!55}\MacroFont \string #1\hskip1em}}
+\def\ps@headings{%
+  \let\@oddfoot\@empty
+  \def\@oddhead{\vbox{%
+    \hb@xt@ \textwidth{\llap{\fbox{\rightmark\rule[-2pt]{0pt}{13pt}}}\hfil\thepage}%
+    \vskip-0.7pt%
+    \hb@xt@ \textwidth{\hrulefill}}}
+  \let\@evenfoot\@oddfoot
+  \let\@evenhead\@oddhead
+  \let\@mkboth\markboth
+  \def\sectionmark##1{%
+    \markright{\ifnum \c@secnumdepth >\m@ne
+      \thesection\quad
+      \fi
+      ##1}}
+  \def\subsectionmark##1{%
+    \markright{\ifnum \c@secnumdepth >\m@ne
+      \thesubsection\quad
+      \fi
+      ##1}}
+  \def\subsubsectionmark##1{%
+    \markright{\ifnum \c@secnumdepth >\m@ne
+      \thesubsubsection\quad
+      \fi
+      ##1}}}
+\renewcommand\section{\@startsection{section}{1}{\z@}%
+                                    {-3.5ex \@plus -1ex \@minus -.2ex}%
+                                    {2.3ex \@plus.2ex}%
+                                    {\normalfont\Large\bfseries\hei}}
+
+\renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
+                                       {-3.25ex\@plus -1ex \@minus -.2ex}%
+                                       {1.5ex \@plus .2ex}%
+                                       {\normalfont\large\bfseries\hei}}
+\renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
+                                          {-3.25ex\@plus -1ex \@minus -.2ex}%
+                                          {1.5ex \@plus .2ex}%
+                                          {\normalfont\normalsize\bfseries\hei}}
+\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
+                                      {3.25ex \@plus1ex \@minus.2ex}%
+                                      {-1em}%
+                                      {\normalfont\normalsize\bfseries}}
+\renewcommand\subparagraph{\@startsection{subparagraph}{5}{\parindent}%
+                                         {3.25ex \@plus1ex \@minus .2ex}%
+                                         {-1em}%
+                                         {\normalfont\normalsize\bfseries}}
+\pagestyle{empty}
+%</dtx-style>
+%    \end{macrocode}
+% \fi
+%
+\endinput
