@@ -1,0 +1,28 @@
+\documentclass{article}
+\usepackage[paperwidth=22cm,paperheight=29.7cm,
+  left=0cm, right=0cm]{geometry}
+\usepackage{graphicx}
+\usepackage[boldfont,slantfont,CJKnumber]{xeCJK}
+
+% 设定竖排字体，当前需要OTF字体！请参考说明文档进行下载
+\setmainfont{Adobe Garamond Pro}
+\setCJKmainfont{Adobe Song Std}
+\setCJKfamilyfont{vert}[RawFeature={vertical}]{Adobe Song Std}
+
+\newcommand{\envert}[1]{\raisebox{-.4em}{#1}}
+
+% 你需要改动下面的变量(英文用\envert包含进来)
+\providecommand{\thesistitle}{武汉理工大学学位论文模板示例}
+\providecommand{\thesisauthor}{胡卫谊}
+
+\pagestyle{empty}
+\begin{document}
+
+\flushright
+\CJKfamily{vert} \quad
+\rotatebox{-90}{\heiti\zihao{-4}\hspace*{1.3cm}\thesistitle\hspace*{2cm}\thesisauthor}
+\vfill
+\rotatebox{-90}{武汉理工大学}
+
+\end{document}
+
