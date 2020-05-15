@@ -1,0 +1,78 @@
+\chapter{GraphSLAM  Thrun}
+{\large The GraphSLAM Algorithm with Applications to Large-Scale Mapping of Urban Structures}
+
+\section{Preamble}
+\textbf{Brief Motivation}: map physical environments with moving sensor platforms to  do: photo-realistic rendering, surveillance, scientific measurement, and robot guidance. 
+
+\textbf{Motivation}: One intuitive way of formulating SLAM is to use a graph whose nodes correspond to the poses of the robot at different points in time and whose edges represent constraints between the poses. The latter are obtained from observations of the environment or from movement actions carried out by the robot. Once such a graph is constructed, the map can be computed by finding the spatial configuration of the nodes that is mostly consistent with the measurements modeled by the edges~\cite{Graph-Based-SLAM-Grisetti}.
+
+\textbf{Related fields}: photogrammetry, computer vision, computer graphics, and robotics.
+
+\textbf{Filter techniques}: a key disadvantage of a filter technique is that data is processed and then discarded. This makes it impossible to revisit all data at the time of map building. 
+
+\textbf{Origin of the SLAM problem}: In robotics, the SLAM problem was introduced through a seminal series of papers by Cheeseman and Smith (1986); Smith and Cheeseman (1986); Smith, Self, and Cheeseman (1990). These papers were the first to describe the well-known EKF SLAM algorithm, often used as a benchmark up to the present day.
+
+\section{GraphSLAM}
+\textbf{Basic Intuition}: GraphSLAM extracts from the data a set of soft constraints, represented by a sparse graph. It obtains the map and the robot path by resolving these constraints into a globally consistent estimate. The constraints are generally nonlinear, but in the process of resolving them they are linearized and reduced using variable elimination techniques, arriving at a lower dimensional problems. The resulting least squares problem is solved using standard optimization techniques.
+
+\textbf{Supplementary illustration}: The result of linearization is a sparse information matrix and an information vector. The sparseness of this matrix enables GraphSLAM to apply the variable elimination algorithm, thereby transforming the graph into a much smaller one only defined over robot poses. GraphSLAM also computes a map and certain marginal posteriors over the map; the full map posterior is of course quadratic in the size of the map and hence is usually not recovered.
+
+\textbf{Essence}: graphs of constraints.
+
+\textbf{Two steps}: 
+\begin{enumerate}
+    \item building a sparse graph of nonlinear constraints.
+    \item populating a sparse “information” matrix of linear constraints.
+\end{enumerate}
+
+\textbf{Features}: GraphSLAM can handle large number of features, and even incorporate GPS information into the mapping process.
+
+\textbf{Assumption}: 
+\begin{enumerate}
+    \item static world(map).
+    \item feature map.
+    \item robot can sense multiple features at each point in time.
+    \item robot can only measurement range, hence range measurement.
+    \item only determine the mode of the \textit{offline SLAM posterior}. The actual posterior is usually too difficult to express for high-dimensional maps $m$, since it contains dependencies between any pair of features in $m$.
+    \item a key assumption in our problem formulation is the assumption of independent Gaussian noise. The Gaussian noise assumption proves convenient in that it leads to a nice set of quadratic equations which can be solved efficiently.
+\end{enumerate}
+
+\textbf{Objective}: address \textit{offline SLAM} problem. 
+\begin{enumerate}
+    \item offline SLAM problem: also called \textit{full SLAM} problem. Seek to calculate a posterior over the \textbf{entire} path $x_{1:t}$ along with the map $m$. 
+    \item online SLAM problem: estimate the posterior over the \textbf{momentary} pose along with the map.
+\end{enumerate}
+The posterior of the full SLAM problem naturally forms a sparse graph. This graph leads to a sum of nonlinear quadratic constraints. Optimizing these constraints yields a maximum likelihood map and a corresponding set of robot poses.
+
+\textbf{correspondence variable}: $j = c_t^i$ means: the $i$-th beam of the measurement at time $t$ detects the feature indexed with $j$.
+
+\subsection{Constructing the Graph}
+\textbf{Nodes}: The nodes of this graph are the robot poses $x_{1:t}$ and the features in the map $m = \{m_j\}$.
+
+\textbf{Edges}: Each edge in the graph corresponds to an event: a motion event generates an edge between two robot poses, and a measurement event creates an edge between a pose and a feature in the map.
+
+\textbf{Graph update}: each measurement and each control leads to a local update of $\Omega$ and $\xi$, which corresponds to a local addition of an edge to the graph in GraphSLAM.
+\emph{\textbf{An advatange of the information form}: In fact, the rule for incorporating a control or a measurement into $\Omega$ and $\xi$ is a local addition, paying tribute to the important fact that information is an additive quantity.}
+
+\subsection{Sparseness}
+\textbf{The graph}: The number of constraints in the graph is linear in the time elapsed, hence the graph is sparse.
+
+\textbf{The matrix}: In the associated information matrix 􏰀, the off-diagonal elements are all zero with two exceptions: between any two consecutive poses $x_{t−1}$ and $x_t$ will be a non-zero value that represents the information link introduced by the control $u_t$. Also non-zero will be any element between a map feature $m_j$ and a pose $x_t$ , if $m_j$ was observed when the robot was at $x_t$ . All elements between pairs of different features remain zero. This reflects the fact that we never receive information pertaining to their relative location--all we receive in SLAM are measurements that constrain the location of a feature relative to a robot pose. Thus, the information matrix is equally sparse; all but a linear number of its elements are zero.
+
+\subsection{Inference}
+\textbf{Motivation}: Of course, neither the graph representation nor the information matrix representation gives us what we want: the map and the path.
+
+\textbf{How to obtain}: In GraphSLAM, the map and the path are obtained from the linearized information matrix $\Omega$ and the information vector $\xi$, via the equations $\Sigma = \Omega^{-1} \text{ and } \mu = \Omega^{-1}\xi$
+
+\textbf{Complexity consideration}: 
+\begin{enumerate}
+    \item \textbf{cycle-free world}: If each feature is seen only locally in time, the graph represented by the constraints is linear. Thus, $\Omega$ can be reordered so that it becomes a band-diagonal matrix, that is, all non-zero values occur near its diagonal. The equation $\mu = \Omega^{-1} \xi$ can then be computed in linear time.
+    \item \textbf{cyclic world}: This might be the case because the robot goes back and forth through a corridor, or because the world possesses cycles.Both cases involve features that are observed multiple times. In our constraint graph, this introduces a cyclic dependence: $x_{t_1}$ and $x_{t_2}$ are linked through the sequence of controls $u_{{t_1}+1}$, $u_{{t_1}+2}, \dots, u_{t_2}$ and through the joint observation links between $x_{t_1} \text{ and } m_j$, and $x_{t_2} \text{ and } m_j$, respectively. Such links make our variable reordering trick inapplicable, and recovering the map becomes more complex. 
+\end{enumerate}
+
+\subsection{Factorization trick}
+\textbf{Motivation}: In fact, since the inverse of $\Omega$ is multiplied with a vector, the result can be computed with optimization techniques such as conjugate gradient, without explicitly computing the full inverse matrix. Since most worlds possess cycles, this is the case of interest. 
+
+\textbf{Intuition}: Simply do marginalization over the feature variables. Think of as propagating information through the information matrix (in fact, it is a generalization of the well-known variable elimination algorithm for matrix inversion). 
+
+\textbf{Result}: An information matrix that only involves poses of robot. However, it is equivalent for the remaining variables, in the sense that the posterior defined by this information matrix is mathematically equivalent to the original posterior before removing $m_j$.

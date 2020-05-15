@@ -1,0 +1,44 @@
+% !Tex TS-program = pdflatex
+% !Tex encoding = UTF-8
+\documentclass{easyclass}
+\usepackage[utf8]{inputenc}
+% \usepackage[UTF8]{ctex}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{graphics}
+\usepackage{hyperref}
+\usepackage{color}
+\usepackage[
+    font={small,sf},
+    labelfont=bf,
+    format=hang,    
+    format=plain,
+    margin=0pt,
+    width=0.8\textwidth,
+]{caption}
+\usepackage[list=true]{subcaption}
+\begin{document}
+\begin{titlepage}
+    \university{Wuhan University of Technology}
+    \courseid{SLAM}
+    \title{Paper Notes}
+    \author{Bayes Nie}
+    \version{2020 Spring}
+    \instructor{Instructors: Dr.~Ins \textsc{Tructor1}\par
+    	Dr.~Ins \textsc{Tructor2}, Dr.~Ins \textsc{Tructor3}\par}
+    \maketitle
+\end{titlepage}
+
+\tableofcontents
+
+\input{data/graph_slam/graph_slam_thrun.tex}
+\input{data/graph_slam/graph_based_slam_grisetti.tex}
+
+
+
+\bibliographystyle{plain}
+\bibliography{ref/refs}
+
+%\bibliography{bibfile}
+
+\end{document}
