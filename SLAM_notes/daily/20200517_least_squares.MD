@@ -40,12 +40,19 @@
         - [Wolfe conditions](#wolfe-conditions)
       - [Rate of convergence: gradient method vd Newton method](#rate-of-convergence-gradient-method-vd-newton-method)
     - [Gauss-Newton method](#gauss-newton-method)
+      - [Backtracking line search](#backtracking-line-search)
     - [Levenberg-Marquardt method](#levenberg-marquardt-method)
+      - [Trust region](#trust-region)
     - [A hybrid method: L-M and Quasi-Newton](#a-hybrid-method-l-m-and-quasi-newton)
+      - [Quasi-Newton method](#quasi-newton-method)
     - [Secant method](#secant-method)
       - [root-finding algorithms](#root-finding-algorithms)
       - [Finite difference methods](#finite-difference-methods)
         - [Finite difference](#finite-difference)
+    - [Gradient descent method](#gradient-descent-method)
+      - [Conjugate gradient method](#conjugate-gradient-method)
+      - [Stochastic gradient descent](#stochastic-gradient-descent)
+        - [M-estimator](#m-estimator)
 - [Some notes](#some-notes)
   - [Usage of Big O notation in infinitesimal asymptotics](#usage-of-big-o-notation-in-infinitesimal-asymptotics)
   - [Terms related to analyzing an (parallel) algorithm](#terms-related-to-analyzing-an-parallel-algorithm)
@@ -88,8 +95,7 @@
 2. [Algorithm analysis](figures_least_squares/cholesky_decomposition_algorithm.pdf)
 3. [Some implementations](https://www.geeksforgeeks.org/cholesky-decomposition-matrix-decomposition/)
 
-### Incomplete Cholesky decomposition 
-[](figures_least_squares/incomplete_cholesky_factorization.pdf)
+### [Incomplete Cholesky decomposition](figures_least_squares/incomplete_cholesky_factorization.pdf)
 
 #### Preconditioning
 ![](figures_least_squares/preconditioning_overview.png)
@@ -186,12 +192,20 @@
 ![](figures_least_squares/converge_comparison_gradient_vs_newton_1.png)
 ![](figures_least_squares/converge_comparison_gradient_vs_newton_2.png)
 
-### Gauss-Newton method 
+### [Gauss-Newton method](figures_least_squares/gauss_newton_method.pdf)
 
+#### [Backtracking line search](figures_least_squares/backtracking_line_search.pdf)
 
-### Levenberg-Marquardt method
+### [Levenberg-Marquardt method](figures_least_squares/levenberg_marquardt_method.pdf)
+
+#### Trust region
+![](figures_least_squares/trust_region_overview.png)
+![](figures_least_squares/trust_region_illustration.png)
 
 ### A hybrid method: L-M and Quasi-Newton
+[//]: "TODO"
+
+#### [Quasi-Newton method](figures_least_squares/quasi_newton_method.pdf)
 
 ### Secant method 
 The basic intuition of the secant version of the methods above:  
@@ -212,6 +226,31 @@ The basic intuition of the secant version of the methods above:
 ![](figures_least_squares/finite_difference_overview.png)
 ![](figures_least_squares/finite_difference_types.png)
 ![](figures_least_squares/finite_difference_relation_with_derivatives.png)
+
+### Gradient descent method 
+![](figures_least_squares/gradient_descent_overview.png)
+![](figures_least_squares/gradient_descent_description_1.png)
+![](figures_least_squares/gradient_descent_description_2.png)
+![](figures_least_squares/gradient_descent_analogy_1.png)
+![](figures_least_squares/gradient_descent_analogy_2.png)
+
+#### Conjugate gradient method 
+[Conjugate gradient method elaboration](figures_least_squares/conjugate_gradient_elaboration.pdf)
+
+[Conjugate gradient method comprehensive elaboration](figures_least_squares/conjugate_gradient_comprehensive_elaboration.pdf)
+
+[Advanced! The best material for learning conjugate gradient method](figures_least_squares/An%20Introduction%20to%20the%20Conjugate%20Gradient%20Method%20Without%20the%20Agonizing%20Pain.pdf)
+
+#### [Stochastic gradient descent](figures_least_squares/stochastic_gradient_descent.pdf)
+[Stochastic gradient descent brief illustration](figures_least_squares/stochastic_gradient_descent_illustration.pdf)
+
+[Advanced! A comprehensive elaboration to stochastic gradient descent](figures_least_squares/Optimization%20Methods%20for%20Large-Scale%20Machine%20Learning.pdf)
+
+[Advanced! An Introduction to Optimization](figures_least_squares/An%20Introduction%20to%20Optimization.pdf)
+
+##### M-estimator
+![](figures_least_squares/m_estimator_overview.png)
+![](figures_least_squares/m_estimator_definition.png)
 
 # Some notes 
 ## [Usage of Big O notation in infinitesimal asymptotics](figures_least_squares/big_o.png)
