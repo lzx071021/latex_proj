@@ -89,13 +89,10 @@
 - dot product, also called as:
   - scalar product
   - inner product 
-  - Frobenius inner product (generalization of regular inner product from vectors to matrices)
-    - ![](_md_figures/frobenius_inner_product_overview.png)
-    - ![](_md_figures/frobenius_inner_product_definition.png)
   - projection product 
 - cross product (vector product)
 - [exterior product](https://en.wikipedia.org/wiki/Exterior_algebra) (wedge product)
-- outer product 
+- [outer product](_md_figures/outer_product.pdf)
 - Cartesian product (related to set theory) 
   - ![](_md_figures/cartesian_product.png)
 ### Products between matrices 
@@ -110,3 +107,6 @@
 - Kronecker product (generalization of cross product from vectors to matrices)
   - ![](_md_figures/kronecker_product_overview.png)
   - ![](_md_figures/kronecker_product_definition.png)
+- Frobenius inner product (generalization of regular inner product from vectors to matrices)
+  - ![](_md_figures/frobenius_inner_product_overview.png)
+  - ![](_md_figures/frobenius_inner_product_definition.png)

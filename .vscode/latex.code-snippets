@@ -41,5 +41,12 @@
 			"\\item \\textbf{$1}: $2"
 		],
 		"description": "\\item followed by \\textbf{}"
+	},
+	"markdown image": {
+		"prefix": "mi",
+		"body": [
+			"![$2]($1)${0:placeholder}"
+		],
+		"description": "insert image in markdown"
 	}
 }
