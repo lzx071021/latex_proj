@@ -63,7 +63,7 @@
   - [Homogeneous function](#homogeneous-function)
 
 ## Main cf. 
-[Methods For Non-Linear Least Squares Problems]()
+[Methods For Non-Linear Least Squares Problems](figures_least_squares/2004%20Apr%20-%20METHODS%20FOR%20NON-LINEAR%20LEAST%20SQUARES%20PROBLEMS.pdf)
 
 ## Taylor expansion
 1. [Taylor series expansion](figures_least_squares/taylor_series_expansion.pdf)
