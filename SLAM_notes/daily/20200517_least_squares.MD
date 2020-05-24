@@ -11,6 +11,7 @@
       - [Principal minors](#principal-minors)
     - [Proof of the existence and uniqueness of Cholesky decomposition](#proof-of-the-existence-and-uniqueness-of-cholesky-decomposition)
     - [Cholesky decomposition algorithm](#cholesky-decomposition-algorithm)
+  - [LDLT Cholesky decomposition](#ldlt-cholesky-decomposition)
     - [Incomplete Cholesky decomposition](#incomplete-cholesky-decomposition)
       - [Preconditioning](#preconditioning)
         - [Condition number](#condition-number)
@@ -94,6 +95,8 @@
 1. [Wiki](figures_least_squares/cholesky_decomposition.pdf)
 2. [Algorithm analysis](figures_least_squares/cholesky_decomposition_algorithm.pdf)
 3. [Some implementations](https://www.geeksforgeeks.org/cholesky-decomposition-matrix-decomposition/)
+
+## [LDLT Cholesky decomposition](figures_least_squares/ldlt_cholesky.pdf)
 
 ### [Incomplete Cholesky decomposition](figures_least_squares/incomplete_cholesky_factorization.pdf)
 

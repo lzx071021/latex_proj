@@ -36,10 +36,12 @@
   - [C++: performance of using templates](#c-performance-of-using-templates)
   - [C++: functor](#c-functor)
   - [C++: const keyword in member functions](#c-const-keyword-in-member-functions)
+  - [C++: How to initialize const member variable in a class?](#c-how-to-initialize-const-member-variable-in-a-class)
     - [C++: const int and int const](#c-const-int-and-int-const)
     - [C++: confusion about const in conjuction with pointer](#c-confusion-about-const-in-conjuction-with-pointer)
     - [C++: mutable keyword](#c-mutable-keyword)
   - [C++: difference between struct and class](#c-difference-between-struct-and-class)
+    - [Google C++ style 关于 struct 和 class 的使用规定](#google-c-style-%e5%85%b3%e4%ba%8e-struct-%e5%92%8c-class-%e7%9a%84%e4%bd%bf%e7%94%a8%e8%a7%84%e5%ae%9a)
   - [C++: pointers and references](#c-pointers-and-references)
     - [关于使用 pointer 和 reference 作为函数形参的约定](#%e5%85%b3%e4%ba%8e%e4%bd%bf%e7%94%a8-pointer-%e5%92%8c-reference-%e4%bd%9c%e4%b8%ba%e5%87%bd%e6%95%b0%e5%bd%a2%e5%8f%82%e7%9a%84%e7%ba%a6%e5%ae%9a)
   - [使用 矩阵变换(transformation) 的思想思考 有关 pointer 的复杂的 declaration statement](#%e4%bd%bf%e7%94%a8-%e7%9f%a9%e9%98%b5%e5%8f%98%e6%8d%a2transformation-%e7%9a%84%e6%80%9d%e6%83%b3%e6%80%9d%e8%80%83-%e6%9c%89%e5%85%b3-pointer-%e7%9a%84%e5%a4%8d%e6%9d%82%e7%9a%84-declaration-statement)
@@ -54,8 +56,19 @@
   - [C++: memory layout of C/C++ programs](#c-memory-layout-of-cc-programs)
   - [C++ smart pointers and raw pointers](#c-smart-pointers-and-raw-pointers)
     - [Why are pointers not replaced entirely by smart pointers in C++?](#why-are-pointers-not-replaced-entirely-by-smart-pointers-in-c)
-    - [](#)
   - [50/72 style, make good git commit messages](#5072-style-make-good-git-commit-messages)
+  - [Automatic differentiation](#automatic-differentiation)
+  - [[C++: Should I put source code in header files?]](#c-should-i-put-source-code-in-header-files)
+  - [C++: making the class public and making its content public](#c-making-the-class-public-and-making-its-content-public)
+  - [C++: difference between qualifers and keywords](#c-difference-between-qualifers-and-keywords)
+  - [C++: avoid using const non-static (data) member variables](#c-avoid-using-const-non-static-data-member-variables)
+  - [C++: inheritance](#c-inheritance)
+  - [C++: 几种 for loop 写法的对比](#c-%e5%87%a0%e7%a7%8d-for-loop-%e5%86%99%e6%b3%95%e7%9a%84%e5%af%b9%e6%af%94)
+  - [C++: 关于 accumulate 的一些用法](#c-%e5%85%b3%e4%ba%8e-accumulate-%e7%9a%84%e4%b8%80%e4%ba%9b%e7%94%a8%e6%b3%95)
+  - [C++: 造轮子: map and reduce](#c-%e9%80%a0%e8%bd%ae%e5%ad%90-map-and-reduce)
+  - [C++: 模板形参包(parameter pack)](#c-%e6%a8%a1%e6%9d%bf%e5%bd%a2%e5%8f%82%e5%8c%85parameter-pack)
+  - [C++: CppCon](#c-cppcon)
+  - [C++ tricks](#c-tricks)
 
 # Topic; Implement codes of Chapter 6 -- Non-linear Optimization
 
@@ -165,6 +178,10 @@ python的map，filter和reduce函数，在标准C++中分别有std::transform（
 
 [A thorough discussion about const keyword](https://stackoverflow.com/a/751783)
 
+[More about const](https://www.learncpp.com/cpp-tutorial/810-const-class-objects-and-member-functions/)
+
+## [C++: How to initialize const member variable in a class?](https://stackoverflow.com/questions/14495536/how-to-initialize-const-member-variable-in-a-class)
+
 ### [C++: const int and int const](https://stackoverflow.com/questions/3247285/const-int-int-const)
 
 ### [C++: confusion about const in conjuction with pointer](https://www.geeksforgeeks.org/difference-between-const-int-const-int-const-and-int-const/)
@@ -173,6 +190,13 @@ python的map，filter和reduce函数，在标准C++中分别有std::transform（
 
 ## C++: difference between struct and class 
 The only difference between a struct and class in C++ is the default accessibility of member variables and methods. In a struct they are public; in a class they are private.
+
+只有数据成员时及必要的构造、析构等成员函数时，使用 struct; 其他一律用 class.
+
+### Google C++ style 关于 struct 和 class 的使用规定
+仅当只有数据成员时使用 struct, 其它一概使用 class.
+
+struct 用来定义包含数据的被动式对象, 也可以包含相关的常量, 但除了存取数据成员之外, 没有别的函数功能. 并且存取功能是通过直接访问位域, 而非函数调用. 除了构造函数, 析构函数, Initialize(), Reset(), Validate() 等类似的用于设定数据成员的函数外, 不能提供其它功能的函数.
 
 ## [C++: pointers and references](https://www.geeksforgeeks.org/pointers-vs-references-cpp/)
 
@@ -228,7 +252,46 @@ e.g. const T * const x;
 ### [Why are pointers not replaced entirely by smart pointers in C++?](https://www.quora.com/Why-are-pointers-not-replaced-entirely-by-smart-pointers-in-C++#)
 [A bit of discussion](https://stackoverflow.com/questions/3396939/replacing-existing-raw-pointers-with-smart-pointers)
 
-### 
-
 ## [50/72 style, make good git commit messages](figures_ch6/good_git_commit_messages.pdf)
 
+## [Automatic differentiation](https://en.wikipedia.org/wiki/Automatic_differentiation)
+
+## [C++: Should I put source code in header files?]
+It's not bad style, you can put source code in header files, and some times you're forced to, in particular:
+- When defining a template class/function.
+- When defining an inline function.
+
+Anyway you shouldn't put a free (defined outside a class scope) non-inline function in a header file, since that would be compiled any time a source file include such header (and this will give you a linking error).
+
+## [C++: making the class public and making its content public](https://stackoverflow.com/a/4792783)
+
+## [C++: difference between qualifers and keywords](https://stackoverflow.com/questions/3785789/what-is-the-meaning-of-qualifier)
+
+## [C++: avoid using const non-static (data) member variables](https://www.reddit.com/r/cpp/comments/8wbeom/coding_guideline_avoid_const_member_variables/)
+
+## [C++: inheritance](https://www.geeksforgeeks.org/inheritance-in-c/)
+
+## [C++: 几种 for loop 写法的对比](https://www.zhihu.com/question/54671272)
+1. Regular for 
+2. [for_each](https://zh.cppreference.com/w/cpp/algorithm/for_each)
+3. range-based for 
+
+## [C++: 关于 accumulate 的一些用法](figures_ch6/accumulate%20-%20Exploring%20an%20Algorithmic%20Empire%20-%20Ben%20Deane%20-%20CppCon%202016.pdf)
+
+## [C++: 造轮子: map and reduce](figures_ch6/cpp_map_reduce.pdf)
+
+## [C++: 模板形参包(parameter pack)](https://zh.cppreference.com/w/cpp/language/parameter_pack)
+[一些可参考的资源](figures_ch6/cpp_parameter_pack.pdf)
+
+## C++: CppCon 
+1. constexpr 
+   1. [CppCon 2015: Scott Schurr “constexpr: Introduction”](https://www.youtube.com/watch?v=fZjYCQ8dzTc)
+   2. [CppCon 2017: Ben Deane & Jason Turner “constexpr ALL the Things!”](https://www.youtube.com/watch?v=PJwd4JLYJJY)
+2. [accumulate](figures_ch6/cppcon_accumulate.pdf)
+3. [smart pointers](figures_ch6/cppcon_smart_pointers.pdf)
+4. [The best part of C++](figures_ch6/cppcon_best_part_of_cpp.pdf)
+5. [lambda](figures_ch6/cppcon_lambda.pdf)
+
+## C++ tricks 
+1. static const -> static constexpr where we can. 
+2. 
