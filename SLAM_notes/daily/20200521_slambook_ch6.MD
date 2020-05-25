@@ -7,7 +7,7 @@
     - [constexpr and const in C++](#constexpr-and-const-in-c)
       - [Constant expressions](#constant-expressions)
         - [Expressions](#expressions)
-      - [Literal (字面量)](#literal-%e5%ad%97%e9%9d%a2%e9%87%8f)
+      - [Literal (字面量)](#literal-字面量)
     - [Function prototype](#function-prototype)
   - [C++ static keyword](#c-static-keyword)
   - [C++11 alias declarations (using) and typedef](#c11-alias-declarations-using-and-typedef)
@@ -15,14 +15,14 @@
   - [C++ list initialzation](#c-list-initialzation)
   - [C++ trailing return type](#c-trailing-return-type)
   - [C++ typeid](#c-typeid)
-  - [C++ container(容器) 简介](#c-container%e5%ae%b9%e5%99%a8-%e7%ae%80%e4%bb%8b)
-  - [C++ 函数返回多个值](#c-%e5%87%bd%e6%95%b0%e8%bf%94%e5%9b%9e%e5%a4%9a%e4%b8%aa%e5%80%bc)
+  - [C++ container(容器) 简介](#c-container容器-简介)
+  - [C++ 函数返回多个值](#c-函数返回多个值)
   - [C++ inline function](#c-inline-function)
   - [C++ pair data structure](#c-pair-data-structure)
   - [C++ tuple data structure](#c-tuple-data-structure)
   - [C++ insert vs emplace](#c-insert-vs-emplace)
-  - [C++ emplace_back and std::move](#c-emplaceback-and-stdmove)
-  - [C++中的"map, filter, reduce"](#c%e4%b8%ad%e7%9a%84%22map-filter-reduce%22)
+  - [C++ emplace_back and std::move](#c-emplace_back-and-stdmove)
+  - [C++中的"map, filter, reduce"](#c中的map-filter-reduce)
     - [C++ transform](#c-transform)
     - [C++ accumulate](#c-accumulate)
   - [C++ iterator](#c-iterator)
@@ -32,7 +32,7 @@
   - [OpenCV](#opencv)
     - [OpenCV random number generator RNG](#opencv-random-number-generator-rng)
     - [OpenCV plot a graph in accordance with the dataset](#opencv-plot-a-graph-in-accordance-with-the-dataset)
-  - [鲁棒核函数(Robust loss function)](#%e9%b2%81%e6%a3%92%e6%a0%b8%e5%87%bd%e6%95%b0robust-loss-function)
+  - [鲁棒核函数(Robust loss function)](#鲁棒核函数robust-loss-function)
   - [C++: performance of using templates](#c-performance-of-using-templates)
   - [C++: functor](#c-functor)
   - [C++: const keyword in member functions](#c-const-keyword-in-member-functions)
@@ -41,16 +41,16 @@
     - [C++: confusion about const in conjuction with pointer](#c-confusion-about-const-in-conjuction-with-pointer)
     - [C++: mutable keyword](#c-mutable-keyword)
   - [C++: difference between struct and class](#c-difference-between-struct-and-class)
-    - [Google C++ style 关于 struct 和 class 的使用规定](#google-c-style-%e5%85%b3%e4%ba%8e-struct-%e5%92%8c-class-%e7%9a%84%e4%bd%bf%e7%94%a8%e8%a7%84%e5%ae%9a)
+    - [Google C++ style 关于 struct 和 class 的使用规定](#google-c-style-关于-struct-和-class-的使用规定)
   - [C++: pointers and references](#c-pointers-and-references)
-    - [关于使用 pointer 和 reference 作为函数形参的约定](#%e5%85%b3%e4%ba%8e%e4%bd%bf%e7%94%a8-pointer-%e5%92%8c-reference-%e4%bd%9c%e4%b8%ba%e5%87%bd%e6%95%b0%e5%bd%a2%e5%8f%82%e7%9a%84%e7%ba%a6%e5%ae%9a)
-  - [使用 矩阵变换(transformation) 的思想思考 有关 pointer 的复杂的 declaration statement](#%e4%bd%bf%e7%94%a8-%e7%9f%a9%e9%98%b5%e5%8f%98%e6%8d%a2transformation-%e7%9a%84%e6%80%9d%e6%83%b3%e6%80%9d%e8%80%83-%e6%9c%89%e5%85%b3-pointer-%e7%9a%84%e5%a4%8d%e6%9d%82%e7%9a%84-declaration-statement)
+    - [关于使用 pointer 和 reference 作为函数形参的约定](#关于使用-pointer-和-reference-作为函数形参的约定)
+  - [使用 矩阵变换(transformation) 的思想思考 有关 pointer 的复杂的 declaration statement](#使用-矩阵变换transformation-的思想思考-有关-pointer-的复杂的-declaration-statement)
   - [glog: Google Logging Library](#glog-google-logging-library)
   - [C++: #pragma once](#c-pragma-once)
   - [C++: extern keyword](#c-extern-keyword)
-  - [C++: scope resolution operator ::](#c-scope-resolution-operator)
+  - [C++: scope resolution operator ::](#c-scope-resolution-operator-)
   - [C++ object constructor and destructor](#c-object-constructor-and-destructor)
-  - [Vscode 调试 CMake 编译得到的可执行文件](#vscode-%e8%b0%83%e8%af%95-cmake-%e7%bc%96%e8%af%91%e5%be%97%e5%88%b0%e7%9a%84%e5%8f%af%e6%89%a7%e8%a1%8c%e6%96%87%e4%bb%b6)
+  - [Vscode 调试 CMake 编译得到的可执行文件](#vscode-调试-cmake-编译得到的可执行文件)
   - [C++: void keyword](#c-void-keyword)
   - [C++: new and delete for dynamically allocating memory](#c-new-and-delete-for-dynamically-allocating-memory)
   - [C++: memory layout of C/C++ programs](#c-memory-layout-of-cc-programs)
@@ -63,12 +63,24 @@
   - [C++: difference between qualifers and keywords](#c-difference-between-qualifers-and-keywords)
   - [C++: avoid using const non-static (data) member variables](#c-avoid-using-const-non-static-data-member-variables)
   - [C++: inheritance](#c-inheritance)
-  - [C++: 几种 for loop 写法的对比](#c-%e5%87%a0%e7%a7%8d-for-loop-%e5%86%99%e6%b3%95%e7%9a%84%e5%af%b9%e6%af%94)
-  - [C++: 关于 accumulate 的一些用法](#c-%e5%85%b3%e4%ba%8e-accumulate-%e7%9a%84%e4%b8%80%e4%ba%9b%e7%94%a8%e6%b3%95)
-  - [C++: 造轮子: map and reduce](#c-%e9%80%a0%e8%bd%ae%e5%ad%90-map-and-reduce)
-  - [C++: 模板形参包(parameter pack)](#c-%e6%a8%a1%e6%9d%bf%e5%bd%a2%e5%8f%82%e5%8c%85parameter-pack)
+    - [C++: 虚函数(virtual function) 与 纯虚函数(pure virtual function) 与 抽象类(abstract class)](#c-虚函数virtual-function-与-纯虚函数pure-virtual-function-与-抽象类abstract-class)
+      - [C++: virtual table (aka, vtable)](#c-virtual-table-aka-vtable)
+  - [C++: 几种 for loop 写法的对比](#c-几种-for-loop-写法的对比)
+  - [C++: 关于 accumulate 的一些用法](#c-关于-accumulate-的一些用法)
+  - [C++: 造轮子: map and reduce](#c-造轮子-map-and-reduce)
+  - [C++: 模板形参包(parameter pack)](#c-模板形参包parameter-pack)
+  - [C++: explicit keyword](#c-explicit-keyword)
+  - [C++: 函数作为参数](#c-函数作为参数)
+  - [C++: std::function vs template](#c-stdfunction-vs-template)
+    - [C++: std::function](#c-stdfunction)
+  - [C++: smart pointers](#c-smart-pointers)
   - [C++: CppCon](#c-cppcon)
   - [C++ tricks](#c-tricks)
+  - [C++ 工程搭建的注意点](#c-工程搭建的注意点)
+  - [g2o](#g2o)
+    - [一些博客及教程](#一些博客及教程)
+    - [gauge freedom](#gauge-freedom)
+    - [](#)
 
 # Topic; Implement codes of Chapter 6 -- Non-linear Optimization
 
@@ -89,6 +101,10 @@
 
 [Advanced! A comprehensive explanation for constexpr](https://en.cppreference.com/w/cpp/language/constexpr)
 
+[More about them](https://docs.microsoft.com/en-us/cpp/cpp/constexpr-cpp?view=vs-2019)
+
+简要地说：const 是 read-only, 只读； constexpr 才是 constant, 常量。
+
 #### Constant expressions 
 An expression that can be evaluated at compile time. 
 
@@ -104,6 +120,10 @@ Expression evaluation may produce a result (e.g., evaluation of 2+2 produces the
 
 ## [C++ static keyword](figures_ch6/cpp_static.pdf)
 [A comprehensive elaboration about static keyworkd](https://www.bogotobogo.com/cplusplus/statics.php)
+
+First, static specifier when used on global variables limits the variable's scope to the source file in which it is defined.
+
+Second, static and extern specifiers are mutually exclusive therefore declaration of a static variable is also it's definition (tentative definition in particular).
 
 ## C++11 alias declarations (using) and typedef 
 cf. Effective Modern C++  Item 9: Prefer alias declarations to typedefs. 
@@ -271,6 +291,11 @@ Anyway you shouldn't put a free (defined outside a class scope) non-inline funct
 
 ## [C++: inheritance](https://www.geeksforgeeks.org/inheritance-in-c/)
 
+### [C++: 虚函数(virtual function) 与 纯虚函数(pure virtual function) 与 抽象类(abstract class)](https://blog.csdn.net/hackbuteer1/article/details/7558868)
+[A typical example](https://www.programiz.com/cpp-programming/virtual-functions)
+
+#### [C++: virtual table (aka, vtable)](figures_ch6/cpp_vtable.pdf)
+
 ## [C++: 几种 for loop 写法的对比](https://www.zhihu.com/question/54671272)
 1. Regular for 
 2. [for_each](https://zh.cppreference.com/w/cpp/algorithm/for_each)
@@ -283,6 +308,23 @@ Anyway you shouldn't put a free (defined outside a class scope) non-inline funct
 ## [C++: 模板形参包(parameter pack)](https://zh.cppreference.com/w/cpp/language/parameter_pack)
 [一些可参考的资源](figures_ch6/cpp_parameter_pack.pdf)
 
+## [C++: explicit keyword](figures_ch6/cpp_explicit.pdf)
+在C++中explicit关键字只能用来修饰构造函数。使用explicit可以禁止编译器自动调用拷贝初始化，还可以禁止编译器对拷贝函数的参数进行隐式转换。
+
+## C++: 函数作为参数 
+[关于一般写法的讨论](https://www.quora.com/How-do-I-pass-a-function-as-an-argument-to-another-function-in-c++-1)
+
+[使用 std::function 的写法](https://stackoverflow.com/a/31521586)
+
+## [C++: std::function vs template](https://stackoverflow.com/questions/14677997/stdfunction-vs-template)
+[A bit of discussion](https://www.zhihu.com/question/41684177/answer/91952216)
+
+### C++: std::function
+// TODO 
+
+## C++: smart pointers 
+[A brief illustration](https://stackoverflow.com/a/30143936)
+
 ## C++: CppCon 
 1. constexpr 
    1. [CppCon 2015: Scott Schurr “constexpr: Introduction”](https://www.youtube.com/watch?v=fZjYCQ8dzTc)
@@ -294,4 +336,46 @@ Anyway you shouldn't put a free (defined outside a class scope) non-inline funct
 
 ## C++ tricks 
 1. static const -> static constexpr where we can. 
-2. 
+2. #ifndef的意思只是说，同一个cpp里面不能被复制两遍，但是不同的cpp是分开编译的.
+3. #include <bits/stdc++.h> 包含了所有(??)标准库。
+
+## C++ 工程搭建的注意点 
+1. 头文件与源文件, [C++ 为什么要分 头文件和源文件](https://www.zhihu.com/question/280665935/answer/421522451)：
+   1. 头文件中写声明(declaration, aka interface)，放在 include dir 中；
+   2. 源文件中写实现(definition, aka implementation)，放在 src dir 中；
+   3. 说明：
+      1. 普通函数的声明放在 头文件 中，定义放在 源文件 中；静态函数同样 声明 放在 头文件 中，定义放在 源文件 中，除了一个例外：[静态内联函数](https://www.zhihu.com/question/26340568)(static inline); 
+      2. 内联函数(inline functions) 一律声明和定义都在 头文件 中。一个例外：当这个内联函数只确定会被 一个 translation unit(源文件) 使用时，可以将 定义 放在 源文件(不需要一定是使用这个函数的源文件) 中；也就是说，如果一个普通函数的定义要放在头文件中，那么一律用 inline 修饰；
+      3. 类的声明(包含 class 关键词)放在 头文件 中，定义(不包含 class 关键词)放在源文件中。原因是 每个使用 这个类的文件都应该使用相同的类，;
+         1. 类的 数据成员(data members) 在 头文件 中 声明 但不 初始化(initialization)。类的 静态数据成员 一律也不初始化，只声明。如果是类外的 函数 参考 普通函数的 写法; 如果是类外的 常量，应该（也必须）声明的同时并初始化(**Use constexpr wherever we can**)。
+            1. 由于 reference variable 必须在 declaration 的同时 initialization，所以应尽量避免（或完全不用） reference variables 作为 data member variables.
+            2. 其他 不将 reference variables 作为 member variables 的原因，参考:
+              - [Discussion 1](https://stackoverflow.com/a/892303)
+              - [Discussion 2](https://stackoverflow.com/questions/957087/when-is-it-preferable-to-store-data-members-as-references-instead-of-pointers)
+          2. 类的 成员函数(member functions) 在 头文件 中 声明。包括 constructor 在内的 成员函数一律不在 头文件 中定义，而在 相应的源文件 中定义。
+      4. 模板类和模板函数 在 头文件 中，在 另一个头文件 中定义。
+        1. 模板类和模板函数 不能放在 源文件 中；
+        2. 一般来说，应该将 模板类和模板函数 的 声明和定义 都放在同一个 头文件 中，但基于以下几点考虑，将其 声明和定义 分开：
+          1. 与 "接口与实现分离" 的指导思想 相一致；
+          2. 方便开发者分辨文件内容；
+          3. 与文档生成工具结合：写声明的头文件中写文档，写定义的头文件中写实现；
+          4. 方便开发者发布源码。因此可以用 两个不同的头文件后缀，发布时，使用 .gitignore 等工具 忽略 写定义的头文件的后缀。
+        3. 分离 模板类和模板函数 的接口和实现的方法 参考：
+           1. [Discussion I](https://www.bogotobogo.com/cplusplus/template_declaration_definition_header_implementation_file.php)
+           2. [Discussion II](https://stackoverflow.com/a/44774074)
+           3. [Discussion III](https://stackoverflow.com/a/495056)
+      5. 内联函数也可以参照 模板类和模板函数 的分离方法；但由于内联函数往往长度非常小，所以不必分离；但我们遵循一致性，选择一律将其分离；
+      6. 普通静态变量在 头文件 中声明，源文件中定义(即 赋值)；注意在源文件中定义声明在头文件中的 静态变量或使用这些静态变量 以前，必须先 再一次声明。
+
+[一些参考](https://www.zhihu.com/question/51789910/answer/127603777)
+      
+## g2o 
+
+### 一些博客及教程 
+[g2o学习笔记](https://www.jianshu.com/p/e16ffb5b265d)
+
+[g2o 小结](https://zhuanlan.zhihu.com/p/36889150)
+
+### [gauge freedom](https://www.quora.com/What-is-gauge-freedom-What-is-a-gauge-theory-in-GR-EM)
+
+### 
