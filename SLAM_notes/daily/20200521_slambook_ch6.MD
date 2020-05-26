@@ -74,13 +74,40 @@
   - [C++: std::function vs template](#c-stdfunction-vs-template)
     - [C++: std::function](#c-stdfunction)
   - [C++: smart pointers](#c-smart-pointers)
+    - [C++: shared_ptr](#c-shared_ptr)
+      - [Mechanism of shared_ptr](#mechanism-of-shared_ptr)
+      - [When use the shared_ptr in containers](#when-use-the-shared_ptr-in-containers)
+      - [smart pointers and new](#smart-pointers-and-new)
+    - [unique_ptr](#unique_ptr)
+      - [make_unique](#make_unique)
+    - [weak_ptr](#weak_ptr)
+      - [Purposes to use the shared_ptr](#purposes-to-use-the-shared_ptr)
+      - [C++: make_shared](#c-make_shared)
+  - [C++: private, protected, public keyword](#c-private-protected-public-keyword)
+    - [C++: Inheritance access specifiers](#c-inheritance-access-specifiers)
+  - [C++: override specifier](#c-override-specifier)
+    - [C++: 纯说明符(= 0)与抽象类](#c-纯说明符-0与抽象类)
+  - [C++: explicit default constructor,  = default](#c-explicit-default-constructor--default)
+  - [C++: 前向声明(forward declaration)](#c-前向声明forward-declaration)
+  - [C++: attributes](#c-attributes)
+  - [C++: fields](#c-fields)
+  - [C++: casting](#c-casting)
+    - [C++: static_cast operator](#c-static_cast-operator)
+    - [C++: dynamic_cast operator](#c-dynamic_cast-operator)
+  - [C++: 多线程](#c-多线程)
+    - [C++: volatile keyword](#c-volatile-keyword)
+  - [C++: vector 中保存指针的一些讨论](#c-vector-中保存指针的一些讨论)
+    - [C++: 关于 vector 中保存 原生指针 还是 智能指针 的讨论](#c-关于-vector-中保存-原生指针-还是-智能指针-的讨论)
+  - [C++: lifetime of objects](#c-lifetime-of-objects)
+    - [static and automatic objects](#static-and-automatic-objects)
+    - [dynamic objects](#dynamic-objects)
+    - [static, stack and heap memory](#static-stack-and-heap-memory)
+      - [Dynamic memory allocation](#dynamic-memory-allocation)
+    - [new and delete](#new-and-delete)
+    - [dangling pointer](#dangling-pointer)
   - [C++: CppCon](#c-cppcon)
   - [C++ tricks](#c-tricks)
   - [C++ 工程搭建的注意点](#c-工程搭建的注意点)
-  - [g2o](#g2o)
-    - [一些博客及教程](#一些博客及教程)
-    - [gauge freedom](#gauge-freedom)
-    - [](#)
 
 # Topic; Implement codes of Chapter 6 -- Non-linear Optimization
 
@@ -294,6 +321,8 @@ Anyway you shouldn't put a free (defined outside a class scope) non-inline funct
 ### [C++: 虚函数(virtual function) 与 纯虚函数(pure virtual function) 与 抽象类(abstract class)](https://blog.csdn.net/hackbuteer1/article/details/7558868)
 [A typical example](https://www.programiz.com/cpp-programming/virtual-functions)
 
+[Another illustration for virtual function](https://www.geeksforgeeks.org/virtual-function-cpp/)
+
 #### [C++: virtual table (aka, vtable)](figures_ch6/cpp_vtable.pdf)
 
 ## [C++: 几种 for loop 写法的对比](https://www.zhihu.com/question/54671272)
@@ -325,6 +354,135 @@ Anyway you shouldn't put a free (defined outside a class scope) non-inline funct
 ## C++: smart pointers 
 [A brief illustration](https://stackoverflow.com/a/30143936)
 
+**To get elaborative illustration, see C++ Primer Chapter 12, page 562~**
+
+### C++: shared_ptr 
+
+#### Mechanism of shared_ptr 
+It is up to the implementation whether to use a counter or another data structure to keep track of how many pointers share state. The key point is that the class keeps track of how many shared_ptrs point to the same object and automatically frees that object when appropriate.
+
+当没有一个智能指针指向这个 动态分配的内存所对应的东西 时，这个东西由与这个东西类型相应的 destructor free. e.g.: 
+
+When p is destroyed, its reference count is decremented and checked. In this case, p is the only object referring to the memory returned by factory. Because p is about to go away, the object to which p points will be destroyed and the memory in which that object resides will be freed.
+
+#### When use the shared_ptr in containers 
+If you put shared_ptrs in a container, and you subsequently need to use some, but not all, of the elements, remember to erase the elements you no longer need.
+
+P.S. The elements allocated by a vector exist only while the vector itself exists. When a vector is destroyed, the elements in the vector are also destroyed. i.e. **copying a vector into another vector will possibly destroy the original vector.**
+
+#### smart pointers and new 
+The smart pointer constructors that take pointers are **explicit**. Hence, we cannot implicitly convert a built-in pointer to a smart pointer; we must use the direct form of initialization to initialize a smart pointer:
+
+[An example illustrating this](figures_ch6/cppcon_smart_pointers.pdf))
+
+A shared_ptr can coordinate destruction only with other shared_ptrs that are copies of itself. Indeed, this fact is one of the reasons we recommend using make_shared rather than new. That way, we bind a shared_ptr to the object at the same time that we allocate it. There is no way to inadvertently bind the same memory to more than one independently created shared_ptr.
+
+When we bind a shared_ptr to a plain pointer, we give responsibility for that memory to that shared_ptr. Once we give shared_ptr responsibility for a pointer, we should no longer use a built-in pointer to access the memory to which the shared_ptr now points.
+
+It is dangerous to use a built-in pointer to access an object owned by a smart pointer, because we may not know when that object is destroyed.
+
+### unique_ptr 
+A unique_ptr “owns” the object to which it points. Unlike shared_ptr, only one unique_ptr at a time can point to a given object. The object to which a unique_ptr points is destroyed when the unique_ptr is destroyed.
+
+Unlike shared_ptr, *there is no library function*(Now, we have make_unique) comparable to make_shared that returns a unique_ptr. Instead, when we define a unique_ptr, we bind it to a pointer returned by new. As with shared_ptrs, we must use the direct form of initialization. 
+
+#### make_unique 
+
+### weak_ptr 
+A weak_ptr is a smart pointer that does not control the lifetime of the object to which it points. Instead, a weak_ptr points to an object that is managed by a shared_ptr. Binding a weak_ptr to a shared_ptr does not change the reference count of that shared_ptr. Once the last shared_ptr pointing to the object goes away, the object itself will be deleted. That object will be deleted even if there are weak_ptrs pointing to it—hence the name weak_ptr, which captures the idea that a weak_ptr shares its object “weakly.”
+
+When we create a weak_ptr, we initialize it from a shared_ptr.
+
+
+
+
+#### Purposes to use the shared_ptr 
+Programs tend to use dynamic memory for one of three purposes: 
+1. They don’t know how many objects they’ll need
+2. They don’t know the precise type of the objects they need 
+3. They want to share data between several objects
+
+#### C++: make_shared 
+The safest way to allocate and use dynamic memory is to call a library function named make_shared. This function allocates and initializes an object in dynamic memory and returns a shared_ptr that points to that object. Like the smart pointers, make_shared is defined in the memory header.
+
+When we call make_shared, we must specify the type of object we want to create. We do so in the same way as we use a template class, by following the function name with a type enclosed in angle brackets:
+
+Like the sequential-container emplace members (§ 9.3.1, p. 345), make_shared uses its arguments to construct an object of the given type. For example, a call to make_shared<string> must pass argument(s) that match one of the string constructors. Calls to make_shared<int> can pass any value we can use to initialize an int. And so on. If we do not pass any arguments, then the object is value initialized (§ 3.3.1, p. 98).
+
+Of course, ordinarily we use auto (§ 2.5.2, p. 68) to make it easier to define an object to hold the result of make_shared:
+
+## [C++: private, protected, public keyword](https://stackoverflow.com/questions/224966/private-and-protected-members-c)
+
+### [C++: Inheritance access specifiers](figures_ch6/cpp_inheritance_access_specifier.pdf)
+
+## [C++: override specifier](https://zh.cppreference.com/w/cpp/language/override)
+
+### [C++: 纯说明符(= 0)与抽象类](https://zh.cppreference.com/mwiki/index.php?title=cpp/language/abstract_class&variant=zh)
+
+## [C++: explicit default constructor,  = default](https://www.ibm.com/developerworks/cn/aix/library/1212_lufang_c11new/index.html)
+
+## [C++: 前向声明(forward declaration)](https://www.geeksforgeeks.org/what-are-forward-declarations-in-c/)
+[关于 前向声明 的一些讨论](https://www.zhihu.com/question/63201378)
+
+## [C++: attributes](https://en.cppreference.com/w/cpp/language/attributes)
+[Some examples](https://www.geeksforgeeks.org/attributes-in-c/)
+
+## C++: fields 
+In C++ the code that defines the class would be split into two files: the first part specifies what member functions (methods) and data members (fields) the class will have.
+
+## C++: casting
+
+### [C++: static_cast operator](https://docs.microsoft.com/en-us/cpp/cpp/static-cast-operator?view=vs-2019)
+
+### C++: dynamic_cast operator
+[cf.](https://zhuanlan.zhihu.com/p/27966225)
+
+相比static_cast，dynamic_cast会在运行时检查类型转换是否合法，具有一定的安全性。由于运行时的检查，所以会额外消耗一些性能。
+
+注意类A和类B中定义了一个虚函数，这是不可缺少的。因为类中存在虚函数，说明它可能有子类，这样才有类型转换的情况发生，由于运行时类型检查需要运行时类型信息，而这个信息存储在类的虚函数表中，只有定义了虚函数的类才有虚函数表。
+
+[关于 使用 dynamic_cast 的一些讨论](https://www.zhihu.com/question/22445339/answer/85423807)
+
+## C++: 多线程 
+[原子操作与无锁编程](https://zhuanlan.zhihu.com/p/24983412)
+
+### [C++: volatile keyword](https://zhuanlan.zhihu.com/p/62060524)
+一般说来，volatile用在如下的几个地方：
+
+1. 中断服务程序中修改的供其它程序检测的变量需要加volatile；
+2. 多任务环境下各任务间共享的标志应该加volatile；
+3. 存储器映射的硬件寄存器通常也要加volatile说明，因为每次对它的读写都可能由不同意义；
+
+## [C++: vector 中保存指针的一些讨论](https://blog.csdn.net/qwezhaohaihong/article/details/51697181)
+vector完全可以存放指针, 只是往vector中添加元素时都是拷贝的元素副本, 所以相当于指针存了2份, 不安全.
+
+对于那些严谨的人，这可以，因为 STL 容器允许; 对于那些不严谨的人，最好不要这样。
+
+### [C++: 关于 vector 中保存 原生指针 还是 智能指针 的讨论](http://c.biancheng.net/view/482.html)
+
+## C++: lifetime of objects 
+
+### static and automatic objects 
+Global objects are allocated at program start-up and destroyed when the program ends. Local, automatic objects are created and destroyed when the block in which they are defined is entered and exited. Local static objects are allocated before their first use and are destroyed when the program ends.
+
+### dynamic objects 
+Dynamically allocated objects have a lifetime that is independent of where they are created; they exist until they are explicitly freed.
+
+### static, stack and heap memory 
+Our programs have used only static or stack memory. Static memory is used for local static objects, for class static data members, and for variables defined outside any function. Stack memory is used for nonstatic objects defined inside functions. Objects allocated in static or stack memory are automatically created and destroyed by the compiler. Stack objects exist only while the block in which they are defined is executing; static objects are allocated before they are used, and they are destroyed when the program ends.
+
+In addition to static or stack memory, every program also has a pool of memory that it can use. This memory is referred to as the free store or heap. Programs use the heap for objects that they dynamically allocate—that is, for objects that the program allocates at run time. The program controls the lifetime of dynamic objects; our code must explicitly destroy such objects when they are no longer needed.
+
+#### Dynamic memory allocation 
+Dynamic memory is problematic because it is surprisingly hard to ensure that we free memory at the right time. Either we forget to free the memory—in which case we have a memory leak—or we free the memory when there are still pointers referring to that memory—in which case we have a pointer that refers to memory that is no longer valid.
+
+### new and delete 
+In C++, dynamic memory is managed through a pair of operators: new, which allocates, and optionally initializes, an object in dynamic memory and returns a pointer to that object; and delete, which takes a pointer to a dynamic object, destroys that object, and frees the associated memory.
+
+### dangling pointer 
+A pointer that refers to memory that once had an object but no longer does. Program errors due to dangling pointers are notoriously difficult to debug.
+
+
 ## C++: CppCon 
 1. constexpr 
    1. [CppCon 2015: Scott Schurr “constexpr: Introduction”](https://www.youtube.com/watch?v=fZjYCQ8dzTc)
@@ -338,6 +496,10 @@ Anyway you shouldn't put a free (defined outside a class scope) non-inline funct
 1. static const -> static constexpr where we can. 
 2. #ifndef的意思只是说，同一个cpp里面不能被复制两遍，但是不同的cpp是分开编译的.
 3. #include <bits/stdc++.h> 包含了所有(??)标准库。
+4. 在一个类中，使用多个 access-specifier 可以起到 分割内容的作用，表示这一块内容与另一块内容不是紧密联系在一起的，能让用户和开发者更快了解类的内容和结构。
+5. In standard C++, no run-time type check is made to help ensure the safety of the conversion.
+6. 使用 #defined 宏设置一个值为 whitespace(空格) 的宏，实现一些辅助用户和开发者理清 class graph(即类继承层级). [参考](https://stackoverflow.com/questions/61546038/what-is-the-meaning-of-macro-in-front-of-class-definition-in-c)
+7. 
 
 ## C++ 工程搭建的注意点 
 1. 头文件与源文件, [C++ 为什么要分 头文件和源文件](https://www.zhihu.com/question/280665935/answer/421522451)：
@@ -369,13 +531,3 @@ Anyway you shouldn't put a free (defined outside a class scope) non-inline funct
 
 [一些参考](https://www.zhihu.com/question/51789910/answer/127603777)
       
-## g2o 
-
-### 一些博客及教程 
-[g2o学习笔记](https://www.jianshu.com/p/e16ffb5b265d)
-
-[g2o 小结](https://zhuanlan.zhihu.com/p/36889150)
-
-### [gauge freedom](https://www.quora.com/What-is-gauge-freedom-What-is-a-gauge-theory-in-GR-EM)
-
-### 
