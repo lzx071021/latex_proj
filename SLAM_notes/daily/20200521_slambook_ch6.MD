@@ -52,6 +52,8 @@
   - [C++: extern keyword](#c-extern-keyword)
   - [C++: scope resolution operator ::](#c-scope-resolution-operator-)
     - [C++: scope](#c-scope)
+  - [C++: storage classes](#c-storage-classes)
+    - [C++: mutable keyword](#c-mutable-keyword-1)
   - [C++: enum and enum class](#c-enum-and-enum-class)
   - [C++: identifiers](#c-identifiers)
   - [C++ object constructor and destructor](#c-object-constructor-and-destructor)
@@ -116,7 +118,7 @@
   - [C++: translation units and linkage](#c-translation-units-and-linkage)
     - [C++: internal linkage and external linkage](#c-internal-linkage-and-external-linkage)
       - [Scope and linkage](#scope-and-linkage)
-  - [C++: storage classes](#c-storage-classes)
+  - [C++: storage classes](#c-storage-classes-1)
   - [C++: constant expressions](#c-constant-expressionsc-constant-expressions)
   - [C++: nested classes](#c-nested-classes)
   - [C++: bitset class template](#c-bitset-class-template)
@@ -342,6 +344,24 @@ The extern keyword has four meanings depending on the context:
 
 ### [C++: scope](https://docs.microsoft.com/en-us/cpp/cpp/scope-visual-cpp?view=vs-2019)
 
+## [C++: storage classes](https://docs.microsoft.com/en-us/cpp/cpp/storage-classes-cpp?view=vs-2019)
+![Table of storage classes in C++](figures_ch6/cpp_storage_classes.png)
+
+A storage class in the context of C++ variable declarations is a type specifier that governs the lifetime, linkage, and memory location of objects.
+
+Storage class keywords: 
+  - auto 
+  - extern 
+  - static 
+  - register 
+  - mutable 
+
+static and extern are two of the keywords of the strorage classes.
+
+[A comprehensive elaboration](https://www.geeksforgeeks.org/storage-classes-in-c-with-examples/)
+
+### [C++: mutable keyword](https://docs.microsoft.com/en-us/cpp/cpp/mutable-data-members-cpp?view=vs-2019)
+
 ## [C++: enum and enum class](https://docs.microsoft.com/en-us/cpp/cpp/enumerations-cpp?view=vs-2019)
 elements in enum object can be accessed by everyone throught the scope where enum is defined.
 
@@ -425,6 +445,12 @@ BaseClass* p = new DerivedClass;
 
 ## [C++: explicit keyword](figures_ch6/cpp_explicit.pdf)
 在C++中explicit关键字只能用来修饰构造函数。使用explicit可以禁止编译器自动调用拷贝初始化，还可以禁止编译器对拷贝函数的参数进行隐式转换。
+
+[关于 explicit 使用的一些讨论](https://zhuanlan.zhihu.com/p/52152355)
+
+Author of *Effective C++* says: 
+
+> 被声明为explicit的构造函数通常比其 non-explicit 兄弟更受欢迎, 因为它们禁止编译器执行非预期 (往往也不被期望) 的类型转换. 除非我有一个好理由允许构造函数被用于隐式类型转换, 否则我会把它声明为explicit. 我鼓励你遵循相同的政策.
 
 ## C++: 函数作为参数 
 [关于一般写法的讨论](https://www.quora.com/How-do-I-pass-a-function-as-an-argument-to-another-function-in-c++-1)
