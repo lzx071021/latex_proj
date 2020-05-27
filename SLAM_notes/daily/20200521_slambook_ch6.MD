@@ -5,11 +5,13 @@
     - [C++ templates](#c-templates)
     - [Implicit conversions](#implicit-conversions)
     - [constexpr and const in C++](#constexpr-and-const-in-c)
+      - [C++: constexpr](#c-constexpr)
       - [Constant expressions](#constant-expressions)
         - [Expressions](#expressions)
       - [Literal (字面量)](#literal-字面量)
     - [Function prototype](#function-prototype)
   - [C++ static keyword](#c-static-keyword)
+    - [C++: static data members](#c-static-data-members)
   - [C++11 alias declarations (using) and typedef](#c11-alias-declarations-using-and-typedef)
   - [C++ namespace](#c-namespace)
   - [C++ list initialzation](#c-list-initialzation)
@@ -49,6 +51,9 @@
   - [C++: #pragma once](#c-pragma-once)
   - [C++: extern keyword](#c-extern-keyword)
   - [C++: scope resolution operator ::](#c-scope-resolution-operator-)
+    - [C++: scope](#c-scope)
+  - [C++: enum and enum class](#c-enum-and-enum-class)
+  - [C++: identifiers](#c-identifiers)
   - [C++ object constructor and destructor](#c-object-constructor-and-destructor)
   - [Vscode 调试 CMake 编译得到的可执行文件](#vscode-调试-cmake-编译得到的可执行文件)
   - [C++: void keyword](#c-void-keyword)
@@ -65,6 +70,8 @@
   - [C++: inheritance](#c-inheritance)
     - [C++: 虚函数(virtual function) 与 纯虚函数(pure virtual function) 与 抽象类(abstract class)](#c-虚函数virtual-function-与-纯虚函数pure-virtual-function-与-抽象类abstract-class)
       - [C++: virtual table (aka, vtable)](#c-virtual-table-aka-vtable)
+    - [C++: polymorphism](#c-polymorphism)
+      - [An elaborative illustration for runtime polymorphism](#an-elaborative-illustration-for-runtime-polymorphism)
   - [C++: 几种 for loop 写法的对比](#c-几种-for-loop-写法的对比)
   - [C++: 关于 accumulate 的一些用法](#c-关于-accumulate-的一些用法)
   - [C++: 造轮子: map and reduce](#c-造轮子-map-and-reduce)
@@ -105,6 +112,20 @@
       - [Dynamic memory allocation](#dynamic-memory-allocation)
     - [new and delete](#new-and-delete)
     - [dangling pointer](#dangling-pointer)
+  - [C++: friend keyword](#c-friend-keyword)
+  - [C++: translation units and linkage](#c-translation-units-and-linkage)
+    - [C++: internal linkage and external linkage](#c-internal-linkage-and-external-linkage)
+      - [Scope and linkage](#scope-and-linkage)
+  - [C++: storage classes](#c-storage-classes)
+  - [C++: constant expressions](#c-constant-expressionsc-constant-expressions)
+  - [C++: nested classes](#c-nested-classes)
+  - [C++: bitset class template](#c-bitset-class-template)
+  - [C++: unordered_map](#c-unordered_map)
+    - [C++: map vs unordered_map](#c-map-vs-unordered_map)
+  - [C++: const and non-const member functions](#c-const-and-non-const-member-functions)
+    - [在这种情况下，如何避免 写两次 同样的函数体 并 规避可能的 const 转换错误](#在这种情况下如何避免-写两次-同样的函数体-并-规避可能的-const-转换错误)
+      - [调用顺序不同会引发的问题](#调用顺序不同会引发的问题)
+    - [C++: const member functions](#c-const-member-functions)
   - [C++: CppCon](#c-cppcon)
   - [C++ tricks](#c-tricks)
   - [C++ 工程搭建的注意点](#c-工程搭建的注意点)
@@ -132,6 +153,17 @@
 
 简要地说：const 是 read-only, 只读； constexpr 才是 constant, 常量。
 
+**All constexpr variables are const.**
+
+#### [C++: constexpr](https://docs.microsoft.com/en-us/cpp/cpp/constexpr-cpp?view=vs-2019)
+The keyword constexpr was introduced in C++11 and improved in C++14. It means constant expression. Like const, it can be applied to variables: A compiler error is raised when any code attempts to modify the value. Unlike const, constexpr can also be applied to functions and class constructors. constexpr indicates that the value, or return value, is constant and, where possible, is computed at compile time.
+
+A constexpr integral value can be used wherever a const integer is required, such as in template arguments and array declarations. And when a value is computed at compile time instead of run time, it helps your program run faster and use less memory.
+
+To limit the complexity of compile-time constant computations, and their potential impacts on compilation time, the C++14 standard requires the types in constant expressions to be literal types.
+
+**A constexpr function or constructor is implicitly inline.**
+
 #### Constant expressions 
 An expression that can be evaluated at compile time. 
 
@@ -143,6 +175,15 @@ Expression evaluation may produce a result (e.g., evaluation of 2+2 produces the
 #### Literal (字面量)
 [字面量，常量和变量之间的区别](https://www.jianshu.com/p/0f2816805da6)
 
+A literal type is one whose layout can be determined at compile time. The following are the literal types:
+
+- void
+- scalar types
+- references
+- Arrays of void, scalar types or references
+
+A class that has a trivial destructor, and one or more constexpr constructors that are not move or copy constructors. Additionally, all its non-static data members and base classes must be literal types and not volatile.
+
 ### [Function prototype](https://codescracker.com/cpp/cpp-function-definition.htm)
 
 ## [C++ static keyword](figures_ch6/cpp_static.pdf)
@@ -151,6 +192,17 @@ Expression evaluation may produce a result (e.g., evaluation of 2+2 produces the
 First, static specifier when used on global variables limits the variable's scope to the source file in which it is defined.
 
 Second, static and extern specifiers are mutually exclusive therefore declaration of a static variable is also it's definition (tentative definition in particular).
+
+**结合 C++ 程序的 memory 来思考 static keyword**
+
+### [C++: static data members](https://docs.microsoft.com/en-us/cpp/cpp/static-members-cpp?view=vs-2019)
+Classes can contain static member data and member functions. When a data member is declared as static, only one copy of the data is maintained for all objects of the class.
+
+Static data members are not part of objects of a given class type. As a result, the declaration of a static data member is not considered a definition. The data member is declared in class scope, but definition is performed at file scope. These static members have external linkage.
+
+Static data members are subject to class-member access rules, so private access to static data members is allowed only for class-member functions and friends. These rules are described in Member-Access Control. The exception is that static data members must be defined in file scope regardless of their access restrictions. If the data member is to be explicitly initialized, an initializer must be provided with the definition.
+
+The type of a static member is not qualified by its class name. Therefore, the type of BufferedOutput::bytecount is long.
 
 ## C++11 alias declarations (using) and typedef 
 cf. Effective Modern C++  Item 9: Prefer alias declarations to typedefs. 
@@ -275,8 +327,30 @@ e.g. const T * const x;
 ## [C++: #pragma once](https://zh.wikipedia.org/wiki/Pragma_once)
 
 ## [C++: extern keyword](https://stackoverflow.com/a/10422049)
+[cf.](https://docs.microsoft.com/en-us/cpp/cpp/extern-cpp?view=vs-2019)
+
+The extern keyword has four meanings depending on the context:
+1. In a non-const global variable declaration, extern specifies that the variable or function is defined in another translation unit. The extern must be applied in all files except the one where the variable is defined.
+2. In a const variable declaration, it specifies that the variable has external linkage. The extern must be applied to all declarations in all files. (Global const variables have internal linkage by default.)
+3. extern "C" specifies that the function is defined elsewhere and uses the C-language calling convention. The extern "C" modifier may also be applied to multiple function declarations in a block.
+4. In a template declaration, extern specifies that the template has already been instantiated elsewhere. extern tells the compiler it can reuse the other instantiation, rather than create a new one at the current location. For more information about this use of extern, see Explicit instantiation.
 
 ## [C++: scope resolution operator ::](https://stackoverflow.com/a/15649663)
+[The purposes to use scope resolution operator](https://www.geeksforgeeks.org/scope-resolution-operator-in-c/)
+
+[Some supplementary materials](https://docs.microsoft.com/en-us/cpp/cpp/scope-resolution-operator?view=vs-2019)
+
+### [C++: scope](https://docs.microsoft.com/en-us/cpp/cpp/scope-visual-cpp?view=vs-2019)
+
+## [C++: enum and enum class](https://docs.microsoft.com/en-us/cpp/cpp/enumerations-cpp?view=vs-2019)
+elements in enum object can be accessed by everyone throught the scope where enum is defined.
+
+elements in enum class object can only be accessed using scope resolution operator ::, hence scoped enums. The "class" here indicates encapsulation.
+
+## [C++: identifiers](https://www.w3schools.com/cpp/cpp_variables_identifiers.asp)
+All C++ variables must be identified with unique names.
+
+These unique names are called identifiers.
 
 ## C++ object constructor and destructor 
 [简单的使用示例](https://www.runoob.com/cplusplus/cpp-constructor-destructor.html)
@@ -324,6 +398,18 @@ Anyway you shouldn't put a free (defined outside a class scope) non-inline funct
 [Another illustration for virtual function](https://www.geeksforgeeks.org/virtual-function-cpp/)
 
 #### [C++: virtual table (aka, vtable)](figures_ch6/cpp_vtable.pdf)
+
+### C++: polymorphism 
+[A brief illustration](https://www.geeksforgeeks.org/polymorphism-in-c/)
+
+#### [An elaborative illustration for runtime polymorphism](https://www.geeksforgeeks.org/virtual-functions-and-runtime-polymorphism-in-c-set-1-introduction/)
+一个指针分两个部分：它实际所指向的内存，及它的类型。实际情况下，指针所指向的内存可以不保存相应类型的数据，这为 运行时多态 提供了支持。 e.g. 
+
+BaseClass* p = new DerivedClass; 
+
+这种情况下，尽管 p 的类型(等号左边)是指向 BaseClass 的指针，但实际所指向的内存保存的是 DerivedClass 类型的数据。因此，当我们 dereference p 时，得到的是 DerivedClass 类型的 Object, 所调用的 函数和数据成员 也是 DerivedClass 的。
+
+运行时多态 通过 vtable(虚函数表) 及 vptr 实现。
 
 ## [C++: 几种 for loop 写法的对比](https://www.zhihu.com/question/54671272)
 1. Regular for 
@@ -392,9 +478,6 @@ Unlike shared_ptr, *there is no library function*(Now, we have make_unique) comp
 A weak_ptr is a smart pointer that does not control the lifetime of the object to which it points. Instead, a weak_ptr points to an object that is managed by a shared_ptr. Binding a weak_ptr to a shared_ptr does not change the reference count of that shared_ptr. Once the last shared_ptr pointing to the object goes away, the object itself will be deleted. That object will be deleted even if there are weak_ptrs pointing to it—hence the name weak_ptr, which captures the idea that a weak_ptr shares its object “weakly.”
 
 When we create a weak_ptr, we initialize it from a shared_ptr.
-
-
-
 
 #### Purposes to use the shared_ptr 
 Programs tend to use dynamic memory for one of three purposes: 
@@ -482,6 +565,60 @@ In C++, dynamic memory is managed through a pair of operators: new, which alloca
 ### dangling pointer 
 A pointer that refers to memory that once had an object but no longer does. Program errors due to dangling pointers are notoriously difficult to debug.
 
+## C++: friend keyword 
+[A comprehensive illustration](https://docs.microsoft.com/en-us/cpp/cpp/friend-cpp?view=vs-2019)
+
+[A brief but useful illustration about friend keyword](https://www.geeksforgeeks.org/friend-class-function-cpp/)
+
+## [C++: translation units and linkage](https://docs.microsoft.com/en-us/cpp/cpp/program-and-linkage-cpp?view=vs-2019)
+
+### [C++: internal linkage and external linkage](https://stackoverflow.com/a/1358622/11240780)
+When you write an implementation file (.cpp, .cxx, etc) your compiler generates a translation unit. This is the source file from your implementation plus all the headers you #included in it.
+
+Internal linkage refers to everything only in scope of a translation unit.
+
+External linkage refers to things that exist beyond a particular translation unit. In other words, accessible through the whole program, which is the combination of all translation units (or object files).
+
+[A comprehensive illustration about linkage](http://www.goldsborough.me/c/c++/linker/2016/03/30/19-34-25-internal_and_external_linkage_in_c++/)
+
+#### [Scope and linkage](https://www.geeksforgeeks.org/internal-linkage-external-linkage-c/)
+Until the compilation process, a variable can be described by it’s scope. It is only when the linking process starts, that linkage property comes into play. Thus, scope is a property handled by compiler, whereas linkage is a property handled by linker.
+
+Another property of internal linkage is that it is only implemented when the variable has global scope, and all constants are by default internally linked. 
+
+The keyword extern implements external linkage.
+When we use the keyword extern, we tell the linker to look for the definition elsewhere. Thus, the declaration of an externally linked identifier does not take up any space. Extern identifiers are generally stored in initialized/uninitialized or text segment of RAM.
+
+## [C++: storage classes](https://docs.microsoft.com/en-us/cpp/cpp/storage-classes-cpp?view=vs-2019)
+// TODO 
+
+## [C++: constant expressions](C++ Constant Expressions)
+
+## [C++: nested classes](https://www.geeksforgeeks.org/nested-classes-in-c/)
+
+## [C++: bitset class template](https://www.geeksforgeeks.org/c-bitset-and-its-application/)
+#include <bitset>
+
+## [C++: unordered_map](https://www.geeksforgeeks.org/unordered_map-in-cpp-stl/)
+
+### [C++: map vs unordered_map](https://www.geeksforgeeks.org/map-vs-unordered_map-c/)
+
+## C++: const and non-const member functions
+[关于为什么要实现两个版本的讨论](https://www.zhihu.com/question/56595528)
+
+> 它不是为了专门给你non-const对象和const对象用的。重载const和non-const，最经常用的地方就是获取成员信息部分，因为你获取成员有可能只是为了读取，有可能是为了修改。例如operator[]的重载 大部分都有两个版本，比如std::vector，你可以用auto n = v[0]  这里调用operator[] 只是为了读取，所以可能是调用const版本。当你要修改的时候 v[0] = 1 肯定要用non-const 版本。当然这个例子看不出什么区别，指效率方面，但当你用了一些，比如ProxyClass之类的，读和取的效率已经有明显差别了，那就体现出作用了。
+
+放在 前面 的 const 用来修饰函数的返回值(例如引用和指针); 放在 后面 的 const 用来(给编译器)说明，这个成员函数不会修改任何成员变量。 
+
+在实现 getter 成员函数时，通常将这两个 const 都加上。
+
+### [在这种情况下，如何避免 写两次 同样的函数体 并 规避可能的 const 转换错误](https://stackoverflow.com/questions/123758/how-do-i-remove-code-duplication-between-similar-const-and-non-const-member-func/123995)
+Brief illustration: To avoid the code duplication, there is a temptation to call one method from another. However, we can not call non-const method from the const one. But we can call const method from non-const one. That will require as to use 'const_cast' to remove the const qualifier.
+
+#### [调用顺序不同会引发的问题](https://blog.csdn.net/lanchunhui/article/details/50715987)
+
+### C++: const member functions
+Declaring a member function with the const keyword specifies that the function is a "read-only" function that does not modify the object for which it is called. A constant member function cannot modify any non-static data members or call any member functions that aren't constant.To declare a constant member function, place the const keyword after the closing parenthesis of the argument list. The const keyword is required in both the declaration and the definition.
 
 ## C++: CppCon 
 1. constexpr 
