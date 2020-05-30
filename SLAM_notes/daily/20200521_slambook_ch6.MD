@@ -72,6 +72,9 @@
   - [C++: inheritance](#c-inheritance)
     - [C++: 虚函数(virtual function) 与 纯虚函数(pure virtual function) 与 抽象类(abstract class)](#c-虚函数virtual-function-与-纯虚函数pure-virtual-function-与-抽象类abstract-class)
       - [C++: virtual table (aka, vtable)](#c-virtual-table-aka-vtable)
+      - [C++: override specifier](#c-override-specifier)
+      - [C++: final specifier](#c-final-specifier)
+      - [C++: abstract class](#c-abstract-class)
     - [C++: polymorphism](#c-polymorphism)
       - [An elaborative illustration for runtime polymorphism](#an-elaborative-illustration-for-runtime-polymorphism)
   - [C++: 几种 for loop 写法的对比](#c-几种-for-loop-写法的对比)
@@ -94,7 +97,7 @@
       - [C++: make_shared](#c-make_shared)
   - [C++: private, protected, public keyword](#c-private-protected-public-keyword)
     - [C++: Inheritance access specifiers](#c-inheritance-access-specifiers)
-  - [C++: override specifier](#c-override-specifier)
+  - [C++: override specifier](#c-override-specifier-1)
     - [C++: 纯说明符(= 0)与抽象类](#c-纯说明符-0与抽象类)
   - [C++: explicit default constructor,  = default](#c-explicit-default-constructor--default)
   - [C++: 前向声明(forward declaration)](#c-前向声明forward-declaration)
@@ -128,6 +131,10 @@
     - [在这种情况下，如何避免 写两次 同样的函数体 并 规避可能的 const 转换错误](#在这种情况下如何避免-写两次-同样的函数体-并-规避可能的-const-转换错误)
       - [调用顺序不同会引发的问题](#调用顺序不同会引发的问题)
     - [C++: const member functions](#c-const-member-functions)
+  - [C++: deep copy and shallow copy](#c-deep-copy-and-shallow-copy)
+  - [C++: friend struct/class](#c-friend-structclass)
+  - [C++: (void) variables](#c-void-variables)
+  - [C++: assert macro](#c-assert-macro)
   - [C++: CppCon](#c-cppcon)
   - [C++ tricks](#c-tricks)
   - [C++ 工程搭建的注意点](#c-工程搭建的注意点)
@@ -417,7 +424,17 @@ Anyway you shouldn't put a free (defined outside a class scope) non-inline funct
 
 [Another illustration for virtual function](https://www.geeksforgeeks.org/virtual-function-cpp/)
 
+[A very good illustration about virtual function](https://docs.microsoft.com/en-us/cpp/cpp/virtual-functions?view=vs-2019)
+
+The virtual keyword can be used when declaring overriding functions in a derived class, but it is unnecessary; overrides of virtual functions are always virtual.
+
 #### [C++: virtual table (aka, vtable)](figures_ch6/cpp_vtable.pdf)
+
+#### [C++: override specifier](https://docs.microsoft.com/en-us/cpp/cpp/override-specifier?view=vs-2019)
+
+#### [C++: final specifier](https://docs.microsoft.com/en-us/cpp/cpp/final-specifier?view=vs-2019)
+
+#### [C++: abstract class](https://docs.microsoft.com/en-us/cpp/cpp/abstract-classes-cpp?view=vs-2019)
 
 ### C++: polymorphism 
 [A brief illustration](https://www.geeksforgeeks.org/polymorphism-in-c/)
@@ -539,7 +556,8 @@ Of course, ordinarily we use auto (§ 2.5.2, p. 68) to make it easier to define 
 ## C++: fields 
 In C++ the code that defines the class would be split into two files: the first part specifies what member functions (methods) and data members (fields) the class will have.
 
-## C++: casting
+## [C++: casting](https://docs.microsoft.com/en-us/cpp/cpp/casting?view=vs-2019)
+[A comprehensive illustration about the explicit casting specifiers](https://www.cnblogs.com/chio/archive/2007/07/18/822389.html)
 
 ### [C++: static_cast operator](https://docs.microsoft.com/en-us/cpp/cpp/static-cast-operator?view=vs-2019)
 
@@ -645,6 +663,17 @@ Brief illustration: To avoid the code duplication, there is a temptation to call
 
 ### C++: const member functions
 Declaring a member function with the const keyword specifies that the function is a "read-only" function that does not modify the object for which it is called. A constant member function cannot modify any non-static data members or call any member functions that aren't constant.To declare a constant member function, place the const keyword after the closing parenthesis of the argument list. The const keyword is required in both the declaration and the definition.
+
+## [C++: deep copy and shallow copy](https://stackoverflow.com/questions/184710/what-is-the-difference-between-a-deep-copy-and-a-shallow-copy)
+[A comprehensive illustration](https://en.wikipedia.org/wiki/Object_copying#Shallow_copy)
+
+## [C++: friend struct/class](https://stackoverflow.com/a/26538429/11240780)
+
+## [C++: (void) variables](https://stackoverflow.com/a/7354823/11240780)
+It works around some compiler warnings. Some compilers will warn if you don't use a function parameter. In such a case, you might have deliberately not used that parameter, not be able to change the interface for some reason, but still want to shut up the warning. That (void) casting construct is a no-op that makes the warning go away.
+
+## [C++: assert macro](http://www.cplusplus.com/reference/cassert/assert/)
+[A trick: combined with *&&*](https://stackoverflow.com/a/3692961/11240780)
 
 ## C++: CppCon 
 1. constexpr 
