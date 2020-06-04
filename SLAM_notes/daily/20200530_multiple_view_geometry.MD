@@ -27,6 +27,7 @@ Multiple View Geometry
       - [双射(bijective)](#双射bijective)
     - [同构(isomorphism) 和 同态(homomorphism)](#同构isomorphism-和-同态homomorphism)
   - [Condition and Stability](#condition-and-stability)
+  - [domain, codomain, and range](#domain-codomain-and-range)
   - [](#-1)
 
 # The course 
@@ -118,5 +119,7 @@ The lecture introduces the basic concepts of image formation - perspective proje
 ![](mvg/homomorphsim_definition.png)
 
 ## [Condition and Stability](mvg/condition_and_stability.pdf)
+
+## [domain, codomain, and range](mvg/domain_codomain_range.png)
 
 ## 
