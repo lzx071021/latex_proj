@@ -17,7 +17,6 @@ Multiple View Geometry
         - [正规的定义](#正规的定义)
         - [一种条件较弱，但使用更加方便的等价的群定义](#一种条件较弱但使用更加方便的等价的群定义)
       - [环(ring)) 和 [域(field)](https://en.wikipedia.org/wiki/Field_(mathematics))](#环ring-和-域field)
-  - [Lie group](#lie-group)
   - [bilinear form](#bilinear-form)
     - [bilinear map](#bilinear-map)
   - [mapping](#mapping)
@@ -35,6 +34,12 @@ Multiple View Geometry
   - [Two forms of Taylor expansion](#two-forms-of-taylor-expansion)
   - [A brief illustration about manifold](#a-brief-illustration-about-manifold)
   - [Matrix exponential](#matrix-exponential)
+  - [Scalar triple product and its geometry meaning](#scalar-triple-product-and-its-geometry-meaning)
+    - [Cross product and its geometry meaning](#cross-product-and-its-geometry-meaning)
+  - [What is algebra ?](#what-is-algebra-)
+    - [What is linear algebra ?](#what-is-linear-algebra-)
+  - [A brief introduction to topological space (拓扑空间)](#a-brief-introduction-to-topological-space-拓扑空间)
+  - [](#)
 
 # The course 
 The lecture introduces the basic concepts of image formation - perspective projection and camera motion. The goal is to reconstruct the three-dimensional world and the camera motion from multiple images. To this end, one determines correspondences between points in various images and respective constraints that allow to compute motion and 3D structure. A particular emphasis of the lecture is on mathematical descriptions of rigid body motion and of perspective projection. For estimating camera motion and 3D geometry we will make use of both spectral methods and methods of nonlinear optimization.
@@ -91,8 +96,6 @@ The lecture introduces the basic concepts of image formation - perspective proje
 ![](mvg/aa_ring_02.png)
 ![](mvg/aa_ring_03.png)
 
-## [Lie group](https://en.wikipedia.org/wiki/Lie_group)
-
 ## [bilinear form](https://en.wikipedia.org/wiki/Bilinear_form)
 
 ### [bilinear map](https://en.wikipedia.org/wiki/Bilinear_map)
@@ -141,3 +144,14 @@ Being an arrow, a Euclidean vector possesses a definite initial point and termin
 ## [A brief illustration about manifold](https://mathworld.wolfram.com/Manifold.html)
 
 ## [Matrix exponential](https://en.wikipedia.org/wiki/Matrix_exponential)
+
+## [Scalar triple product and its geometry meaning](https://mathinsight.org/scalar_triple_product)
+### [Cross product and its geometry meaning](https://mathinsight.org/cross_product)
+
+## [What is algebra ?](https://en.wikipedia.org/wiki/Algebra)
+### [What is linear algebra ?](https://en.wikipedia.org/wiki/Linear_algebra)
+
+## [A brief introduction to topological space (拓扑空间)](https://zhuanlan.zhihu.com/p/54516805)
+[A useful discussion about topological space](https://math.stackexchange.com/questions/137944/meaning-of-topology-and-topological-space/523794)
+
+## 
