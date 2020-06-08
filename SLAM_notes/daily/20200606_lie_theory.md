@@ -11,7 +11,36 @@ Lie Theory
   - [Edge and corner in feature detection](#edge-and-corner-in-feature-detection)
     - [Edge](#edge)
     - [Corner](#corner)
-  - [](#)
+  - [An interesting and insightful video about topology](#an-interesting-and-insightful-video-about-topology)
+  - [manifold](#manifold)
+    - [Atlas](#atlas)
+      - [What is atlas on Earth?](#what-is-atlas-on-earth)
+    - [Why an n-sphere?](#why-an-n-sphere)
+      - [implicit and explicit representation](#implicit-and-explicit-representation)
+  - [Tensor](#tensor)
+  - [Topology](#topology)
+  - [surjective mapping and onto mapping](#surjective-mapping-and-onto-mapping)
+  - [同构、同态、同胚](#同构同态同胚)
+  - [群中的同构和同态](#群中的同构和同态)
+  - [bilinear map](#bilinear-map)
+  - [对数学的整体的把握](#对数学的整体的把握)
+    - [数学的四个角度观察一个数学对象](#数学的四个角度观察一个数学对象)
+  - [Visualizaing quaternions](#visualizaing-quaternions)
+  - [Countable set and countably infinite set](#countable-set-and-countably-infinite-set)
+  - [A complete elaboration for injection, surjection and bijection](#a-complete-elaboration-for-injection-surjection-and-bijection)
+  - [homeomorphism is a bijection.](#homeomorphism-is-a-bijection)
+  - [Why figure-8 is not a manifold?](#why-figure-8-is-not-a-manifold)
+  - [A comprehensive elaboration of group homomorphism](#a-comprehensive-elaboration-of-group-homomorphism)
+  - [Group](#group)
+    - [An element of a group is just like an element of a set.](#an-element-of-a-group-is-just-like-an-element-of-a-set)
+    - [Group action](#group-action)
+      - [Group of transformations](#group-of-transformations)
+    - [Group theory is all about symmetry](#group-theory-is-all-about-symmetry)
+    - [Symmetry group](#symmetry-group)
+      - [Isometry group](#isometry-group)
+        - [Isometry](#isometry)
+          - [Symmetry](#symmetry)
+  - [metric space and topological space](#metric-space-and-topological-space)
 
 # Lie theory: Lie group and Lie algebra
 ## Why we need Lie theory ? 
@@ -34,4 +63,126 @@ What we want is a unconstrained optimization problem, so the ones with constrain
 ### [Edge](https://computervision.fandom.com/wiki/Edge)
 ### [Corner](https://computervision.fandom.com/wiki/Corner_detection)
 
-## 
+## [An interesting and insightful video about topology](https://www.youtube.com/watch?v=AmgkSdhK4K8)
+
+## manifold
+main cf. [Manifolds: A gentle introduction](http://bjlkeng.github.io/posts/manifolds/)
+
+[A compact and visualizing elaboration for manifold](https://www.youtube.com/watch?v=zIjBArHTPZ4)
+
+[和上面这个视频差不多意思的解释，不过解释了更多的名词，并且是系列视频，还讲了其他的](https://www.youtube.com/watch?v=NI1TW-LcHtI&list=PLeFwDGOexoe8cjplxwQFMvGLSxbOTUyLv&index=2), 该系列视频2，3，5有价值。
+
+[What does "smoothness" mean wrt. a manifold ?](https://math.stackexchange.com/a/3709008/681195)
+
+“天地有正气，杂然赋流形” -- 文天祥。
+
+其实流形并不是什么神秘的东西，它的英文是"Manifold","流形"这一翻译主要源于文天祥的诗句"天地有正气，杂然赋流形","流形"实际就是意指世界万物。我们过去研究的几何对象总是在标准的欧氏空间中进行的，但世界并不是我们所期待地那么规则，这个时候就有了"流形"的概念。从直观上说，"流形"是可以在局部等同于欧氏空间的一些对象。
+
+### [Atlas](https://en.wikipedia.org/wiki/Differentiable_manifold#Atlases)
+[补充材料](https://en.wikipedia.org/wiki/Atlas_(topology))
+
+#### What is atlas on Earth?
+TODO
+
+### [Why an n-sphere?](https://math.stackexchange.com/a/800240/681195)
+[Quora discussion: Is a sphere 3D or 2D](https://www.quora.com/Is-a-sphere-3D-or-2D)
+#### implicit and explicit representation 
+"Modern Robotics:  Mechanics, Planning, and Control" series course. 
+
+[Configuration Space topology](https://www.youtube.com/watch?v=FyLNR3edOds&list=PLggLP4f-rq02vX0OQQ5vrCxbJrzamYDfx&index=6)
+
+[Configuration Space configuration](https://www.youtube.com/watch?v=PPgJPjCUIXU&list=PLggLP4f-rq02vX0OQQ5vrCxbJrzamYDfx&index=7)
+
+
+## Tensor 
+[A very brief and low-level explanation about tensor](https://zhuanlan.zhihu.com/p/48982978), 有点错误！
+
+[一篇看起来不错的博客，不过感觉只是从一个角度解释了张量](http://bjlkeng.github.io/posts/tensors-tensors-tensors/)
+
+[一个非常有趣从物理的角度解释张量的系列视频](https://www.youtube.com/watch?v=8ptMTLzV4-I&list=PLJHszsWbB6hrkmmq57lX8BV-o-YIOFsiG), 这里还有一个与该视频作者 consistent 的张量的第三种定义方式的[文字解释](https://math.stackexchange.com/a/10374/681195)
+
+[另外一个系列视频，看起来好像是从 multidimensional array 的角度解释张量](https://www.youtube.com/watch?v=uaQeXi4E7gA&feature=youtu.be)
+
+## Topology 
+[An illustration about topology based on a concrete problem](https://youtu.be/AmgkSdhK4K8)
+
+
+## surjective mapping and onto mapping
+They are the same.
+
+## 同构、同态、同胚
+[它们之间的区别概述](https://www.zhihu.com/question/31638975), 以及[这篇回答的 English counterpart](https://math.stackexchange.com/a/585801/681195)
+
+## [群中的同构和同态](https://www.jianshu.com/p/5aea006393bb)
+
+## bilinear map 
+TODO
+
+## 对数学的整体的把握
+[某MIT学生对现代数学的思考与略述](https://dahuasky.wordpress.com/2009/01/22/%E5%9C%A8%E6%95%B0%E5%AD%A6%E7%9A%84%E6%B5%B7%E6%B4%8B%E4%B8%AD%E9%A3%98%E8%8D%A1/)
+
+[二十世纪的数学](https://zhuanlan.zhihu.com/p/59488122)
+
+### 数学的四个角度观察一个数学对象 
+**参考 a micro Lie theory ...** paper.
+geometry 
+algebra 
+TODO 
+
+## [Visualizaing quaternions](https://www.youtube.com/watch?v=d4EgbgTm0Bg)
+
+## [Countable set and countably infinite set](https://en.wikipedia.org/wiki/Countable_set#Definition)
+
+## [A complete elaboration for injection, surjection and bijection](https://en.wikipedia.org/wiki/Bijection,_injection_and_surjection)
+
+## homeomorphism is a bijection.
+
+## [Why figure-8 is not a manifold?](https://www.quora.com/Why-is-figure-8-not-a-manifold)
+From definition and from tangent space.
+
+## [A comprehensive elaboration of group homomorphism](https://en.wikipedia.org/wiki/Group_homomorphism)
+
+## Group
+[A very low-level but (perhaps) useful introduction to group theory](lie/Symmetry%20and%20Group%20Theory.pdf)
+
+> The easy answer is that group theory is a perfect tool for studying symmetry, but group theory is not confined to the study of symmetry. It's useful for other things like abstract algebra and dynamical systems and just lots of things.
+### An element of a group is just like an element of a set.
+### [Group action](https://en.wikipedia.org/wiki/Group_action)
+[More about group action](https://mathworld.wolfram.com/GroupAction.html)
+#### [Group of transformations](https://www.quora.com/What-is-a-group-of-transformations-in-mathematics)
+### Group theory is all about symmetry 
+[A mathexchange discussion](https://math.stackexchange.com/a/2514123/681195)
+
+[A 3Blue1Blown video](https://www.youtube.com/watch?v=mvmuCPvRoWQ), this video illustrates the idea of symmetry and group action.
+
+This video states that "**a group is a collection of symmetric actions on some mathematical object**." 并以 实数线 这一简单的例子解释了group theory 的很多概念，包括 group homomorphism that preserves the group structure.
+
+It states: homo = same, morph = shape, homomorphism = same-shape-ism.
+
+### [Symmetry group](https://en.wikipedia.org/wiki/Symmetry_group)
+#### [Isometry group](https://en.wikipedia.org/wiki/Isometry_group)
+##### [Isometry](https://en.wikipedia.org/wiki/Isometry)
+###### Symmetry 
+[What is symmetry?](https://qr.ae/pNKThE)
+
+A symmetry is a transformation that preserves some structure.
+
+Rotating a hexagon by one-sixth of a full turn puts it back where it started, preserving the placement of vertices and edges. That's a symmetry.
+
+Shifting every real number up by some fixed amount preserves the order of the numbers, as well as their relative distances. That's a symmetry. Shifting the numbers by 1 is a special case where more structure is preserved: the property of being an integer.
+
+Symmetries can be combined: if you have a symmetry A, and a symmetry B, you can perform A and then perform B to obtain another symmetry which will (often) be different from A and B. Rotating a hexagon twice by 1/6 of a turn yields a rotation by 1/3 of a turn, which is also a symmetry of the hexagon.
+
+The set of all symmetries of any object forms a group, in which the successive combination of symmetries forms the operation of multiplication. 
+
+You should not assume that the group itself is symmetric (though it is, too, in an appropriate sense). Group theory is the study of symmetry not because groups are nice and symmetric, but because groups describe how the symmetries of any object can be combined together, how they interplay and coexist.
+
+## metric space and topological space 
+[metric space](https://en.wikipedia.org/wiki/Metric_space)
+
+A metric on a space induces topological properties like open and closed sets, which lead to the study of more abstract topological spaces.
+
+
+
+
+

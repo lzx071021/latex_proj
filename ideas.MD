@@ -4,3 +4,5 @@
 > In the remainder of this document we will first characterize the (hyper) graph-embeddable problems, and we will give an introduction to their solution via the popular Levenberg-Marquardt or Gauss-Newton algorithms implemented in this library. Subsequently, we will describe the high-level behavior of the library, and the basic structures. Finally, we will introduce how to implement 2D SLAM as a simple example.
 4. class diagram 来展现代码结构 
 5. 
+
+# 用一些新的数学思维、理论解释当前的SLAM / 视觉SLAM，形成一个（至少看起来）能自圆其说的框架。
