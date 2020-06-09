@@ -6,6 +6,7 @@ Lie Theory
   - [Why we need Lie theory ?](#why-we-need-lie-theory-)
     - [Why we discard other rotation representations (parameterizations) ?](#why-we-discard-other-rotation-representations-parameterizations-)
   - [What is Lie theory ?](#what-is-lie-theory-)
+  - [Adjoint representation / action](#adjoint-representation--action)
   - [Applications of Lie theory](#applications-of-lie-theory)
 - [Miscellaneous notes](#miscellaneous-notes)
   - [Edge and corner in feature detection](#edge-and-corner-in-feature-detection)
@@ -40,7 +41,12 @@ Lie Theory
       - [Isometry group](#isometry-group)
         - [Isometry](#isometry)
           - [Symmetry](#symmetry)
+    - [multiplicative group](#multiplicative-group)
+    - [additive group](#additive-group)
   - [metric space and topological space](#metric-space-and-topological-space)
+  - [laws](#laws)
+  - [Twist in Robotics](#twist-in-robotics)
+  - [ESKF相关](#eskf相关)
 
 # Lie theory: Lie group and Lie algebra
 ## Why we need Lie theory ? 
@@ -53,6 +59,9 @@ There are several ways to parameterize rotations (e.g., rotation ma- trix, Euler
 What we want is a unconstrained optimization problem, so the ones with constraints (e.g. rotations matrix, quaternion) and the ones whose space is local in that it cannot cover the range of all rotations (e.g. Euler angles). Hence, we choose to use Lie group and Lie algebra which can bypass the issues listed above.
 
 ## What is Lie theory ?
+
+
+## [Adjoint representation / action](https://en.wikipedia.org/wiki/Adjoint_representation#)
 
 ## Applications of Lie theory 
 1. [运用在机器人轨迹插值中，实现连续(光滑)插值](https://zhuanlan.zhihu.com/p/110006284)
@@ -177,10 +186,28 @@ The set of all symmetries of any object forms a group, in which the successive c
 
 You should not assume that the group itself is symmetric (though it is, too, in an appropriate sense). Group theory is the study of symmetry not because groups are nice and symmetric, but because groups describe how the symmetries of any object can be combined together, how they interplay and coexist.
 
+### [multiplicative group](https://mathworld.wolfram.com/MultiplicativeGroup.html)
+
+### [additive group](https://mathworld.wolfram.com/AdditiveGroup.html)
+
 ## metric space and topological space 
 [metric space](https://en.wikipedia.org/wiki/Metric_space)
 
 A metric on a space induces topological properties like open and closed sets, which lead to the study of more abstract topological spaces.
+
+## laws 
+commutative law  
+associative law 
+distributive law 
+
+## [Twist in Robotics](https://en.wikipedia.org/wiki/Screw_theory#Twist)
+[An illustrative short video](https://www.youtube.com/watch?v=mvGZtO_ruj0)
+
+## ESKF相关 
+[A blog](https://blog.csdn.net/wubaobao1993/article/details/84327700)
+
+[相关的论文]()
+
 
 
 
