@@ -47,6 +47,11 @@ Lie Theory
   - [laws](#laws)
   - [Twist in Robotics](#twist-in-robotics)
   - [ESKF相关](#eskf相关)
+  - [n-sphere](#n-sphere)
+    - [3-sphere](#3-sphere)
+  - [degree of freedom](#degree-of-freedom)
+  - [Rotation formalisms in three dimensions](#rotation-formalisms-in-three-dimensions)
+    - [Axis-angle representation](#axis-angle-representation)
 
 # Lie theory: Lie group and Lie algebra
 ## Why we need Lie theory ? 
@@ -207,6 +212,21 @@ distributive law
 [A blog](https://blog.csdn.net/wubaobao1993/article/details/84327700)
 
 [相关的论文]()
+TODO 
+
+## [n-sphere](https://en.wikipedia.org/wiki/N-sphere)
+### [3-sphere](https://en.wikipedia.org/wiki/3-sphere)
+[How to visualize the 3-sphere(n-sphere)?](https://www.quora.com/How-can-one-visualize-a-3-sphere)
+
+[A 3Blue1Blown video for visualizing the quaternion space(a 3-sphere)](https://www.youtube.com/watch?v=d4EgbgTm0Bg&feature=emb_rel_pause)
+
+[A interesting discusion: Do we live in 3D space?](https://www.quora.com/Do-we-live-in-a-3-dimensional-space-or-a-4-dimensional-one)
+
+## [degree of freedom](https://en.wikipedia.org/wiki/Degrees_of_freedom)
+dof of manifold = dim of manifold
+
+## [Rotation formalisms in three dimensions](https://en.wikipedia.org/wiki/Rotation_formalisms_in_three_dimensions)
+### [Axis-angle representation](https://en.wikipedia.org/wiki/Axis%E2%80%93angle_representation)
 
 
 
