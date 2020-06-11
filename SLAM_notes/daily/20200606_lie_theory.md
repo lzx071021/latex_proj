@@ -50,8 +50,14 @@ Lie Theory
   - [n-sphere](#n-sphere)
     - [3-sphere](#3-sphere)
   - [degree of freedom](#degree-of-freedom)
+    - [degree of freedom in mechanics, generalizable to math](#degree-of-freedom-in-mechanics-generalizable-to-math)
   - [Rotation formalisms in three dimensions](#rotation-formalisms-in-three-dimensions)
     - [Axis-angle representation](#axis-angle-representation)
+  - [Solving differential equations (DE)](#solving-differential-equations-de)
+  - [Eigen notes](#eigen-notes)
+  - [A Python symbolic calculation package: SymPy](#a-python-symbolic-calculation-package-sympy)
+  - [The reason why we can set $\omega$ as a constant in exponential map derivation](#the-reason-why-we-can-set-math-xmlnshttpwwww3org1998mathmathmlsemanticsmrowmiωmimrowannotation-encodingapplicationx-texomegaannotationsemanticsmathω-as-a-constant-in-exponential-map-derivation)
+  - [General formula of Commonly-used series](#general-formula-of-commonly-used-series)
 
 # Lie theory: Lie group and Lie algebra
 ## Why we need Lie theory ? 
@@ -225,8 +231,28 @@ TODO
 ## [degree of freedom](https://en.wikipedia.org/wiki/Degrees_of_freedom)
 dof of manifold = dim of manifold
 
+### degree of freedom in mechanics, generalizable to math
+![](lie/dof_overview.png)
+![](lie/dof_motions_and_dimensions.png)
+
 ## [Rotation formalisms in three dimensions](https://en.wikipedia.org/wiki/Rotation_formalisms_in_three_dimensions)
 ### [Axis-angle representation](https://en.wikipedia.org/wiki/Axis%E2%80%93angle_representation)
+
+## Solving differential equations (DE)
+Math is fun series: 
+
+1. [Differential Equations](https://www.mathsisfun.com/calculus/differential-equations.html)
+2. [Differential Equations Solution Guide](https://www.mathsisfun.com/calculus/differential-equations-solution-guide.html)
+
+## Eigen notes 
+Exponential of a general square matrix is defined by its Taylor expansion. You don't want to symbolically represent the whole series. And, Eigen is a numeric library anyway, its algorithms are designed to compute to numbers.
+
+## [A Python symbolic calculation package: SymPy](https://docs.sympy.org/latest/index.html)
+Use this to calculate the matrices operation with the entries substituted with the symbols instead of the exact numbers.
+
+## [The reason why we can set $\omega$ as a constant in exponential map derivation](https://math.stackexchange.com/a/3715240/681195)
+
+## General formula of Commonly-used series
 
 
 
