@@ -1,11 +1,11 @@
 2020/05/16
 # Topic: matrix derivative
 - [Topic: matrix derivative](#topic-matrix-derivative)
-- [主要内容: Matrix Calculus](#%e4%b8%bb%e8%a6%81%e5%86%85%e5%ae%b9-matrix-calculus)
-  - [Matrix Calculus 求解网站](#matrix-calculus-%e6%b1%82%e8%a7%a3%e7%bd%91%e7%ab%99)
+- [主要内容: Matrix Calculus](#主要内容-matrix-calculus)
+  - [Matrix Calculus 求解网站](#matrix-calculus-求解网站)
   - [The Matrix Cookbook](#the-matrix-cookbook)
   - [Other resouces](#other-resouces)
-  - [微积分](#%e5%be%ae%e7%a7%af%e5%88%86)
+  - [微积分](#微积分)
   - [Hessian](#hessian)
     - [Gradient](#gradient)
     - [Taylor expansion](#taylor-expansion)
@@ -16,7 +16,7 @@
     - [Jacobian](#jacobian)
     - [Total derivative](#total-derivative)
 - [Some notes](#some-notes)
-  - [梯度、散度、旋度、Jacobian、Hessian、Laplacian 的关系](#%e6%a2%af%e5%ba%a6%e6%95%a3%e5%ba%a6%e6%97%8b%e5%ba%a6jacobianhessianlaplacian-%e7%9a%84%e5%85%b3%e7%b3%bb)
+  - [梯度、散度、旋度、Jacobian、Hessian、Laplacian 的关系](#梯度散度旋度jacobianhessianlaplacian-的关系)
   - [Products in Linear Algebra](#products-in-linear-algebra)
     - [Products between vectors](#products-between-vectors)
     - [Products between matrices](#products-between-matrices)

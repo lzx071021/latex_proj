@@ -58,6 +58,11 @@ Lie Theory
   - [A Python symbolic calculation package: SymPy](#a-python-symbolic-calculation-package-sympy)
   - [The reason why we can set $\omega$ as a constant in exponential map derivation](#the-reason-why-we-can-set-math-xmlnshttpwwww3org1998mathmathmlsemanticsmrowmiωmimrowannotation-encodingapplicationx-texomegaannotationsemanticsmathω-as-a-constant-in-exponential-map-derivation)
   - [General formula of Commonly-used series](#general-formula-of-commonly-used-series)
+  - [Why 3D rotation matrices are not commutative while 2D can?](#why-3d-rotation-matrices-are-not-commutative-while-2d-can)
+  - [Derivation of general rotation matrices](#derivation-of-general-rotation-matrices)
+    - [4D rotation matrices](#4d-rotation-matrices)
+  - [A article series illustrating Calculus](#a-article-series-illustrating-calculus)
+  - [Representations for 3D rotations](#representations-for-3d-rotations)
 
 # Lie theory: Lie group and Lie algebra
 ## Why we need Lie theory ? 
@@ -252,7 +257,26 @@ Use this to calculate the matrices operation with the entries substituted with t
 
 ## [The reason why we can set $\omega$ as a constant in exponential map derivation](https://math.stackexchange.com/a/3715240/681195)
 
-## General formula of Commonly-used series
+## [General formula of Commonly-used series](lie/commonly_used_taylor_series.pdf)
+[How to derive these series from Taylor series?]()
+
+[Prove Taylor's Theorem](https://proofwiki.org/wiki/Taylor%27s_Theorem/One_Variable)
+
+在不同点展开，及令 $x_0$ 等于不同的值，其逼近真值的效果(即accuracy)是不一样的。这个逼近的 error 用 remainder term 或称 error term 来描述，即 $R_N(x)$.
+
+## [Why 3D rotation matrices are not commutative while 2D can?](https://math.stackexchange.com/a/2019710/681195)
+
+## [Derivation of general rotation matrices](lie/Derivation%20of%20General%20Rotation%20Matrix.pdf)
+[Another useful material](lie/A%20short%20derivation%20to%20basic%20rotation%20around%20the%20x-,%20y-%20or%20z-axis.pdf)
+### [4D rotation matrices](http://kennycason.com/posts/2009-01-08-graph4d-rotation4d-project-to-2d.html)
+4D rotations keep a plane fixed, that is rotating around a plane. 
+
+A simple rotation R about a rotation centre O leaves an entire plane A through O (axis-plane) fixed.
+
+## [A article series illustrating Calculus](https://www.mathsisfun.com/calculus/index.html)
+
+## Representations for 3D rotations
+TODO
 
 
 
