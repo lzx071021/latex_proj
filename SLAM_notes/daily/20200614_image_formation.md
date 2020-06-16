@@ -73,3 +73,33 @@ Cameras use gyroscope to meter and counteract motion blur to approach stability.
 [A short intuitive video illustrating the difference between analog and digital signals](https://learn.sparkfun.com/tutorials/analog-vs-digital/all)
 
 [ADC converter in cameras](https://www.lifewire.com/the-adc-of-a-digital-camera-493714)
+
+## Lambertian reflectance
+![](im_for/lambertian_reflectance%20.png)
+
+## [radiance, irradiance, and radiant flux](https://www.energetiq.com/technote-understanding-radiance-brightness-irradiance-radiant-flux)
+
+## [The usual way to write translation using matrix representation](https://math.stackexchange.com/q/1128777/681195)
+
+## [skewness and kurtosis in digital image processing](https://dsp.stackexchange.com/a/30439)
+### skewness
+![](im_for/skewness.png)
+
+## optic abberrations 
+![](im_for/abberration.png)
+![](im_for/abberration_overview.png.png)
+
+## linear span
+![](im_for/linear_span.png)
+
+## orthogonal complement 
+![](im_for/orthogonal_complement_overview.png)
+![](im_for/orthogonal_complement_definition.png)
+
+## antipodal points (aka antipodes, 对趾点)
+![](im_for/antipodal_points.png)
+
+## 
+
+
+
