@@ -99,6 +99,10 @@ Cameras use gyroscope to meter and counteract motion blur to approach stability.
 ## antipodal points (aka antipodes, 对趾点)
 ![](im_for/antipodal_points.png)
 
+## [Why the image plane is at Z = f in pinhole camera model](https://photo.stackexchange.com/a/117498/92598)
+
+## [How to do the normalization when the focal length is known](https://math.stackexchange.com/a/3721668/681195)
+
 ## 
 
 

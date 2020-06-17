@@ -268,6 +268,10 @@ Use this to calculate the matrices operation with the entries substituted with t
 
 ## [Derivation of general rotation matrices](lie/Derivation%20of%20General%20Rotation%20Matrix.pdf)
 [Another useful material](lie/A%20short%20derivation%20to%20basic%20rotation%20around%20the%20x-,%20y-%20or%20z-axis.pdf)
+
+[Very helpful! Derive the matrices with complex numbers](https://math.stackexchange.com/a/1419386/681195)
+
+**Tip**: 根据右手定则和 xyz 的轮换性判断是 positive theta 还是 negative theta, 以判断 rotation matrices 的 entries 的 plus or minus sign.
 ### [4D rotation matrices](http://kennycason.com/posts/2009-01-08-graph4d-rotation4d-project-to-2d.html)
 4D rotations keep a plane fixed, that is rotating around a plane. 
 
