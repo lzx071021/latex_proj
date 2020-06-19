@@ -81,4 +81,22 @@ A Binary Large OBject (BLOB) is a collection of binary data stored as a single e
 
 ## [Macros cannot be placed within any namespaces](https://stackoverflow.com/a/11791202/11240780)
 
+## [std::initializer_list, declared in <initializer_list> header](https://www.learncpp.com/cpp-tutorial/10-7-stdinitializer_list/)
+
+## [lvalue and rvalue](https://www.internalpointers.com/post/understanding-meaning-lvalues-and-rvalues-c)
+
+## [reinterpret_cast](https://zhuanlan.zhihu.com/p/33040213)
+
+## [enum object as function parameter](https://stackoverflow.com/a/5357141/11240780)
+
+## [Why a semicolon is needed after class declaration braces](https://stackoverflow.com/a/785695/11240780)
+
+## [callback function(回调函数)](https://www.zhihu.com/question/19801131/answer/27459821)
+
+## [problems with NULL and prefer nullptr](https://www.geeksforgeeks.org/understanding-nullptr-c/)
+
+## [C++: stack and heap memory](https://stackoverflow.com/a/80113/11240780)
+
+## [constexpr and std::string](https://stackoverflow.com/questions/27123306/is-it-possible-to-use-stdstring-in-a-constexpr)
+
 ## 
