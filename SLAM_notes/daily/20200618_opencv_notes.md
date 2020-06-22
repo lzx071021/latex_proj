@@ -7,10 +7,11 @@ OpenCV Notes
 
 ## [reshape function](https://www.cnblogs.com/denny402/p/5035535.html)
 
-## Basic Mat types 
+## [Basic Mat types](https://docs.opencv.org/4.3.0/d6/d6d/tutorial_mat_the_basic_image_container.html)
 1. [Mat](https://docs.opencv.org/3.4/d3/d63/classcv_1_1Mat.html#details)
 2. [Mat_](https://docs.opencv.org/3.4/df/dfc/classcv_1_1Mat__.html#details)
 3. [Matx](https://docs.opencv.org/3.4/de/de1/classcv_1_1Matx.html#details)
+### [cv::Mat::create](https://docs.opencv.org/4.3.0/d3/d63/classcv_1_1Mat.html#a55ced2c8d844d683ea9a725c60037ad0)
 
 ## [cv::waitKey()](https://docs.opencv.org/3.4/d7/dfc/group__highgui.html#ga5628525ad33f52eab17feebcfba38bd7)
 unit millisecond, aka ms = 1 / 1000 * second;
@@ -19,5 +20,49 @@ unit millisecond, aka ms = 1 / 1000 * second;
 
 ## [4 ways to copy image and their performance](https://blog.csdn.net/chaipp0607/article/details/58603167)
 ### [copyTo and clone](https://blog.csdn.net/liyi1149549057/article/details/89404458?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase)
+> "The major difference is that when the destination matrix and the source matrix have the same type and size, copyTo will not change the address of the destination matrix, while clone will always allocate a new address for the destination matrix."
+
+## [cv::Scalar](https://docs.opencv.org/2.4.2/modules/core/doc/basic_structures.html#Scalar_)
+
+## cv::String in place of std::string when coding opencv apps
+Be casual!
+
+## [The ideas behind undirstortion in OpenCV](https://stackoverflow.com/a/21960181/11240780)
+
+## The line of work to study camera calibration 
+1. [Matlab tutorial](https://www.mathworks.com/help/vision/ug/camera-calibration.html)
+  - [Distortion](https://en.wikipedia.org/wiki/Distortion_(optics)#Software_correction)
+2. [Camera calibration with OpenCV](https://docs.opencv.org/master/d4/d94/tutorial_camera_calibration.html)
+3. Advanced [Camera Calibration Toolbox with examples](http://www.vision.caltech.edu/bouguetj/calib_doc/index.html#examples)
+4. [OpenCV cv::initUndistortRectifyMap function and the method it uses (**inverse mapping algorithm**)](https://docs.opencv.org/3.1.0/da/d54/group__imgproc__transform.html#ga7dfb72c9cf9780a347fbe3d1c47e5d5a)
+
+main cf. paper: *Zhang, Z. “A Flexible New Technique for Camera Calibration.” IEEE Transactions on Pattern Analysis and Machine Intelligence. Vol. 22, No. 11, 2000, pp. 1330–1334.*
+### [Undistorted result](https://www.cnblogs.com/riddick/p/6711263.html)
+总像素减少，十字边缘区域变模糊。
+
+## cv::Mat::eye, cv::Mat::ones, cv::Mat::zeros, cv::Mat::diag are functions, not types
+e.g. cv::Mat::eye R(3, 3, CV_8UC1) is forbidden.
+
+## [Flexible extension of cv::findChessboardCorners()](https://stackoverflow.com/questions/37541683/finding-checkerboard-points-in-opencv-for-any-random-chessboard-pattern-size-no/37577579)
+
+## Explicit cast: [C++ style casting](https://en.cppreference.com/w/cpp/language/explicit_cast) and C style casting
+[Which is better?](https://stackoverflow.com/a/18414126/11240780)
+
+![](cpp/casts.png)
+
+When the C-style cast expression is encountered, the compiler attempts to interpret it as the following cast expressions, [in this order](https://en.cppreference.com/w/cpp/language/explicit_cast):
+ - const_cast 
+ - static_cast 
+ - reinterpret_cast
+
+[A short intro](https://www.jianshu.com/p/5163a2678171)
+
+[GeeksforGeeks series](https://www.geeksforgeeks.org/static_cast-in-c-type-casting-operators/?ref=rp)
+
+## [static keyword](https://www.geeksforgeeks.org/static-keyword-cpp/)
+[An comprehensive elaboration for static keyword, with mistakes!](https://www.cnblogs.com/33debug/p/7223869.html)
+
+[When should the static keyword come into use?](https://stackoverflow.com/a/15235626/11240780), also see [this](https://softwareengineering.stackexchange.com/a/113034), very helpful!
 
 ## 
+

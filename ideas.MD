@@ -6,3 +6,6 @@
 5. 
 
 # 用一些新的数学思维、理论解释当前的SLAM / 视觉SLAM，形成一个（至少看起来）能自圆其说的框架。
+
+# Apply Lie theory on estimating camera distortion coefficient 
+Show experimental results: compare the undistoring error between that of w/o Lie theory.
