@@ -117,8 +117,10 @@ There are 4 qualifiers in C++.
 ## [A website for C++ optimization](https://www.tantalon.com/pete/cppopt/main.htm)
 
 ## Tricks about bit-wise operators
+[bit operation hacks](http://graphics.stanford.edu/~seander/bithacks.html)
 ### [bit-wise NOT](https://stackoverflow.com/a/7207403/11240780)
 ### [Neatest way to filp a boolean value](https://stackoverflow.com/a/611476/11240780)
+### [bit-wise operation implementing min and max](https://stackoverflow.com/a/2868506/11240780)
 
 ## [DBL_EPSILON, FLT_EPSILON, defined in <cfloat>](http://www.cplusplus.com/reference/cfloat/)
 用来描述差值的精度误差。
@@ -170,5 +172,34 @@ e.g. [OpenCV cv::putText](https://stackoverflow.com/a/54616857/11240780)
 Notice though that this template class is not implicitly defined and the header <initializer_list> **shall be included** to access it, even if the type is used implicitly.
 
 ## [Ways to construct vector of vectors in C++](https://www.techiedelight.com/vector-of-vector-cpp/)
+
+## [assert in C++](https://www.softwaretestinghelp.com/assert-in-cpp/)
+1. runtime assertion: assert macro, defined in <cassert> header. 
+2. compile time assertion, static_assert keyword (function)
+
+## [tracking reference % and stringify # in C++](https://stackoverflow.com/a/25358316/11240780)
+
+## [conditional operator ?: and its complex rules](https://docs.microsoft.com/en-us/cpp/cpp/conditional-operator-q?view=vs-2019)
+The type of the second and the third operand muse be in the rule list, otherwise it's illegal.
+
+> In particular, note that the ternary operator allows any arbitrary expression as its middle operand, despite being listed as having higher precedence than the assignment and comma operators. 
+
+Therefore, beware adding parentheses.
+
+## unsigned char and char 
+char与unsigned char都占用一个字节（8bit）的内存
+
+[Why use unsigned char in OpenCV](https://stackoverflow.com/a/16944966/11240780)
+
+[char and int type in C/C++](https://stackoverflow.com/a/4337252/11240780)
+
+## [Must I appending an "f" at the end of a number in C++?](https://stackoverflow.com/a/16722287/11240780)
+Without f: 
+   1. might be additional codes genenrated, compiler specific. 
+   2. some arithmetic expression might be surprising, e.g. float a = 1 / 2 -> a = 0;
+
+## [No suffix types for unsigned char types, only for integral and floating type suffixes](https://stackoverflow.com/a/2304756/11240780)
+
+## [pre/pose-fix increment operators in C++](https://stackoverflow.com/a/5209616/11240780)
 
 ## 

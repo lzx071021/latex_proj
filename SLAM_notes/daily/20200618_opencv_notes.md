@@ -64,5 +64,49 @@ When the C-style cast expression is encountered, the compiler attempts to interp
 
 [When should the static keyword come into use?](https://stackoverflow.com/a/15235626/11240780), also see [this](https://softwareengineering.stackexchange.com/a/113034), very helpful!
 
-## 
+## [cv::imread(), the loaded data type](https://stackoverflow.com/a/13578018/11240780)
+
+## [alpha channel and 32 bits image](https://www.webopedia.com/TERM/A/alpha_channel.html)
+
+## [element access methods remark](https://opencv.programmingpedia.net/en/tutorial/1957/pixel-access)
+Good material!
+
+## OpenCV basic data structures
+### cv::Mat 
+### [cv::Vec](https://docs.opencv.org/4.3.0/d6/dcf/classcv_1_1Vec.html)
+### cv::Scalar 
+### cv::Point 
+
+## [OpenCV data type](https://docs.opencv.org/3.4/d0/d3a/classcv_1_1DataType.html)
+CV_<bit-depth>{U|S|F}C(<number_of_channels>)
+- U, unsigned char (uchar), 8 bits
+- S, short, 16 bits
+- F, float, 32 bits
+
+The types are **traits**.
+
+## [Raster/vector graphics/images](https://www.printcnx.com/resources-and-support/addiational-resources/raster-images-vs-vector-graphics/)
+
+## [Image file formats](https://en.wikipedia.org/wiki/Image_file_formats)
+- jpeg
+  - 8 bits grayscale or 24 bits color (RGB)
+- png
+  - 24 bits or 48 bits (w/o alpha)
+
+## [Image reading and writing](https://docs.opencv.org/master/d4/da8/group__imgcodecs.html)
+The imgcodecs module of OpenCV 
+  - Image decoding
+  - Image compression 
+  - How to create an image with alpha channel 
+  - How to save a png format file 
+  - Different data types correpond to different image formats, and the images have to be specified with the correct extension while writing with the cv::imwrite() function.
+    - Generally, cv::imwrite() writes 8 bits one-channel (gray) or 32 bits three-channel image (color).
+  - In reading, cv::imread() function determines the type of an image by the content, not by the file extension.
+
+### [imread modes, important while reading](https://docs.opencv.org/master/d4/da8/group__imgcodecs.html#ga61d9b0126a3e57d9277ac48327799c80)
+By default, the mode of imread() is CV_IMREAD_COLOR which sets the data type as CV_8UC3
+
+[Load images with four channels with the aid of imread modes](https://stackoverflow.com/a/29547458/11240780)
+
+##  
 

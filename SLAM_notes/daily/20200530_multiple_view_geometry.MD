@@ -39,7 +39,28 @@ Multiple View Geometry
   - [What is algebra ?](#what-is-algebra-)
     - [What is linear algebra ?](#what-is-linear-algebra-)
   - [A brief introduction to topological space (拓扑空间)](#a-brief-introduction-to-topological-space-拓扑空间)
-  - [](#)
+  - [Photometry](#photometry)
+  - [Geomtry primitive](#geomtry-primitive)
+  - [spatial and frequency domain of image processing](#spatial-and-frequency-domain-of-image-processing)
+  - [Accuracy, Error, Precision, and Uncertainty](#accuracy-error-precision-and-uncertainty)
+    - [Uncertainty and noise](#uncertainty-and-noise)
+  - [covector](#covector)
+  - [ZNCC and NCC](#zncc-and-ncc)
+  - [A compact and useful vision lectures by David Marshall](#a-compact-and-useful-vision-lectures-by-david-marshall)
+  - [subtend in math](#subtend-in-math)
+  - [white noise](#white-noise)
+  - [multivariable Taylor expansion](#multivariable-taylor-expansion)
+  - [Corner detection](#corner-detection)
+    - [Structure tensor](#structure-tensor)
+    - [Detectors](#detectors)
+      - [The Förstner corner detector](#the-förstner-corner-detector)
+      - [Harris corner detector and shi-tomasi corner detector](#harris-corner-detector-and-shi-tomasi-corner-detector)
+        - [non-maximum suppresion](#non-maximum-suppresion)
+        - [(Mathematical) comparison of the these detectors](#mathematical-comparison-of-the-these-detectors)
+    - [Gradient operators (aka, filters, or kernels)](#gradient-operators-aka-filters-or-kernels)
+      - [Sobel operator](#sobel-operator)
+      - [](#)
+  - [](#-1)
 
 # The course 
 The lecture introduces the basic concepts of image formation - perspective projection and camera motion. The goal is to reconstruct the three-dimensional world and the camera motion from multiple images. To this end, one determines correspondences between points in various images and respective constraints that allow to compute motion and 3D structure. A particular emphasis of the lecture is on mathematical descriptions of rigid body motion and of perspective projection. For estimating camera motion and 3D geometry we will make use of both spectral methods and methods of nonlinear optimization.
@@ -153,5 +174,51 @@ Being an arrow, a Euclidean vector possesses a definite initial point and termin
 
 ## [A brief introduction to topological space (拓扑空间)](https://zhuanlan.zhihu.com/p/54516805)
 [A useful discussion about topological space](https://math.stackexchange.com/questions/137944/meaning-of-topology-and-topological-space/523794)
+
+## Photometry
+![](mvg/photometry.png)
+
+## [Geomtry primitive](https://en.wikipedia.org/wiki/Geometric_primitive)
+
+## [spatial and frequency domain of image processing](https://www.quora.com/What-is-spatial-domain-in-image-processing)
+
+## [Accuracy, Error, Precision, and Uncertainty](https://www.nde-ed.org/GeneralResources/ErrorAnalysis/UncertaintyTerms.htm)
+### [Uncertainty and noise]()
+
+## [covector](https://math.stackexchange.com/questions/240491/what-is-a-covector-and-what-is-it-used-for)
+TODO 
+
+## [ZNCC and NCC](https://en.wikipedia.org/wiki/Cross-correlation#Terminology_in_image_processing)
+
+## [A compact and useful vision lectures by David Marshall](https://users.cs.cf.ac.uk/Dave.Marshall/Vision_lecture/)
+
+## [subtend in math](https://www.mathsisfun.com/definitions/subtend.html)
+
+## white noise
+> 白噪声，是一种功率谱密度为常数的随机信号或随机过程。即此信号在各个频段上的功率一致。由于白光是由各种频率的单色光混合而成，因而此信号的平坦功率谱性质称为“白色”，此信号也因此得名为白噪声。相对的，其他不具有这一性质的噪声信号则称为有色噪声。 理想的白噪声具有无限带宽，因而其能量是无限大，这在现实世界是不可能存在的。
+
+[A short useful video](https://www.youtube.com/watch?v=EY5OQ2iVA50)
+
+[How to treat noise in image processing](https://dsp.stackexchange.com/a/28916)
+
+## [multivariable Taylor expansion](https://mathinsight.org/taylors_theorem_multivariable_introduction)
+[A cheatsheet pdf](mvg/Taylor%20Series%20Single%20Variable%20and%20Multi-Variable.pdf)
+
+## [Corner detection](https://en.wikipedia.org/wiki/Corner_detection)
+### [Structure tensor](https://en.wikipedia.org/wiki/Structure_tensor)
+### Detectors
+#### [The Förstner corner detector](https://en.wikipedia.org/wiki/Corner_detection#The_F%C3%B6rstner_corner_detector)
+#### [Harris corner detector and shi-tomasi corner detector](https://en.wikipedia.org/wiki/Corner_detection#Harris_corner)
+[The algorithm process of the Harris corner detector](https://en.wikipedia.org/wiki/Harris_Corner_Detector)
+##### [non-maximum suppresion](https://towardsdatascience.com/non-maximum-suppression-nms-93ce178e177c)
+##### [(Mathematical) comparison of the these detectors](https://vision.ece.ucsb.edu/sites/default/files/publications/04IVRMarco.pdf)
+Publish data: 2004 May
+
+Zuliani, Marco & Kenney, C. & Manjunath, B.. (**2004**). A Mathematical Comparison of Point Detectors. 10.1109/CVPR.2004.8. 
+
+### Gradient operators (aka, filters, or kernels)
+#### [Sobel operator](https://en.wikipedia.org/wiki/Sobel_operator)
+#### 
+
 
 ## 
