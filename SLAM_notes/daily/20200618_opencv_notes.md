@@ -108,5 +108,69 @@ By default, the mode of imread() is CV_IMREAD_COLOR which sets the data type as 
 
 [Load images with four channels with the aid of imread modes](https://stackoverflow.com/a/29547458/11240780)
 
-##  
+## [Scan image](https://docs.opencv.org/4.3.0/db/da5/tutorial_how_to_scan_images.html)
+Good material!
+
+Methods: 
+  1. pointer 
+  2. iterator 
+  3. on-the-fly address calculation 
+  4. Look up tables, with the OpenCV built-in core func cv::LUT()
+
+Notes: 
+  1. Time measure in OpenCV 
+    - cv::getTickCount() and cv::getTickFrequency() 
+  2. Pre-calculated lookup table is very helpful. 
+  3. The rounding down trick: uchar I = (int / divide_number) * divide_number.
+  4. cv::Mat::data returns the pointer pointing to the first row and the first col.
+    - This is the simplest way to check whether an image inputing operator success or not
+    - Also helpful in scanning throught the whole image.
+  5. cv::Mat_ vs cv::Mat::at 
+    - > If you need to do multiple lookups using this method for an image it may be troublesome and time consuming to enter the type and the at keyword for each of the accesses. To solve this problem OpenCV has a cv::Mat_ data type. It's the same as Mat with the extra need that at definition you need to specify the data type through what to look at the data matrix, however in return you can use the operator() for fast access of items. To make things even better this is easily convertible from and to the usual cv::Mat data type. A sample usage of this you can see in case of the color images of the function above. Nevertheless, it's important to note that the same operation (with the same runtime speed) could have been done with the cv::Mat::at function. It's just a less to write for the lazy programmer trick.
+
+## When use cv::namedWindow()?
+In combination with UI, e.g. cv::creataTrackbar(), to change the properties of the window, e.g. cv::WINDOW_AUTOSIZE, cv::WINDOW_NORMAL, etc.
+
+## imshow will automatically bound the elements' value of the image passed, to the range [0, 255], aka CV_8U*
+
+## [OpenCV: saturate_cast](https://docs.opencv.org/4.3.0/db/de0/group__core__utils.html#gab93126370b85fda2c8bfaf8c811faeaf)
+Resembles static_cast, tuned for uchar, ushort, etc.
+### [saturate arithmetic](https://en.wikipedia.org/wiki/Saturation_arithmetic)
+### [C++17: std::clamp](https://en.cppreference.com/w/cpp/algorithm/clamp)
+Use in combination with INT_MAX, INT_MIN, etc.
+
+**Nested conditional operator ?:**
+  - return (v < lo) ? lo : (v > hi) ? hi : v;
+
+## [Passing cv::Mat, const cv::Mat, cv::Mat &, const cv::Mat &?](https://stackoverflow.coom/a/23486280/11240780)
+Only the header of the Mat is restrained.
+### [Passing const cv::Mat &, and cv::Mat::create](https://docs.opencv.org/4.3.0/d3/d63/classcv_1_1Mat.html#a55ced2c8d844d683ea9a725c60037ad0)
+
+## How image stored in OpenCV?
+![](opencv/opencv_image_storing.png)  **Important!**
+
+## [Kernel](https://en.wikipedia.org/wiki/Kernel_(image_processing))
+### Image normalization
+Normalization is defined as the division of each element in the kernel by the sum of all kernel elements, so that the sum of the elements of a normalized kernel is unity. This will ensure the average pixel in the modified image is as bright as the average pixel in the original image.
+#### [Various "normalization"](https://stackoverflow.com/a/33611556/11240780)
+### [A collection of kernels](https://lodev.org/cgtutor/filtering.html)
+
+## [Fourier transform in place of spatial filtering]
+[Discussion 1](https://stackoverflow.com/questions/26353003/how-to-compute-discrete-fourier-transform/26355569#26355569)
+
+[Discussion 2](https://stackoverflow.com/questions/49062061/optimized-image-convolution-algorithm)
+
+### [Padding before filtering in frequency domain](https://dsp.stackexchange.com/a/3446)
+Because of circular convolution.
+### [Convolution theorem](https://en.wikipedia.org/wiki/Convolution_theorem)
+#### [Symmetric convolution](https://en.wikipedia.org/wiki/Symmetric_convolution)
+TODO 
+#### [Circular convolution](https://en.wikipedia.org/wiki/Circular_convolution)
+
+
+## [continuity of matrix](https://stackoverflow.com/a/26685567/11240780)
+
+## [**A fantanstic websites for image processing learners!**](http://homepages.inf.ed.ac.uk/rbf/HIPR2/index.htm)
+
+## 
 

@@ -202,4 +202,10 @@ Without f:
 
 ## [pre/pose-fix increment operators in C++](https://stackoverflow.com/a/5209616/11240780)
 
+## [EXIT_SUCCESS, EXIT_FAILURE macros, defined in <cstdlib>](https://stackoverflow.com/questions/8867871/should-i-return-exit-success-or-0-from-main)
+Prefer return 0 instead.
+### [std::exit(), defined in <cstdlib>](https://en.cppreference.com/w/cpp/utility/program/exit)
+
+## [When to use enum class?](https://stackoverflow.com/a/8357366/11240780)
+
 ## 
