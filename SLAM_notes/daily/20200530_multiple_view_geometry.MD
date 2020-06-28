@@ -60,6 +60,8 @@ Multiple View Geometry
     - [Gradient operators (aka, filters, or kernels)](#gradient-operators-aka-filters-or-kernels)
       - [Sobel operator](#sobel-operator)
       - [](#)
+  - [Bilinear mapping](#bilinear-mapping)
+  - [How to compute the distance between two matrices](#how-to-compute-the-distance-between-two-matrices)
   - [](#-1)
 
 # The course 
@@ -219,6 +221,12 @@ Zuliani, Marco & Kenney, C. & Manjunath, B.. (**2004**). A Mathematical Comparis
 ### Gradient operators (aka, filters, or kernels)
 #### [Sobel operator](https://en.wikipedia.org/wiki/Sobel_operator)
 #### 
+TODO 
 
+## Bilinear mapping
+In mathematics, a bilinear map is a function combining elements of two vector spaces to yield an element of a third vector space, and is linear in each of its arguments. Matrix multiplication is an example
+
+## [How to compute the distance between two matrices](https://math.stackexchange.com/a/508388/681195)
+Use the matrix norms of the difference of the two matrices.
 
 ## 

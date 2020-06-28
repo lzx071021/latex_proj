@@ -160,6 +160,8 @@ Normalization is defined as the division of each element in the kernel by the su
 
 [Discussion 2](https://stackoverflow.com/questions/49062061/optimized-image-convolution-algorithm)
 
+[Implementation procedures](https://stackoverflow.com/a/37781247/11240780)
+
 ### [Padding before filtering in frequency domain](https://dsp.stackexchange.com/a/3446)
 Because of circular convolution.
 ### [Convolution theorem](https://en.wikipedia.org/wiki/Convolution_theorem)
