@@ -208,4 +208,6 @@ Prefer return 0 instead.
 
 ## [When to use enum class?](https://stackoverflow.com/a/8357366/11240780)
 
+## [Lambda expression in C++](https://docs.microsoft.com/en-us/cpp/cpp/lambda-expressions-in-cpp?view=vs-2019)
+
 ## 

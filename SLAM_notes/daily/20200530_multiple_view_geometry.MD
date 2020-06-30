@@ -62,6 +62,12 @@ Multiple View Geometry
       - [](#)
   - [Bilinear mapping](#bilinear-mapping)
   - [How to compute the distance between two matrices](#how-to-compute-the-distance-between-two-matrices)
+  - [Rank and injective, surjective#Properties)](#rank-and-injective-surjective)
+  - [Vanishing point](#vanishing-point)
+  - [PNP](#pnp)
+    - [RANSAC](#ransac)
+  - [Event camera](#event-camera)
+  - [Rodrigue's rotation formula](#rodrigues-rotation-formula-1)
   - [](#-1)
 
 # The course 
@@ -228,5 +234,20 @@ In mathematics, a bilinear map is a function combining elements of two vector sp
 
 ## [How to compute the distance between two matrices](https://math.stackexchange.com/a/508388/681195)
 Use the matrix norms of the difference of the two matrices.
+
+## [Rank and injective, surjective](https://en.wikipedia.org/wiki/Rank_(linear_algebra)#Properties)
+
+## [Vanishing point](https://en.wikipedia.org/wiki/Vanishing_point)
+
+## [PNP](https://en.wikipedia.org/wiki/Perspective-n-Point)
+### [RANSAC](https://en.wikipedia.org/wiki/Random_sample_consensus)
+[OpenCV API](https://docs.opencv.org/2.4/modules/calib3d/doc/camera_calibration_and_3d_reconstruction.html#bool%20solvePnP(InputArray%20objectPoints,%20InputArray%20imagePoints,%20InputArray%20cameraMatrix,%20InputArray%20distCoeffs,%20OutputArray%20rvec,%20OutputArray%20tvec,%20bool%20useExtrinsicGuess,%20int%20flags))
+
+Prefer iterative PNP followed by RANSAC. Avoid using EPNP.
+
+## [Event camera](https://en.wikipedia.org/wiki/Event_camera)
+> Event cameras are novel sensors that report brightness changes in the form of a stream of asynchronous "events" instead of intensity frames. They offer significant advantages with respect to conventional cameras: high temporal resolution, high dynamic range, and no motion blur. While the stream of events encodes in principle the complete visual signal, the reconstruction of an intensity image from a stream of events is an ill-posed problem in practice.
+
+## [Rodrigue's rotation formula](https://en.wikipedia.org/wiki/Rodrigues%27_rotation_formula)
 
 ## 

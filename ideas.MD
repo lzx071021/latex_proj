@@ -9,3 +9,7 @@
 
 # Apply Lie theory on estimating camera distortion coefficient 
 Show experimental results: compare the undistoring error between that of w/o Lie theory.
+
+# SLAM + Physical Control
+cf. 
+> 此外Davide也分享了其他方面的一些idea，包括slam与控制的结合（基本思路是控制相机去看纹理丰富的区域）
