@@ -174,5 +174,10 @@ TODO
 
 ## [**A fantanstic websites for image processing learners!**](http://homepages.inf.ed.ac.uk/rbf/HIPR2/index.htm)
 
+## [Query and train set in feature matching](https://stackoverflow.com/a/10768362/11240780)
+
+## [KDT tree to search matched descriptors](https://en.wikipedia.org/wiki/K-d_tree)
+TODO
+
 ## 
 

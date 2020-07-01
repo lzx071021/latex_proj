@@ -210,4 +210,6 @@ Prefer return 0 instead.
 
 ## [Lambda expression in C++](https://docs.microsoft.com/en-us/cpp/cpp/lambda-expressions-in-cpp?view=vs-2019)
 
+## [shared_ptr object](http://www.cplusplus.com/reference/memory/shared_ptr/)
+
 ## 

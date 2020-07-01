@@ -68,6 +68,7 @@ Multiple View Geometry
     - [RANSAC](#ransac)
   - [Event camera](#event-camera)
   - [Rodrigue's rotation formula](#rodrigues-rotation-formula-1)
+  - [Hamming distance](#hamming-distance)
   - [](#-1)
 
 # The course 
@@ -249,5 +250,8 @@ Prefer iterative PNP followed by RANSAC. Avoid using EPNP.
 > Event cameras are novel sensors that report brightness changes in the form of a stream of asynchronous "events" instead of intensity frames. They offer significant advantages with respect to conventional cameras: high temporal resolution, high dynamic range, and no motion blur. While the stream of events encodes in principle the complete visual signal, the reconstruction of an intensity image from a stream of events is an ill-posed problem in practice.
 
 ## [Rodrigue's rotation formula](https://en.wikipedia.org/wiki/Rodrigues%27_rotation_formula)
+[one-to-one correspondence?](https://robotics.stackexchange.com/a/20880/26583)
+
+## [Hamming distance](https://en.wikipedia.org/wiki/Hamming_distance)
 
 ## 
